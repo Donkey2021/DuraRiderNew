@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+
+<Shell
+    x:Class="DuraRider.AppShell"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:views="clr-namespace:DuraRider.Areas.Common.Views"
+    Title="DuraApp"
+    BindingContext="{Binding AppShell, Source={StaticResource Locator}}"
+    FlyoutBehavior="Disabled"
+    Shell.NavBarIsVisible="False"
+    Style="{StaticResource ShellBaseStyle}"
+    mc:Ignorable="d">
+
+    <TabBar x:Name="mainTabBar">
+        <Tab
+            x:Name="home"
+            Title="Home"
+            Icon="home2.png">
+            <ShellContent>
+                <views:LoginPage />
+            </ShellContent>
+        </Tab>
+        <Tab Title="Account" Icon="account2.png">
+            <ShellContent>
+                <views:LoginPage />
+            </ShellContent>
+        </Tab>
+    </TabBar>
+</Shell>

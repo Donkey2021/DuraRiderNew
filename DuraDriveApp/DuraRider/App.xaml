@@ -1,0 +1,241 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application
+    x:Class="DuraRider.App"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:Yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:viewmodelLocator="clr-namespace:DuraRider.ViewModels"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit">
+    <Application.Resources>
+        <!--  Colors  -->
+        <Color x:Key="PrimaryColor">White</Color>
+        <Color x:Key="Primary2Color">#FFFFFF</Color>
+        <Color x:Key="AppShellTabBarUnselectedColor">#4D4D4D</Color>
+        <Color x:Key="AppShellTabBarTitleColor">#A69371</Color>
+
+        <Color x:Key="TextColor">#FAC800</Color>
+        <Color x:Key="Text2Color">#5C5C5C</Color>
+        <Color x:Key="Text3Color">#F2681A</Color>
+        <Color x:Key="Text2ColorBold">#585858</Color>
+
+        <Color x:Key="AccentColor">#E67020</Color>
+        <Color x:Key="Accent2Color">#F49813</Color>
+        <Color x:Key="Accent3Color">#D8D8D8</Color>
+        <Color x:Key="PrimaryPlaceholderColor">#FBD9BD</Color>
+        <Color x:Key="DefaultBorderColor">#DBDBDB</Color>
+        <Color x:Key="ErrorTextColor">#D0021B</Color>
+        <Color x:Key="AuthEntryBGColor">#F6A651</Color>
+        <Color x:Key="StartGradientColor">#E6AE2d</Color>
+        <Color x:Key="EndGradientColor">#F26419</Color>
+        <Color x:Key="PrimaryPageBackgroundColor">#5CB3B5</Color>
+        <Color x:Key="CollectionViewDefaultSelectedColor">#DFDADA</Color>
+
+        <Color x:Key="PlaceholderColor">#7F7F7F</Color>
+        <Color x:Key="BorderColor">#E2E2E2</Color>
+        <Style x:Key="ShellBaseStyle" TargetType="Element">
+            <Setter Property="Shell.BackgroundColor" Value="{StaticResource PrimaryColor}" />
+            <Setter Property="Shell.TabBarBackgroundColor" Value="{StaticResource Primary2Color}" />
+            <Setter Property="Shell.TabBarTitleColor" Value="{StaticResource AppShellTabBarTitleColor}" />
+            <Setter Property="Shell.TabBarUnselectedColor" Value="{StaticResource AppShellTabBarUnselectedColor}" />
+            <Setter Property="Shell.ForegroundColor" Value="{StaticResource PrimaryColor}" />
+            <Setter Property="Shell.TitleColor" Value="{StaticResource PrimaryColor}" />
+            <Setter Property="Shell.DisabledColor" Value="#4D4D4D" />
+            <Setter Property="Shell.UnselectedColor" Value="#4D4D4D" />
+        </Style>
+        <!--  Entry Fields  -->
+
+        <Style ApplyToDerivedTypes="True" TargetType="Button">
+            <Setter Property="FontFamily" Value="ProximaNovaRegular" />
+            <Setter Property="Padding" Value="0" />
+            <Setter Property="TextTransform" Value="None" />
+            <Setter Property="CornerRadius" Value="6" />
+            <Setter Property="BackgroundColor" Value="#211E66" />
+            <Setter Property="TextColor" Value="{DynamicResource PrimaryColor}" />
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="HeightRequest" Value="46" />
+            <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+            <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+            <Setter Property="BorderColor" Value="#211E66" />
+            <Setter Property="BorderWidth" Value="1" />
+            <Setter Property="Margin" Value="2,5,2,2" />
+            <Setter Property="xct:VisualFeedbackEffect.FeedbackColor" Value="DarkBlue" />
+        </Style>
+
+        <Style ApplyToDerivedTypes="True" TargetType="ImageButton">
+            <Setter Property="BackgroundColor" Value="Transparent" />
+            <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
+            <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+            <Setter Property="xct:VisualFeedbackEffect.FeedbackColor" Value="DarkBlue" />
+        </Style>
+
+        <Style ApplyToDerivedTypes="True" TargetType="Image">
+            <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
+            <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+        </Style>
+
+        <Style ApplyToDerivedTypes="True" TargetType="Label">
+            <Setter Property="FontFamily" Value="ProximaNovaRegular" />
+            <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+            <Setter Property="HorizontalOptions" Value="StartAndExpand" />
+            <Setter Property="TextColor" Value="{DynamicResource PrimaryColor}" />
+            <Setter Property="FontSize" Value="14" />
+        </Style>
+
+
+        <Style ApplyToDerivedTypes="True" TargetType="Frame">
+            <Setter Property="BackgroundColor" Value="White" />
+            <Setter Property="BorderColor" Value="WhiteSmoke" />
+            <Setter Property="CornerRadius" Value="12" />
+            <Setter Property="Padding" Value="12" />
+            <Setter Property="VerticalOptions" Value="FillAndExpand" />
+            <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+            <Setter Property="HasShadow" Value="False" />
+            <Setter Property="IsClippedToBounds" Value="true" />
+        </Style>
+        <Style ApplyToDerivedTypes="True" TargetType="Yummy:PancakeView">
+            <Setter Property="BackgroundColor" Value="White" />
+            <!--<Setter Property="BorderColor" Value="WhiteSmoke" />-->
+            <Setter Property="Padding" Value="16" />
+            <Setter Property="VerticalOptions" Value="StartAndExpand" />
+            <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+            <Setter Property="IsClippedToBounds" Value="true" />
+        </Style>
+
+        <Style ApplyToDerivedTypes="True" TargetType="Entry">
+            <Setter Property="FontFamily" Value="ProximaNovaRegular" />
+            <Setter Property="TextColor" Value="#7F7F7F" />
+            <Setter Property="PlaceholderColor" Value="#7F7F7F" />
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+            <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+        </Style>
+
+        <Style ApplyToDerivedTypes="True" TargetType="Editor">
+            <Setter Property="FontFamily" Value="ProximaNovaRegular" />
+            <Setter Property="TextColor" Value="#7F7F7F" />
+            <Setter Property="PlaceholderColor" Value="#7F7F7F" />
+            <Setter Property="FontSize" Value="14" />
+        </Style>
+
+        <Style ApplyToDerivedTypes="True" TargetType="Picker">
+            <Setter Property="FontFamily" Value="ProximaNovaRegular" />
+            <Setter Property="TextColor" Value="{DynamicResource PrimaryColor}" />
+            <Setter Property="TitleColor" Value="{DynamicResource PrimaryColor}" />
+            <Setter Property="FontSize" Value="15" />
+        </Style>
+
+        <Style ApplyToDerivedTypes="True" TargetType="DatePicker">
+            <Setter Property="FontFamily" Value="ProximaNovaRegular" />
+            <Setter Property="TextColor" Value="#7F7F7F" />
+            <Setter Property="Format" Value="dd/MM/yyyy" />
+            <Setter Property="MinimumDate" Value="12/31/2001" />
+            <Setter Property="MaximumDate" Value="12/31/2050" />
+            <Setter Property="FontSize" Value="15" />
+            <Setter Property="VerticalOptions" Value="Center" />
+            <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+        </Style>
+
+        <Style x:Key="AvatarViewStyle" TargetType="xct:AvatarView">
+            <Setter Property="Size" Value="80" />
+            <Setter Property="Color" Value="Transparent" />
+            <Setter Property="BorderColor" Value="#f2f2f2" />
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="Text" Value="No Name" />
+            <Setter Property="TextColor" Value="Gray" />
+            <Setter Property="HorizontalOptions" Value="StartAndExpand" />
+            <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+        </Style>
+
+        <Style ApplyToDerivedTypes="True" TargetType="xct:BadgeView">
+            <Setter Property="BackgroundColor" Value="Red" />
+            <Setter Property="FontSize" Value="10" />
+            <Setter Property="TextColor" Value="White" />
+            <Setter Property="HorizontalOptions" Value="Center" />
+            <Setter Property="VerticalOptions" Value="Center" />
+        </Style>
+
+        <Style ApplyToDerivedTypes="True" TargetType="xct:Shield">
+            <!--<Setter Property="Color"  Value="Green" />-->
+            <Setter Property="SubjectTextColor" Value="Red" />
+            <Setter Property="SubjectBackgroundColor" Value="Gray" />
+            <Setter Property="TextColor" Value="Blue" />
+            <Setter Property="StatusTextColor" Value="Gray" />
+            <Setter Property="StatusBackgroundColor" Value="Red" />
+            <Setter Property="HorizontalOptions" Value="Center" />
+            <Setter Property="VerticalOptions" Value="Center" />
+        </Style>
+
+        <Style ApplyToDerivedTypes="True" TargetType="NavigationPage">
+            <Setter Property="BarBackgroundColor" Value="Red" />
+            <Setter Property="BarTextColor" Value="Green" />
+            <!--<Setter Property="ios:NavigationPage.HideNavigationBarSeparator" Value="True" />-->
+        </Style>
+
+        <Style ApplyToDerivedTypes="True" TargetType="ContentPage">
+            <Setter Property="BackgroundColor" Value="{DynamicResource PrimaryColor}" />
+            <!--<Setter Property="ios:Page.UseSafeArea" Value="False" />-->
+            <Setter Property="NavigationPage.HasNavigationBar" Value="False" />
+            <!--<Setter Property="NavigationPage.BackButtonTitle" Value="" />-->
+        </Style>
+        <Style ApplyToDerivedTypes="True" TargetType="ScrollView">
+            <Setter Property="VerticalScrollBarVisibility" Value="Never" />
+            <Setter Property="HorizontalScrollBarVisibility" Value="Never" />
+        </Style>
+
+        <!--
+            Every where Shadow
+            xct:ShadowEffect.Color="Red"
+            xct:ShadowEffect.OffsetX="100"
+            xct:ShadowEffect.OffsetY="100"
+            xct:ShadowEffect.Opacity="1"
+            xct:ShadowEffect.Radius="33"
+        -->
+
+        <Style ApplyToDerivedTypes="True" TargetType="xct:Popup">
+            <Setter Property="Color" Value="Transparent" />
+            <!--<Setter Property="IsLightDismissEnabled" Value="True" />-->
+            <Setter Property="Size" Value="360,730" />
+        </Style>
+        <Style ApplyToDerivedTypes="True" TargetType="RadioButton">
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="FontFamily" Value="ProximaNovaRegular" />
+            <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+        </Style>
+        <Style ApplyToDerivedTypes="True" TargetType="Switch">
+            <Setter Property="ThumbColor" Value="Green" />
+            <Setter Property="OnColor" Value="WhiteSmoke" />
+            <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+        </Style>
+        <Style ApplyToDerivedTypes="True" TargetType="CheckBox">
+            <Setter Property="Color" Value="#211E66" />
+            <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+        </Style>
+
+        <Style x:Key="XctTabViewStyle" TargetType="xct:TabViewItem">
+            <Setter Property="FontSize" Value="12" />
+            <Setter Property="FontSizeSelected" Value="12" />
+            <Setter Property="TextColor" Value="#b4b4cb" />
+            <Setter Property="TextColorSelected" Value="#1F1E65" />
+            <Setter Property="BackgroundColor" Value="WhiteSmoke" />
+            <Setter Property="FontFamily" Value="ProximaNovaRegular" />
+            <Setter Property="HeightRequest" Value="60" />
+        </Style>
+        <Style x:Key="XctTabViewBadgeStyle" TargetType="xct:TabViewItem">
+            <Setter Property="FontSize" Value="12" />
+            <Setter Property="FontSizeSelected" Value="12" />
+            <Setter Property="TextColor" Value="#7A7A7A" />
+            <Setter Property="TextColorSelected" Value="#1C3947" />
+            <Setter Property="BackgroundColor" Value="WhiteSmoke" />
+            <Setter Property="BadgeTextColor" Value="White" />
+            <Setter Property="BadgeBorderColor" Value="Gray" />
+            <!--<Setter Property="BadgeBorderColorSelected" Value="Green" />-->
+            <Setter Property="BadgeBackgroundColor" Value="Red" />
+            <!--<Setter Property="BadgeBackgroundColorSelected" Value="Green" />-->
+            <Setter Property="FontFamily" Value="ProximaNovaRegular" />
+            <Setter Property="HeightRequest" Value="60" />
+        </Style>
+        <ResourceDictionary>
+            <viewmodelLocator:ViewModelLocator x:Key="Locator" />
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

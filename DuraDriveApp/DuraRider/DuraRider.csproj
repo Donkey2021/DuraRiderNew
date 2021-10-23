@@ -1,0 +1,102 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebugType>portable</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2125" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.7.0" />
+    <PackageReference Include="Xamarin.CommunityToolkit" Version="1.2.0" />
+    <PackageReference Include="Xamarin.Forms.Visual.Material" Version="5.0.0.2125" />
+    <PackageReference Include="Acr.UserDialogs" Version="7.1.0.446" />
+    <PackageReference Include="FreshMvvm" Version="3.0.0" />
+    <PackageReference Include="Refractored.MvvmHelpers" Version="1.6.2" />
+    <PackageReference Include="Rg.Plugins.Popup" Version="2.0.0.3" />
+    <PackageReference Include="Plugin.Permissions" Version="6.0.1" />
+    <PackageReference Include="Plugin.Multilingual" Version="1.0.2" />
+    <PackageReference Include="Xamarin.Forms.PancakeView" Version="2.3.0.759" />
+    <PackageReference Include="App.User.LocationInfo" Version="1.0.0" />
+    <PackageReference Include="Xamarin.FFImageLoading.Forms" Version="2.4.11.982" />
+    <PackageReference Include="Xamarin.FFImageLoading.Transformations" Version="2.4.11.982" />
+    <PackageReference Include="Xam.Plugin.Geolocator" Version="4.5.0.6" />
+    <PackageReference Include="Xam.Plugin.Media" Version="5.0.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Areas\" />
+    <Folder Include="Areas\DuraDriver\" />
+    <Folder Include="FontIcons\" />
+    <Folder Include="Images\" />
+    <Folder Include="ViewModels\" />
+    <Folder Include="Services\" />
+    <Folder Include="Models\" />
+    <Folder Include="Converters\" />
+    <Folder Include="Areas\Common\" />
+    <Folder Include="Areas\Common\Views\" />
+    <Folder Include="Areas\Common\ViewModels\" />
+    <Folder Include="Extensions\" />
+    <Folder Include="Areas\Common\PopupView\" />
+    <Folder Include="Areas\Common\PopupView\View\" />
+    <Folder Include="Areas\Common\PopupView\ViewModel\" />
+    <Folder Include="Behaviours\" />
+    <Folder Include="MockData\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="FontIcons\mymaterialicons.ttf" />
+    <None Remove="Images\dura_eats_graphic.png" />
+    <None Remove="Images\dura_express_drive.png" />
+    <None Remove="Images\dura_shop_graphic.png" />
+    <None Remove="Images\next_arrow.png" />
+    <None Remove="Images\logo.png" />
+    <None Remove="Images\drop_down_arrow.png" />
+    <None Remove="Images\google.png" />
+    <None Remove="Images\facebook.png" />
+    <None Remove="Resources\camera.png" />
+    <None Remove="Resources\img1.png" />
+    <None Remove="Images\logo_white.png" />
+    <None Remove="Behaviours\" />
+    <None Remove="MockData\" />
+    <None Remove="MockData\countriescode.json" />
+    <None Remove="App.User.LocationInfo" />
+    <None Remove="Xamarin.FFImageLoading.Forms" />
+    <None Remove="Xamarin.FFImageLoading.Transformations" />
+    <None Remove="Images\bank_info.png" />
+    <None Remove="Images\document.png" />
+    <None Remove="Images\personal_info.png" />
+    <None Remove="Images\calender.png" />
+    <None Remove="Images\referral_graphic.png" />
+    <None Remove="Xam.Plugin.Geolocator" />
+    <None Remove="Xam.Plugin.Media" />
+    <None Remove="Images\camera.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="FontIcons\mymaterialicons.ttf" />
+    <EmbeddedResource Include="Images\dura_eats_graphic.png" />
+    <EmbeddedResource Include="Images\dura_express_drive.png" />
+    <EmbeddedResource Include="Images\dura_shop_graphic.png" />
+    <EmbeddedResource Include="Images\next_arrow.png" />
+    <EmbeddedResource Include="Images\logo.png" />
+    <EmbeddedResource Include="Images\drop_down_arrow.png" />
+    <EmbeddedResource Include="Images\google.png" />
+    <EmbeddedResource Include="Images\facebook.png" />
+    <EmbeddedResource Include="Resources\camera.png" />
+    <EmbeddedResource Include="Resources\img1.png" />
+    <EmbeddedResource Include="Images\logo_white.png" />
+    <EmbeddedResource Include="MockData\countriescode.json" />
+    <EmbeddedResource Include="Images\bank_info.png" />
+    <EmbeddedResource Include="Images\document.png" />
+    <EmbeddedResource Include="Images\personal_info.png" />
+    <EmbeddedResource Include="Images\calender.png" />
+    <EmbeddedResource Include="Images\referral_graphic.png" />
+    <EmbeddedResource Include="Images\camera.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DuraRider.Core\DuraRider.Core.csproj" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="DuraRider.Areas.Common.Views.DuraBageServicePage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:Yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:control="clr-namespace:DuraRider.Controls"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    BackgroundColor="#211E66"
+    BindingContext="{Binding DuraBageServicePage, Source={StaticResource Locator}}"
+    NavigationPage.HasBackButton="True"
+    NavigationPage.HasNavigationBar="True">
+    <NavigationPage.TitleView>
+        <Label
+            FontFamily="ProximaSemiBold"
+            FontSize="22"
+            Text="Back"
+            TextColor="White"
+            VerticalTextAlignment="Center" />
+    </NavigationPage.TitleView>
+    <ContentPage.Content>
+        <StackLayout>
+            <Image
+                Margin="0,60,0,0"
+                HeightRequest="150"
+                HorizontalOptions="CenterAndExpand"
+                Source="logo_white.png"
+                VerticalOptions="StartAndExpand"
+                WidthRequest="150" />
+            <Yummy:PancakeView
+                BackgroundColor="White"
+                CornerRadius="20,20,0,0"
+                VerticalOptions="EndAndExpand">
+                <StackLayout>
+                    <StackLayout>
+                        <Label
+                            FontAttributes="Bold"
+                            FontFamily="ProximaNovaSemibold"
+                            FontSize="16"
+                            HorizontalOptions="Start"
+                            Text="DuraBag Service "
+                            TextColor="Black" />
+                        <Label
+                            FontFamily="ProximaNovaSemibold"
+                            FontSize="12"
+                            Text="If you don't have DuraBag, you will not get job requiring the additional DuraBag Services "
+                            TextColor="Gray" />
+
+                    </StackLayout>
+                    <StackLayout
+                        Margin="0,10"
+                        Orientation="Horizontal"
+                        Spacing="15">
+                        <StackLayout Orientation="Horizontal">
+                            <Image
+                                HeightRequest="20"
+                                HorizontalOptions="Start"
+                                Source="{Binding CheckedImage}"
+                                WidthRequest="20" />
+                            <Label
+                                FontFamily="ProximaNovaRegular"
+                                HorizontalOptions="Start"
+                                Text="Have DuraBag"
+                                TextColor="Black"
+                                VerticalOptions="Center" />
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding SelectDuraBagCommand}" />
+                            </StackLayout.GestureRecognizers>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <Image
+                                HeightRequest="20"
+                                Source="{Binding UnCheckedImage}"
+                                WidthRequest="20" />
+                            <Label
+                                FontFamily="ProximaNovaRegular"
+                                HorizontalOptions="Start"
+                                Text="Don't have DuraBag"
+                                TextColor="Black"
+                                VerticalOptions="Center" />
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding UnSelectDuraBagCommand}" />
+                            </StackLayout.GestureRecognizers>
+                        </StackLayout>
+                    </StackLayout>
+                    <StackLayout
+                        Padding="0"
+                        HeightRequest="55"
+                        Spacing="0">
+                        <control:CustomEntry
+                            Margin="10,0,0,-10"
+                            Keyboard="Default"
+                            Placeholder="Enter DuraBag id"
+                            Text="{Binding DurabagIdText}" />
+                        <BoxView
+                            HeightRequest="1"
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="StartAndExpand" />
+                        <Label
+                            Margin="0,-5"
+                            HorizontalTextAlignment="Center"
+                            IsVisible="{Binding LogEmailErrorVisibility}"
+                            Text="{Binding LogEmailError}"
+                            TextColor="Red" />
+                    </StackLayout>
+
+                    <Button Command="{Binding NextCommand}" Text="Done" />
+
+                </StackLayout>
+            </Yummy:PancakeView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

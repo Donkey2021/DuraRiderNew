@@ -1,0 +1,197 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="DuraRider.Areas.Common.Views.OTPPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:control="clr-namespace:DuraRider.Controls"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    BackgroundColor="#211E66"
+    BindingContext="{Binding OTPPage, Source={StaticResource Locator}}"
+    NavigationPage.HasBackButton="True"
+    NavigationPage.HasNavigationBar="True">
+    <NavigationPage.TitleView>
+        <Label
+            FontFamily="ProximaSemiBold"
+            FontSize="22"
+            Text="Back"
+            TextColor="White"
+            VerticalTextAlignment="Center" />
+    </NavigationPage.TitleView>
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout>
+                <Image
+                    Margin="0,70,0,0"
+                    HeightRequest="200"
+                    HorizontalOptions="CenterAndExpand"
+                    Source="logo_white.png"
+                    VerticalOptions="Center"
+                    WidthRequest="150" />
+            </StackLayout>
+            <yummy:PancakeView CornerRadius="20,20,0,0" VerticalOptions="EndAndExpand">
+                <ScrollView>
+                    <StackLayout>
+                        <Label
+                            FontAttributes="Bold"
+                            FontFamily="ProximaNovaSemibold"
+                            FontSize="16"
+                            Text="Verify Mobile Number"
+                            TextColor="Black" />
+                        <Label FontFamily="ProximaNovaSemibold" TextColor="Black">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="Enter the OTP we sent on " />
+                                    <Span
+                                        FontAttributes="Bold"
+                                        Text="{Binding PhoneNumber}"
+                                        TextDecorations="Underline" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <StackLayout Margin="0,15">
+
+                            <Grid ColumnSpacing="10" HorizontalOptions="CenterAndExpand">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="45" />
+                                    <ColumnDefinition Width="45" />
+                                    <ColumnDefinition Width="45" />
+                                    <ColumnDefinition Width="45" />
+                                </Grid.ColumnDefinitions>
+
+                                <Frame
+                                    Grid.Column="0"
+                                    Padding="0"
+                                    BackgroundColor="White"
+                                    BorderColor="#CDCDCD"
+                                    CornerRadius="5"
+                                    HasShadow="False"
+                                    HeightRequest="50"
+                                    HorizontalOptions="FillAndExpand"
+                                    VerticalOptions="FillAndExpand">
+                                    <control:CustomEntry
+                                        x:Name="EntryPasscode1"
+                                        Margin="0,0,0,-3"
+                                        FontSize="Large"
+                                        HorizontalOptions="FillAndExpand"
+                                        HorizontalTextAlignment="Center"
+                                        Keyboard="Numeric"
+                                        MaxLength="1"
+                                        PlaceholderColor="Black"
+                                        Text="{Binding Passcode1}"
+                                        TextChanged="EntryPasscode1_TextChanged"
+                                        VerticalOptions="FillAndExpand"
+                                        VerticalTextAlignment="Center" />
+                                </Frame>
+
+
+                                <Frame
+                                    Grid.Column="1"
+                                    Padding="0"
+                                    BackgroundColor="White"
+                                    BorderColor="#CDCDCD"
+                                    CornerRadius="5"
+                                    HasShadow="False"
+                                    HeightRequest="50"
+                                    HorizontalOptions="FillAndExpand"
+                                    VerticalOptions="FillAndExpand">
+                                    <control:CustomEntry
+                                        x:Name="EntryPasscode2"
+                                        Margin="0,0,0,-3"
+                                        FontSize="Large"
+                                        HorizontalOptions="FillAndExpand"
+                                        HorizontalTextAlignment="Center"
+                                        Keyboard="Numeric"
+                                        MaxLength="1"
+                                        PlaceholderColor="Black"
+                                        Text="{Binding Passcode2}"
+                                        TextChanged="EntryPasscode2_TextChanged"
+                                        VerticalOptions="FillAndExpand"
+                                        VerticalTextAlignment="Center" />
+                                </Frame>
+
+
+                                <Frame
+                                    Grid.Column="2"
+                                    Padding="0"
+                                    BackgroundColor="White"
+                                    BorderColor="#CDCDCD"
+                                    CornerRadius="5"
+                                    HasShadow="False"
+                                    HeightRequest="50"
+                                    HorizontalOptions="FillAndExpand"
+                                    VerticalOptions="FillAndExpand">
+                                    <control:CustomEntry
+                                        x:Name="EntryPasscode3"
+                                        Margin="0,0,0,-3"
+                                        FontSize="Large"
+                                        HorizontalOptions="FillAndExpand"
+                                        HorizontalTextAlignment="Center"
+                                        Keyboard="Numeric"
+                                        MaxLength="1"
+                                        PlaceholderColor="Black"
+                                        Text="{Binding Passcode3}"
+                                        TextChanged="EntryPasscode3_TextChanged"
+                                        VerticalOptions="FillAndExpand"
+                                        VerticalTextAlignment="Center" />
+                                </Frame>
+                                <Frame
+                                    Grid.Column="3"
+                                    Padding="0"
+                                    BackgroundColor="White"
+                                    BorderColor="#CDCDCD"
+                                    CornerRadius="5"
+                                    HasShadow="False"
+                                    HeightRequest="50"
+                                    HorizontalOptions="FillAndExpand"
+                                    VerticalOptions="FillAndExpand">
+
+                                    <control:CustomEntry
+                                        x:Name="EntryPasscode4"
+                                        Margin="0,0,0,-3"
+                                        FontSize="Large"
+                                        HorizontalOptions="FillAndExpand"
+                                        HorizontalTextAlignment="Center"
+                                        Keyboard="Numeric"
+                                        MaxLength="1"
+                                        PlaceholderColor="Black"
+                                        Text="{Binding Passcode4}"
+                                        TextChanged="EntryPasscode4_TextChanged"
+                                        VerticalOptions="FillAndExpand"
+                                        VerticalTextAlignment="Center" />
+                                </Frame>
+                            </Grid>
+
+                            <Label
+                                Margin="0,0,0,0"
+                                Padding="0"
+                                HorizontalOptions="CenterAndExpand"
+                                IsVisible="{Binding ErrorMessageVisibility}"
+                                Text="{Binding ErrorMessage}"
+                                TextColor="Red" />
+                        </StackLayout>
+                        <Button Command="{Binding DoneCommand}" Text="Done" />
+                        <Label Margin="0,20,0,0" HorizontalOptions="Center">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span
+                                        FontFamily="ProximaNovaSemibold"
+                                        FontSize="14"
+                                        Text="Resend OTP"
+                                        TextColor="#D72625"
+                                        TextDecorations="Underline" />
+                                </FormattedString>
+                            </Label.FormattedText>
+
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding ResendOTPCommand}" />
+                            </Label.GestureRecognizers>
+                        </Label>
+                    </StackLayout>
+                </ScrollView>
+            </yummy:PancakeView>
+
+        </StackLayout>
+    </ContentPage.Content>
+
+</ContentPage>

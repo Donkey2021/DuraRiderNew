@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<pages:PopupPage
+    x:Class="DuraRider.Areas.Common.PopupView.View.ReferralPopUpPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
+    xmlns:control="clr-namespace:DuraRider.Controls"
+    xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    BindingContext="{Binding ReferralPopUpPage, Source={StaticResource Locator}}"
+    Visual="Material">
+    <pages:PopupPage.Animation>
+        <animations:ScaleAnimation
+            DurationIn="400"
+            DurationOut="300"
+            EasingIn="SinOut"
+            EasingOut="SinIn"
+            HasBackgroundAnimation="True"
+            PositionIn="Center"
+            PositionOut="Center"
+            ScaleIn="1.2"
+            ScaleOut="0.8" />
+    </pages:PopupPage.Animation>
+    <pages:PopupPage.Content>
+        <Frame
+            Padding="0"
+            BackgroundColor="White"
+            HorizontalOptions="CenterAndExpand"
+            VerticalOptions="CenterAndExpand"
+            WidthRequest="353">
+            <StackLayout>
+                <StackLayout BackgroundColor="#EBE9FF" HeightRequest="200">
+                    <Image
+                        HeightRequest="180"
+                        Source="{xct:ImageResource Id=DuraRider.Images.referral_graphic.png}"
+                        WidthRequest="180" />
+                </StackLayout>
+                <StackLayout
+                    Margin="10,0"
+                    Padding="0"
+                    BackgroundColor="White"
+                    HeightRequest="200">
+                    <Label
+                        FontAttributes="Bold"
+                        FontFamily="ProximaNovaBold"
+                        FontSize="22"
+                        Text="Have Referral Code?"
+                        TextColor="Black" />
+                    <Label
+                        FontSize="12"
+                        Text="Enter referral code below, you and your friend will get reward"
+                        TextColor="#7F7F7F" />
+                    <StackLayout Margin="0,6,0,0">
+                        <control:CustomEntry
+                            x:Name="ReferelCode"
+                            HorizontalOptions="FillAndExpand"
+                            Placeholder="Enter code here"
+                            Text="{Binding ReferralCode}" />
+                        <BoxView
+                            Margin="0,3,0,0"
+                            BackgroundColor="#e2e2e2"
+                            HeightRequest="1"
+                            VerticalOptions="EndAndExpand" />
+                    </StackLayout>
+                    <Button
+                        x:Name="Submit"
+                        Margin="2,6,2,0"
+                        Command="{Binding SubmitCommand}"
+                        Text="Submit" />
+                    <StackLayout Margin="0,10">
+                        <Label
+                            x:Name="Skip"
+                            xct:TouchEffect.Command="{Binding SkipCommand}"
+                            HorizontalOptions="Center"
+                            Text="Skip"
+                            TextColor="#D72625"
+                            TextDecorations="Underline"
+                            VerticalOptions="EndAndExpand" />
+
+                    </StackLayout>
+                </StackLayout>
+            </StackLayout>
+        </Frame>
+    </pages:PopupPage.Content>
+</pages:PopupPage>

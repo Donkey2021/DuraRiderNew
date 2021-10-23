@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="DuraRider.Areas.Common.Views.ProfilePage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:Yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:control="clr-namespace:DuraRider.Controls"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    BackgroundColor="#211E66"
+    BindingContext="{Binding ProfilePage, Source={StaticResource Locator}}"
+    NavigationPage.HasBackButton="True"
+    NavigationPage.HasNavigationBar="True">
+    <NavigationPage.TitleView>
+        <Label
+            FontFamily="ProximaSemiBold"
+            FontSize="22"
+            Text="Back"
+            TextColor="White"
+            VerticalTextAlignment="Center" />
+    </NavigationPage.TitleView>
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout Margin="15,10">
+                <Label
+                    FontAttributes="Bold"
+                    FontFamily="ProximaNovaSemibold"
+                    FontSize="16"
+                    Text="Great! You are almost there"
+                    TextColor="White" />
+                <Label
+                    FontFamily="ProximaNovaSemibold"
+                    FontSize="10"
+                    Text="Last step to upload your clear face pic"
+                    TextColor="White" />
+            </StackLayout>
+            <Yummy:PancakeView
+                BackgroundColor="White"
+                CornerRadius="20,20,0,0"
+                VerticalOptions="EndAndExpand">
+                <StackLayout>
+                    <Label
+                        FontAttributes="Bold"
+                        FontFamily="ProximaNovaSemibold"
+                        FontSize="16"
+                        Text="Set your profile photo"
+                        TextColor="Black" />
+                    <Label
+                        FontFamily="ProximaNovaRegular"
+                        Text="Make sure selfie or photo should be clear face"
+                        TextColor="#7F7F7F" />
+                    <Grid
+                        Margin="0,30"
+                        HorizontalOptions="CenterAndExpand"
+                        WidthRequest="155">
+                        <Grid>
+                            <xct:AvatarView
+                                x:Name="photo_placeholder"
+                                Aspect="AspectFill"
+                                BorderColor="#EBE9FF"
+                                HorizontalOptions="Center"
+                                Size="150"
+                                Source="{Binding Profile_Image}"
+                                Text="User Name"
+                                TextColor="White"
+                                VerticalOptions="Center"
+                                Color="#EBE9FF" />
+                        </Grid>
+                        <ImageButton
+                            Margin="6"
+                            BackgroundColor="Transparent"
+                            Command="{Binding ProfilePicTap}"
+                            HeightRequest="35"
+                            HorizontalOptions="EndAndExpand"
+                            Source="{xct:ImageResource Id=DuraRider.Images.camera.png}"
+                            VerticalOptions="EndAndExpand"
+                            WidthRequest="35" />
+                    </Grid>
+
+                    <Button
+                        Margin="0,20,0,0"
+                        Command="{Binding NextCommand}"
+                        Text="Next" />
+                </StackLayout>
+            </Yummy:PancakeView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

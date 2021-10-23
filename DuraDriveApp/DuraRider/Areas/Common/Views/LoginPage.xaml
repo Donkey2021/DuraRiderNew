@@ -1,0 +1,218 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<infrastructure:BaseContentPage
+    x:Class="DuraRider.Areas.Common.Views.LoginPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:control="clr-namespace:DuraRider.Controls"
+    xmlns:images="clr-namespace:DuraRider.Extensions"
+    xmlns:infrastructure="clr-namespace:DuraRider.Infrastructure"
+    xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    BackgroundColor="#211E66"
+    BindingContext="{Binding LoginPage, Source={StaticResource Locator}}"
+    NavigationPage.HasNavigationBar="False">
+    <Grid RowDefinitions="4*,5*">
+        <Image
+            Grid.Row="0"
+            Aspect="Fill"
+            HeightRequest="112"
+            HorizontalOptions="CenterAndExpand"
+            Source="{images:EmbeddedImage DuraRider.Images.logo_white.png}"
+            VerticalOptions="CenterAndExpand"
+            WidthRequest="168" />
+        <pancake:PancakeView
+            Grid.Row="1"
+            Padding="14"
+            BackgroundColor="White"
+            CornerRadius="25,25,0,0">
+            <ScrollView VerticalScrollBarVisibility="Never">
+                <StackLayout Margin="10,20,10,0" Spacing="0">
+
+                    <StackLayout Spacing="5">
+                        <Label
+                            FontAttributes="Bold"
+                            FontFamily="ProximaSemiBold"
+                            FontSize="20"
+                            Text="Login to access your account"
+                            TextColor="Black" />
+                        <Grid
+                            Margin="0,20,0,0"
+                            ColumnDefinitions="*,Auto"
+                            RowDefinitions="Auto,Auto">
+                            <control:BorderlessPicker
+                                Title="Choose Location"
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                FontFamily="ProximaRegular"
+                                FontSize="16"
+                                ItemDisplayBinding="{Binding Location}"
+                                ItemsSource="{Binding LocationList}"
+                                SelectedItem="{Binding SelectedLocation}"
+                                TextColor="Black"
+                                TitleColor="{StaticResource PlaceholderColor}" />
+                            <Image
+                                Grid.Row="0"
+                                Grid.Column="1"
+                                Margin="0,0,10,0"
+                                HeightRequest="13"
+                                HorizontalOptions="EndAndExpand"
+                                InputTransparent="True"
+                                Source="{images:EmbeddedImage DuraRider.Images.drop_down_arrow.png}"
+                                VerticalOptions="CenterAndExpand"
+                                WidthRequest="13" />
+                            <BoxView
+                                Grid.Row="1"
+                                Grid.Column="0"
+                                Grid.ColumnSpan="2"
+                                Margin="0,2"
+                                BackgroundColor="{StaticResource BorderColor}"
+                                HeightRequest="1" />
+                        </Grid>
+                        <Grid
+                            Margin="0,12,0,0"
+                            ColumnDefinitions="Auto,1,*"
+                            IsVisible="{Binding IsVisiblePhoneNumberLayout}"
+                            RowDefinitions="Auto,Auto">
+                            <Grid
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                WidthRequest="65">
+                                <control:BorderlessPicker
+                                    Title="+63"
+                                    Margin="2,0,5,0"
+                                    ItemDisplayBinding="{Binding CountryCode}"
+                                    ItemsSource="{Binding CountryCodeList}"
+                                    SelectedItem="{Binding SelectedCountryCode}"
+                                    TitleColor="Black" />
+                                <Image
+                                    Margin="0,0,8,0"
+                                    BackgroundColor="Transparent"
+                                    HeightRequest="10"
+                                    HorizontalOptions="EndAndExpand"
+                                    InputTransparent="True"
+                                    Source="{images:EmbeddedImage DuraRider.Images.drop_down_arrow.png}"
+                                    VerticalOptions="CenterAndExpand"
+                                    WidthRequest="10" />
+                            </Grid>
+                            <BoxView
+                                Grid.Row="0"
+                                Grid.Column="1"
+                                BackgroundColor="LightGray"
+                                HeightRequest="30"
+                                VerticalOptions="CenterAndExpand"
+                                WidthRequest="1" />
+                            <control:CustomEntry
+                                Grid.Row="0"
+                                Grid.Column="2"
+                                HorizontalOptions="FillAndExpand"
+                                Keyboard="Telephone"
+                                MaxLength="10"
+                                Placeholder="Phone Number"
+                                PlaceholderColor="{StaticResource PlaceholderColor}"
+                                Text="{Binding MobileNumber}"
+                                TextColor="Black" />
+                            <BoxView
+                                Grid.Row="1"
+                                Grid.Column="0"
+                                Grid.ColumnSpan="3"
+                                Margin="0,2"
+                                BackgroundColor="{StaticResource BorderColor}"
+                                HeightRequest="1"
+                                HorizontalOptions="FillAndExpand" />
+                        </Grid>
+                        <Grid
+                            Margin="0,10"
+                            IsVisible="{Binding IsVisibleEmailLayout}"
+                            RowDefinitions="Auto,Auto">
+                            <control:CustomEntry
+                                Grid.Row="0"
+                                FontFamily="ProximaRegular"
+                                FontSize="16"
+                                Keyboard="Email"
+                                Placeholder="Email Address"
+                                PlaceholderColor="{StaticResource PlaceholderColor}"
+                                TextColor="Black" />
+
+                            <BoxView
+                                Grid.Row="1"
+                                Margin="0,2"
+                                BackgroundColor="{StaticResource BorderColor}"
+                                HeightRequest="1" />
+                        </Grid>
+                        <Grid RowDefinitions="Auto,Auto">
+                            <control:CustomEntry
+                                Grid.Row="0"
+                                FontFamily="ProximaRegular"
+                                FontSize="16"
+                                IsPassword="True"
+                                Placeholder="Password"
+                                PlaceholderColor="{StaticResource PlaceholderColor}"
+                                TextColor="Black" />
+
+                            <BoxView
+                                Grid.Row="1"
+                                Margin="0,2"
+                                BackgroundColor="{StaticResource BorderColor}"
+                                HeightRequest="1" />
+                        </Grid>
+                        <Label
+                            Margin="0,10,0,0"
+                            HorizontalOptions="CenterAndExpand"
+                            HorizontalTextAlignment="Center">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span
+                                        FontSize="14"
+                                        Text="Forget Password ?"
+                                        TextColor="#423A95">
+                                        <Span.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding NavigateToForgetPassword}" />
+                                        </Span.GestureRecognizers>
+                                    </Span>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Button
+                            Margin="0,10,0,0"
+                            BackgroundColor="#211E66"
+                            Command="{Binding NavigateToHomeCommand}"
+                            CornerRadius="5"
+                            FontFamily="ProximaRegular"
+                            FontSize="15"
+                            HeightRequest="50"
+                            HorizontalOptions="FillAndExpand"
+                            Text="Login"
+                            TextColor="White"
+                            VerticalOptions="CenterAndExpand"
+                            WidthRequest="250" />
+                        <Label
+                            Margin="20,10,20,20"
+                            HorizontalOptions="CenterAndExpand"
+                            HorizontalTextAlignment="Center">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding GoToSignUpCmd}" />
+                            </Label.GestureRecognizers>
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span
+                                        FontSize="15"
+                                        Text="Want to be a rider? "
+                                        TextColor="Black" />
+                                    <Span
+                                        FontFamily="Bold"
+                                        FontSize="15"
+                                        Text="Register here"
+                                        TextColor="#211E66"
+                                        TextDecorations="Underline">
+                                        <Span.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding RegisterCommand}" />
+                                        </Span.GestureRecognizers>
+                                    </Span>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>
+        </pancake:PancakeView>
+    </Grid>
+</infrastructure:BaseContentPage>

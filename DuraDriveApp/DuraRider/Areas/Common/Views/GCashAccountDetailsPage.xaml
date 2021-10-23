@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="DuraRider.Areas.Common.Views.GCashAccountDetailsPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:Yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:control="clr-namespace:DuraRider.Controls"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    BackgroundColor="#211E66"
+    BindingContext="{Binding GCashAccountDetailsPage, Source={StaticResource Locator}}"
+    NavigationPage.HasBackButton="True"
+    NavigationPage.HasNavigationBar="True">
+    <NavigationPage.TitleView>
+        <Label
+            FontFamily="ProximaSemiBold"
+            FontSize="22"
+            Text="Back"
+            TextColor="White"
+            VerticalTextAlignment="Center" />
+    </NavigationPage.TitleView>
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout Margin="15,10" Spacing="25">
+                <Label Text="Complete your registration with following steps" />
+                <!--  "personal_info" "bank_info" "document"  -->
+                <Image Source="{xct:ImageResource Id=DuraRider.Images.bank_info.png}" />
+            </StackLayout>
+            <Yummy:PancakeView CornerRadius="20,20,0,0" VerticalOptions="EndAndExpand">
+                <StackLayout>
+                    <Label
+                        FontAttributes="Bold"
+                        FontFamily="ProximaNovaSemibold"
+                        FontSize="16"
+                        Text="Provide G-cash account details"
+                        TextColor="Black" />
+
+                    <StackLayout>
+
+                        <StackLayout
+                            Padding="0"
+                            HeightRequest="55"
+                            Spacing="0">
+                            <control:CustomEntry
+                                Margin="10,0,0,-10"
+                                Keyboard="Default"
+                                Placeholder="Account Name"
+                                Text="{Binding AccountNameText}" />
+                            <BoxView
+                                BackgroundColor="#e2e2e2"
+                                HeightRequest="1"
+                                HorizontalOptions="FillAndExpand"
+                                VerticalOptions="StartAndExpand" />
+
+                        </StackLayout>
+                        <StackLayout
+                            Padding="0"
+                            HeightRequest="55"
+                            Spacing="0">
+                            <control:CustomEntry
+                                Margin="10,0,0,-10"
+                                Keyboard="Numeric"
+                                Placeholder="GCash Number"
+                                Text="{Binding GCNumberText}" />
+                            <BoxView
+                                BackgroundColor="#e2e2e2"
+                                HeightRequest="1"
+                                HorizontalOptions="FillAndExpand"
+                                VerticalOptions="StartAndExpand" />
+                            <Label
+                                Margin="0,-5"
+                                HorizontalTextAlignment="Center"
+                                IsVisible="{Binding GCNumberTextErrorVisibility}"
+                                Text="{Binding GCNumberTextError}"
+                                TextColor="Red" />
+                        </StackLayout>
+
+                        <StackLayout
+                            Padding="0"
+                            HeightRequest="55"
+                            Spacing="0">
+                            <control:CustomEntry
+                                Margin="10,0,0,-10"
+                                Keyboard="Numeric"
+                                Placeholder="confirm GCash number"
+                                Text="{Binding ReapetGCNumberText}" />
+                            <BoxView
+                                BackgroundColor="#e2e2e2"
+                                HeightRequest="1"
+                                HorizontalOptions="FillAndExpand"
+                                VerticalOptions="StartAndExpand" />
+                            <Label
+                                Margin="0,-5"
+                                HorizontalTextAlignment="Center"
+                                IsVisible="{Binding CnfLogEmailErrorVisibility}"
+                                Text="{Binding CnfGcashEror}"
+                                TextColor="Red" />
+                        </StackLayout>
+
+                        <Button
+                            Margin="0,10,0,0"
+                            Command="{Binding SubmitCommand}"
+                            Text="Next" />
+                    </StackLayout>
+                </StackLayout>
+            </Yummy:PancakeView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,183 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="DuraRider.Areas.Common.Views.PersonalInfoPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:Yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:control="clr-namespace:DuraRider.Controls"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    BackgroundColor="#211E66"
+    BindingContext="{Binding PersonalInfoPage, Source={StaticResource Locator}}"
+    NavigationPage.HasBackButton="True"
+    NavigationPage.HasNavigationBar="True">
+    <NavigationPage.TitleView>
+        <Label
+            FontFamily="ProximaSemiBold"
+            FontSize="22"
+            Text="Back"
+            TextColor="White"
+            VerticalTextAlignment="Center" />
+    </NavigationPage.TitleView>
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout Margin="15,10" Spacing="25">
+                <Label Text="Complete your registration with following steps" />
+                <Image Source="{xct:ImageResource Id=DuraRider.Images.personal_info.png}" />
+            </StackLayout>
+            <Yummy:PancakeView CornerRadius="20,20,0,0" VerticalOptions="EndAndExpand">
+                <ScrollView VerticalScrollBarVisibility="Never">
+                    <StackLayout>
+                        <Label
+                            FontAttributes="Bold"
+                            FontFamily="ProximaNovaSemibold"
+                            FontSize="16"
+                            Text="Enter your personal info"
+                            TextColor="Black" />
+                        <StackLayout
+                            Padding="0"
+                            HeightRequest="45"
+                            Spacing="0">
+                            <control:CustomEntry
+                                Margin="10,0,0,-10"
+                                Keyboard="Text"
+                                Placeholder="First Name"
+                                Text="{Binding FirstName}" />
+                            <BoxView
+                                BackgroundColor="#e2e2e2"
+                                HeightRequest="1"
+                                HorizontalOptions="FillAndExpand"
+                                VerticalOptions="StartAndExpand" />
+                            <Label
+                                Margin="0,5"
+                                HorizontalTextAlignment="Start"
+                                IsVisible="{Binding FirstNameErrorVisibility}"
+                                Text="{Binding FirstNameError}"
+                                TextColor="Red" />
+                        </StackLayout>
+
+                        <StackLayout
+                            Padding="0"
+                            HeightRequest="45"
+                            Spacing="0">
+                            <control:CustomEntry
+                                Margin="10,0,0,-10"
+                                Keyboard="Default"
+                                Placeholder="Middle Name"
+                                Text="{Binding MiddleName}" />
+                            <BoxView
+                                BackgroundColor="#e2e2e2"
+                                HeightRequest="1"
+                                HorizontalOptions="FillAndExpand"
+                                VerticalOptions="StartAndExpand" />
+                            <Label
+                                Margin="0,5"
+                                HorizontalTextAlignment="Center"
+                                IsVisible="{Binding MidNameErrorVisibility}"
+                                Text="{Binding MidNameError}"
+                                TextColor="Red" />
+
+                        </StackLayout>
+
+                        <StackLayout
+                            Padding="0"
+                            HeightRequest="45"
+                            Spacing="0">
+                            <control:CustomEntry
+                                Margin="10,0,0,-10"
+                                Keyboard="Default"
+                                Placeholder="Last Name"
+                                Text="{Binding LastName}" />
+                            <BoxView
+                                Margin="0,5"
+                                BackgroundColor="#e2e2e2"
+                                HeightRequest="1"
+                                HorizontalOptions="FillAndExpand"
+                                VerticalOptions="StartAndExpand" />
+                            <Label
+                                Margin="0,5"
+                                HorizontalTextAlignment="Center"
+                                IsVisible="{Binding lastNameErrorVisibility}"
+                                Text="{Binding LastNameError}"
+                                TextColor="Red" />
+                        </StackLayout>
+                        <StackLayout HeightRequest="45">
+                            <StackLayout Orientation="Horizontal">
+                                <control:BorderlessDatePicker
+                                    Margin="10,0,0,0"
+                                    Date="{Binding DOBText}"
+                                    Format="dd-MM-yyyy"
+                                    MaximumDate="{Binding FromMaximumDate}"
+                                    MinimumDate="{Binding FromMiminumDate}"
+                                    Placeholder="Date of Birth" />
+
+                                <Image
+                                    Margin="0,0,10,0"
+                                    HeightRequest="15"
+                                    HorizontalOptions="EndAndExpand"
+                                    InputTransparent="True"
+                                    Source="{xct:ImageResource Id=DuraRider.Images.calender.png}"
+                                    WidthRequest="15" />
+                            </StackLayout>
+
+                            <BoxView
+                                Margin="0,5"
+                                BackgroundColor="#e2e2e2"
+                                HeightRequest="1"
+                                HorizontalOptions="FillAndExpand"
+                                VerticalOptions="StartAndExpand" />
+                            <Label
+                                Margin="0,5"
+                                HorizontalTextAlignment="Center"
+                                IsVisible="{Binding DOBErrorVisibility}"
+                                Text="{Binding DOBError}"
+                                TextColor="Red" />
+                        </StackLayout>
+                        <StackLayout HeightRequest="50" Orientation="Horizontal">
+                            <Label
+                                FontFamily="ProximaNovaBold"
+                                FontSize="16"
+                                Text="Manager Details"
+                                TextColor="#C7C6D8" />
+                            <Switch
+                                x:Name="Mngraccountno"
+                                HorizontalOptions="EndAndExpand"
+                                OnColor="#D5D1FE"
+                                ThumbColor="#1F1E65" />
+                        </StackLayout>
+                        <StackLayout
+                            Padding="0"
+                            HeightRequest="45"
+                            IsVisible="False"
+                            Spacing="0">
+                            <control:CustomEntry
+                                Margin="10,0,0,-10"
+                                Keyboard="Default"
+                                Placeholder="Manager's Account Number"
+                                Text="{Binding ManageAccountNumb}" />
+                            <BoxView
+                                BackgroundColor="#e2e2e2"
+                                HeightRequest="1"
+                                HorizontalOptions="FillAndExpand"
+                                VerticalOptions="StartAndExpand" />
+                            <StackLayout.Triggers>
+                                <DataTrigger
+                                    Binding="{Binding Source={x:Reference Mngraccountno}, Path=IsToggled}"
+                                    TargetType="StackLayout"
+                                    Value="true">
+                                    <Setter Property="IsVisible" Value="true" />
+                                </DataTrigger>
+                            </StackLayout.Triggers>
+                        </StackLayout>
+                        <Button
+                            x:Name="Next"
+                            Margin="0,10"
+                            Command="{Binding NextCommand}"
+                            HorizontalOptions="FillAndExpand"
+                            Text="Next" />
+                    </StackLayout>
+                </ScrollView>
+            </Yummy:PancakeView>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
