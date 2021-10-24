@@ -87,11 +87,12 @@ namespace DuraRider.Areas.Common.ViewModels
         }
         public async Task GetAllLocation()
         {
-            ShowLoading();
+
             if (CheckConnection())
             {
                 try
                 {
+                    ShowLoading();
                     locList = new List<NewLocationDataResponse>();
                     var result = await TryWithErrorAsync(_authenticationService.GetAllLocationsNew(), true, false);
                     if (result?.ResultType == ResultType.Ok && result?.Data?.data != null)

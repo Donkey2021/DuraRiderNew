@@ -114,6 +114,8 @@
     <Compile Include="Services\SMSBroadcastReceiver.cs" />
     <Compile Include="Renderers\BorderlessDatePickerRenderer.cs" />
     <Compile Include="Renderers\CustomDashedFrameRenderer.cs" />
+    <Compile Include="Renderers\CustomRadioButtonRenderer.cs" />
+    <Compile Include="Renderers\CustomPickerRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -172,6 +174,10 @@
       <Generator></Generator>
     </AndroidResource>
     <AndroidResource Include="Resources\drawable\photo_placeholder.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable\drop_down_arrow.png">
       <SubType></SubType>
       <Generator></Generator>
     </AndroidResource>

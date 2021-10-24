@@ -3,6 +3,7 @@
     x:Class="DuraRider.Areas.Common.Views.LoginPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:behaviours="clr-namespace:DuraRider.Behaviours"
     xmlns:control="clr-namespace:DuraRider.Controls"
     xmlns:images="clr-namespace:DuraRider.Extensions"
     xmlns:infrastructure="clr-namespace:DuraRider.Infrastructure"
@@ -34,64 +35,69 @@
                             FontSize="20"
                             Text="Login to access your account"
                             TextColor="Black" />
-                        <Grid
-                            Margin="0,20,0,0"
-                            ColumnDefinitions="*,Auto"
-                            RowDefinitions="Auto,Auto">
-                            <control:BorderlessPicker
+                        <Grid ColumnDefinitions="*" RowDefinitions="Auto,Auto,Auto">
+                            <control:CustomPicker
                                 Title="Choose Location"
                                 Grid.Row="0"
                                 Grid.Column="0"
                                 FontFamily="ProximaRegular"
                                 FontSize="16"
-                                ItemDisplayBinding="{Binding Location}"
-                                ItemsSource="{Binding LocationList}"
-                                SelectedItem="{Binding SelectedLocation}"
+                                Image="drop_down_arrow"
+                                ItemDisplayBinding="{Binding country_name}"
+                                ItemsSource="{Binding AllLocationList}"
+                                SelectedItem="{Binding SelectedCountries}"
                                 TextColor="Black"
                                 TitleColor="{StaticResource PlaceholderColor}" />
-                            <Image
-                                Grid.Row="0"
-                                Grid.Column="1"
-                                Margin="0,0,10,0"
-                                HeightRequest="13"
-                                HorizontalOptions="EndAndExpand"
-                                InputTransparent="True"
-                                Source="{images:EmbeddedImage DuraRider.Images.drop_down_arrow.png}"
-                                VerticalOptions="CenterAndExpand"
-                                WidthRequest="13" />
+
                             <BoxView
                                 Grid.Row="1"
                                 Grid.Column="0"
-                                Grid.ColumnSpan="2"
                                 Margin="0,2"
                                 BackgroundColor="{StaticResource BorderColor}"
                                 HeightRequest="1" />
+                            <Label
+                                Grid.Row="2"
+                                Grid.Column="0"
+                                FontSize="12"
+                                IsVisible="{Binding IsAreaErrorVisible}"
+                                Text="Please select area"
+                                TextColor="Red" />
                         </Grid>
                         <Grid
-                            Margin="0,12,0,0"
                             ColumnDefinitions="Auto,1,*"
                             IsVisible="{Binding IsVisiblePhoneNumberLayout}"
-                            RowDefinitions="Auto,Auto">
+                            RowDefinitions="Auto,Auto,Auto">
                             <Grid
                                 Grid.Row="0"
                                 Grid.Column="0"
                                 WidthRequest="65">
-                                <control:BorderlessPicker
-                                    Title="+63"
+                                <Label
+                                    Margin="0,0,2,0"
+                                    FontSize="16"
+                                    HorizontalOptions="CenterAndExpand"
+                                    HorizontalTextAlignment="Start"
+                                    Text="{Binding CountriesTitleCode}"
+                                    TextColor="Black"
+                                    VerticalOptions="CenterAndExpand" />
+                                <Picker
+                                    x:Name="pickerCountryCode"
                                     Margin="2,0,5,0"
-                                    ItemDisplayBinding="{Binding CountryCode}"
-                                    ItemsSource="{Binding CountryCodeList}"
-                                    SelectedItem="{Binding SelectedCountryCode}"
+                                    IsVisible="False"
+                                    ItemDisplayBinding="{Binding country_code}"
+                                    ItemsSource="{Binding AllLocationListCode}"
+                                    SelectedItem="{Binding SelectedCountriesCode}"
                                     TitleColor="Black" />
                                 <Image
-                                    Margin="0,0,8,0"
                                     BackgroundColor="Transparent"
                                     HeightRequest="10"
                                     HorizontalOptions="EndAndExpand"
                                     InputTransparent="True"
-                                    Source="{images:EmbeddedImage DuraRider.Images.drop_down_arrow.png}"
+                                    Source="{images:EmbeddedImage NewDuraApp.Images.drop_down_arrow.png}"
                                     VerticalOptions="CenterAndExpand"
                                     WidthRequest="10" />
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="TapGestureRecognizer_Tapped" />
+                                </Grid.GestureRecognizers>
                             </Grid>
                             <BoxView
                                 Grid.Row="0"
@@ -103,13 +109,18 @@
                             <control:CustomEntry
                                 Grid.Row="0"
                                 Grid.Column="2"
+                                FontSize="16"
                                 HorizontalOptions="FillAndExpand"
                                 Keyboard="Telephone"
-                                MaxLength="10"
-                                Placeholder="Phone Number"
+                                MaxLength="15"
+                                Placeholder="Phone Number*"
                                 PlaceholderColor="{StaticResource PlaceholderColor}"
                                 Text="{Binding MobileNumber}"
-                                TextColor="Black" />
+                                TextColor="Black">
+                                <control:CustomEntry.Behaviors>
+                                    <behaviours:NumericValidationBehaviorNumberOnly />
+                                </control:CustomEntry.Behaviors>
+                            </control:CustomEntry>
                             <BoxView
                                 Grid.Row="1"
                                 Grid.Column="0"
@@ -118,39 +129,51 @@
                                 BackgroundColor="{StaticResource BorderColor}"
                                 HeightRequest="1"
                                 HorizontalOptions="FillAndExpand" />
+
+                            <Label
+                                Grid.Row="2"
+                                Grid.Column="2"
+                                FontSize="12"
+                                IsVisible="{Binding IsPhoneErrorVisible}"
+                                Text="Please enter valid phone number"
+                                TextColor="Red" />
                         </Grid>
-                        <Grid
-                            Margin="0,10"
-                            IsVisible="{Binding IsVisibleEmailLayout}"
-                            RowDefinitions="Auto,Auto">
+                        <Grid IsVisible="{Binding IsVisibleEmailLayout}" RowDefinitions="Auto,Auto,Auto">
                             <control:CustomEntry
                                 Grid.Row="0"
                                 FontFamily="ProximaRegular"
                                 FontSize="16"
                                 Keyboard="Email"
-                                Placeholder="Email Address"
+                                MaxLength="60"
+                                Placeholder="Email Address*"
                                 PlaceholderColor="{StaticResource PlaceholderColor}"
+                                Text="{Binding Email}"
                                 TextColor="Black" />
 
                             <BoxView
                                 Grid.Row="1"
-                                Margin="0,2"
                                 BackgroundColor="{StaticResource BorderColor}"
                                 HeightRequest="1" />
+                            <Label
+                                Grid.Row="2"
+                                FontSize="12"
+                                IsVisible="{Binding IsEmailErrorVisible}"
+                                Text="Please enter valid email id."
+                                TextColor="Red" />
                         </Grid>
-                        <Grid RowDefinitions="Auto,Auto">
+                        <Grid Margin="{OnPlatform iOS='0,20,0,0', Android='0,8,0,0'}" RowDefinitions="Auto,Auto">
                             <control:CustomEntry
                                 Grid.Row="0"
                                 FontFamily="ProximaRegular"
                                 FontSize="16"
                                 IsPassword="True"
-                                Placeholder="Password"
+                                MaxLength="50"
+                                Placeholder="Password*"
                                 PlaceholderColor="{StaticResource PlaceholderColor}"
+                                Text="{Binding Password}"
                                 TextColor="Black" />
-
                             <BoxView
                                 Grid.Row="1"
-                                Margin="0,2"
                                 BackgroundColor="{StaticResource BorderColor}"
                                 HeightRequest="1" />
                         </Grid>

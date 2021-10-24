@@ -50,42 +50,26 @@
                     <StackLayout
                         Margin="0,10"
                         Orientation="Horizontal"
+                        RadioButtonGroup.GroupName="Bag"
+                        RadioButtonGroup.SelectedValue="{Binding SelectionRadio}"
                         Spacing="15">
-                        <StackLayout Orientation="Horizontal">
-                            <Image
-                                HeightRequest="20"
-                                HorizontalOptions="Start"
-                                Source="{Binding CheckedImage}"
-                                WidthRequest="20" />
-                            <Label
-                                FontFamily="ProximaNovaRegular"
-                                HorizontalOptions="Start"
-                                Text="Have DuraBag"
-                                TextColor="Black"
-                                VerticalOptions="Center" />
-                            <StackLayout.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding SelectDuraBagCommand}" />
-                            </StackLayout.GestureRecognizers>
-                        </StackLayout>
-                        <StackLayout Orientation="Horizontal">
-                            <Image
-                                HeightRequest="20"
-                                Source="{Binding UnCheckedImage}"
-                                WidthRequest="20" />
-                            <Label
-                                FontFamily="ProximaNovaRegular"
-                                HorizontalOptions="Start"
-                                Text="Don't have DuraBag"
-                                TextColor="Black"
-                                VerticalOptions="Center" />
-                            <StackLayout.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding UnSelectDuraBagCommand}" />
-                            </StackLayout.GestureRecognizers>
-                        </StackLayout>
+                        <control:CustomRadioBtton
+                            Content="Have DuraBag"
+                            IsChecked="{Binding HaveDuraBag}"
+                            TextColor="Black"
+                            Value="Dura" />
+
+                        <control:CustomRadioBtton
+                            Content="Don't have DuraBag"
+                            IsChecked="{Binding HaveNoDuraBag}"
+                            TextColor="Black"
+                            Value="NoDura" />
+
                     </StackLayout>
                     <StackLayout
                         Padding="0"
                         HeightRequest="55"
+                        IsVisible="{Binding IsVisibleDuraBagStack}"
                         Spacing="0">
                         <control:CustomEntry
                             Margin="10,0,0,-10"
@@ -99,7 +83,7 @@
                         <Label
                             Margin="0,-5"
                             HorizontalTextAlignment="Center"
-                            IsVisible="{Binding LogEmailErrorVisibility}"
+                            IsVisible="False"
                             Text="{Binding LogEmailError}"
                             TextColor="Red" />
                     </StackLayout>

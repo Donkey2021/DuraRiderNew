@@ -28,5 +28,8 @@ namespace DuraRider.ViewModels
         public GCashAccountDetailsPageViewModel GCashAccountDetailsPage => FreshIOC.Container.Resolve<GCashAccountDetailsPageViewModel>();
         public ProfilePageViewModel ProfilePage => FreshIOC.Container.Resolve<ProfilePageViewModel>();
         public DuraBageServicePageViewModel DuraBageServicePage => FreshIOC.Container.Resolve<DuraBageServicePageViewModel>();
+        public ApprovalPageViewModel ApprovalPage => FreshIOC.Container.Resolve<ApprovalPageViewModel>();
+        public ForgotPasswordPageViewModel ForgotPasswordPage => FreshIOC.Container.Resolve<ForgotPasswordPageViewModel>();
+        public ResetPasswordPageViewModel ResetPasswordPage => FreshIOC.Container.Resolve<ResetPasswordPageViewModel>();
     }
 }

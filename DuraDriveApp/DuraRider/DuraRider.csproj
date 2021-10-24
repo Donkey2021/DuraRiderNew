@@ -46,6 +46,7 @@
     <Folder Include="Areas\Common\PopupView\ViewModel\" />
     <Folder Include="Behaviours\" />
     <Folder Include="MockData\" />
+    <Folder Include="Areas\Common\XCTHomeTabs\" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="FontIcons\mymaterialicons.ttf" />
@@ -74,6 +75,8 @@
     <None Remove="Xam.Plugin.Geolocator" />
     <None Remove="Xam.Plugin.Media" />
     <None Remove="Images\camera.png" />
+    <None Remove="Images\SuccessApproval.png" />
+    <None Remove="Areas\Common\XCTHomeTabs\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="FontIcons\mymaterialicons.ttf" />
@@ -95,6 +98,7 @@
     <EmbeddedResource Include="Images\calender.png" />
     <EmbeddedResource Include="Images\referral_graphic.png" />
     <EmbeddedResource Include="Images\camera.png" />
+    <EmbeddedResource Include="Images\SuccessApproval.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DuraRider.Core\DuraRider.Core.csproj" />

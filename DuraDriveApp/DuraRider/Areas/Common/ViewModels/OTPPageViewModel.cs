@@ -221,7 +221,19 @@ namespace DuraRider.Areas.Common.ViewModels
                 if (result?.ResultType == ResultType.Ok && result?.Data?.status == 200)
                 {
                     ShowToast("Your OTP verification is successfully done.");
-                    await ProceedWithRegistration();
+                    if (RegistrationData.isfromforgotpassword)
+                    {
+                        if (_navigationService.GetCurrentPageViewModel() != typeof(ResetPasswordPageViewModel))
+                        {
+                            await _navigationService.NavigateToAsync<ResetPasswordPageViewModel>();
+                            await App.Locator.ResetPasswordPage.InitilizeData();
+                        }
+                    }
+                    else
+                    {
+                        await ProceedWithRegistration();
+                    }
+
                 }
                 else
                 {
