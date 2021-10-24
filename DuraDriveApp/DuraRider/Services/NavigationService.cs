@@ -1,8 +1,12 @@
-﻿using DuraRider;
+﻿using DuraDriveRider.Pages.ViewModels;
 using DuraRider.Areas.Common.PopupView.View;
 using DuraRider.Areas.Common.PopupView.ViewModel;
 using DuraRider.Areas.Common.ViewModels;
 using DuraRider.Areas.Common.Views;
+using DuraRider.Areas.DuraDriver.Home.Popup.ViewModels;
+using DuraRider.Areas.DuraDriver.Home.Popup.Views;
+using DuraRider.Areas.DuraDriver.Home.ViewModels;
+using DuraRider.Areas.DuraDriver.Home.Views;
 using DuraRider.Interfaces;
 using DuraRider.Services.Interfaces;
 using DuraRider.ViewModels;
@@ -298,9 +302,17 @@ namespace DuraRider.Services
             _mappings.Add(new Tuple<Type, Type, bool>(typeof(GCashAccountDetailsPageViewModel), typeof(GCashAccountDetailsPage), false));
             _mappings.Add(new Tuple<Type, Type, bool>(typeof(ProfilePageViewModel), typeof(ProfilePage), false));
             _mappings.Add(new Tuple<Type, Type, bool>(typeof(DuraBageServicePageViewModel), typeof(DuraBageServicePage), false));
+            _mappings.Add(new Tuple<Type, Type, bool>(typeof(HomePageViewModel), typeof(HomePage), false));
+            _mappings.Add(new Tuple<Type, Type, bool>(typeof(NotificationPageViewModel), typeof(NotificationPage), false));
+            _mappings.Add(new Tuple<Type, Type, bool>(typeof(VerifyItemPageViewModel), typeof(VerifyItemPage), false));
+            _mappings.Add(new Tuple<Type, Type, bool>(typeof(ReachedPickupLocationPageViewModel), typeof(ReachedPickupLocationPage), false));
+            _mappings.Add(new Tuple<Type, Type, bool>(typeof(ReachedLocationPageViewModel), typeof(ReachedLocationPage), false));
+            _mappings.Add(new Tuple<Type, Type, bool>(typeof(ReviewPageViewModel), typeof(ReviewPage), false));
             //PopupViews
             _mappings.Add(new Tuple<Type, Type, bool>(typeof(ReferralPopUpPageViewModel), typeof(ReferralPopUpPage), true));
             _mappings.Add(new Tuple<Type, Type, bool>(typeof(CameraGalleryPopupPageViewModel), typeof(CameraGalleryPopupPage), true));
+            _mappings.Add(new Tuple<Type, Type, bool>(typeof(ReachLocationPopUpViewModel), typeof(ReachLocationPopUp), false));
+            _mappings.Add(new Tuple<Type, Type, bool>(typeof(PaymentCollectedPopupViewModel), typeof(PaymentCollectedPopup), false));
 
         }
 

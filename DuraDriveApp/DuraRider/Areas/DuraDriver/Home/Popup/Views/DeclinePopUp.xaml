@@ -1,0 +1,160 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<xct:Popup
+    x:Class="DuraRider.Areas.DuraDriver.Home.Popup.Views.DeclinePopUp"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    IsLightDismissEnabled="True">
+    <StackLayout>
+        <Frame Margin="25,0" x:Name="DeclineFrm" VerticalOptions="CenterAndExpand">
+            <StackLayout>
+                <StackLayout Spacing="12">
+                    <Label
+                        FontAttributes="Bold"
+                        FontFamily="ProximaNovaSemibold"
+                        FontSize="20"
+                        HorizontalOptions="CenterAndExpand"
+                        HorizontalTextAlignment="Center"
+                        Text="Are you sure?"
+                        TextColor="#D72625" />
+                    <Label
+                        FontSize="15"
+                        HorizontalOptions="CenterAndExpand"
+                        Text="You want decline this job."
+                        TextColor="Black" />
+                </StackLayout>
+                <Grid Margin="5,10" VerticalOptions="CenterAndExpand">
+
+                    <Button
+                        x:Name="NoDiscard"
+                        Clicked="NoDiscard_Clicked"
+                        Command="{Binding AcceptCommand}"
+                        FontSize="14"
+                        Text="No, Discard" />
+                    <Button
+                        Grid.Column="1"
+                        BackgroundColor="Transparent"
+                        BorderColor="#D72625"
+                        Clicked="Button_Clicked"
+                        Command="{Binding DeclineCommand}"
+                        FontSize="14"
+                        Text="Yes, Decline"
+                        TextColor="#D72625" />
+                </Grid>
+            </StackLayout>
+        </Frame>
+        <Frame Margin="25,0"
+            x:Name="CancleFrm"
+            BackgroundColor="#d9d9d9"
+            VerticalOptions="CenterAndExpand">
+            <StackLayout Margin="2,0">
+                <StackLayout Spacing="10">
+                    <Label
+                        FontAttributes="Bold"
+                        FontFamily="ProximaNovaSemibold"
+                        FontSize="20"
+                        HorizontalOptions="CenterAndExpand"
+                        HorizontalTextAlignment="Center"
+                        Text="Are you sure?"
+                        TextColor="#D72625" />
+                    <Label
+                        FontSize="15"
+                        HorizontalOptions="CenterAndExpand"
+                        Text="You want Cancel this job."
+                        TextColor="Black" />
+                    <StackLayout Margin="0,5">
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="16"
+                            Text="Please select reason"
+                            TextColor="Black" />
+
+                        <RadioButton
+                            Content="Sender not show"
+                            IsChecked="True"
+                            TextColor="Black" />
+                        <RadioButton Content="Item not fount" TextColor="Black" />
+                        <RadioButton Content="Sender not available at pickup location" TextColor="Black" />
+                        <RadioButton Content="I don't want to do this job" TextColor="Black" />
+                    </StackLayout>
+
+                    <Label FontSize="10">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="Note: " TextColor="Red" />
+                                <Span Text="You will be charged the commission fee of this job if you cancel this job." TextColor="#3B3B3B" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                </StackLayout>
+                <Grid Margin="2,15,2,8" VerticalOptions="CenterAndExpand">
+                    <Button
+                        x:Name="NoDiscard2"
+                        Clicked="NoDiscard_Clicked"
+                        Command="{Binding AcceptCommand}"
+                        FontSize="14"
+                        Text="No, Discard" />
+                    <Button
+                        x:Name="YesCancel"
+                        Grid.Column="1"
+                        BackgroundColor="Transparent"
+                        BorderColor="#D72625"
+                        Clicked="YesCancel_Clicked"
+                        Command="{Binding DeclineCommand}"
+                        FontSize="14"
+                        Text="Yes, Cancel"
+                        TextColor="#D72625" />
+                </Grid>
+            </StackLayout>
+        </Frame>
+
+        <Frame Margin="25,0"
+            x:Name="RejectFrm"
+            BackgroundColor="#d9d9d9"
+            VerticalOptions="CenterAndExpand">
+            <StackLayout Margin="2,0">
+                <StackLayout Spacing="10">
+                    <Label
+                        FontAttributes="Bold"
+                        FontFamily="ProximaNovaSemibold"
+                        FontSize="20"
+                        HorizontalOptions="CenterAndExpand"
+                        HorizontalTextAlignment="Center"
+                        Text="Are you sure?"
+                        TextColor="#D72625" />
+                    <Label
+                        FontSize="15"
+                        HorizontalOptions="CenterAndExpand"
+                        Text="You want reject this delivery."
+                        TextColor="Black" />
+                    <StackLayout Margin="0,5">
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="16" 
+                            Text="Please select reason"
+                            TextColor="Black" /> 
+                        <RadioButton IsChecked="True" Content="Payment not paid" FontSize="15" TextColor="Black" />
+                        <RadioButton Content="Customer not available at Delivery location" FontSize="15" TextColor="Black" />
+                        </StackLayout> 
+                </StackLayout>
+                <Grid Margin="2,15,2,8" VerticalOptions="CenterAndExpand">
+                    <Button
+                        x:Name="NoDiscard3"
+                        Clicked="NoDiscard_Clicked" 
+                        FontSize="14"
+                        Text="No, Discard" />
+                    <Button
+                        x:Name="YesReject"
+                        Grid.Column="1"
+                        BackgroundColor="Transparent"
+                        BorderColor="#D72625"
+                        Clicked="YesReject_Clicked" 
+                        FontSize="14"
+                        Text="Yes, Reject"
+                        TextColor="#D72625" />
+                </Grid>
+            </StackLayout>
+        </Frame>
+
+    </StackLayout>
+</xct:Popup>

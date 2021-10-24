@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Diagnostics;
 using FreshMvvm;
 using System.Net.Http;
@@ -9,6 +8,9 @@ using DuraRider.Core.Services.Interfaces;
 using DuraRider.Services;
 using DuraRider.Areas.Common.ViewModels;
 using DuraRider.Areas.Common.PopupView.ViewModel;
+using DuraRider.Areas.DuraDriver.Home.ViewModels;
+using DuraDriveRider.Pages.ViewModels; 
+using DuraRider.Areas.DuraDriver.Home.Popup.ViewModels;
 
 namespace DuraRider.Bootstrap
 {
@@ -16,7 +18,6 @@ namespace DuraRider.Bootstrap
     {
         public BootstrapConfig()
         {
-
         }
         public static void RegisterService()
         {
@@ -48,6 +49,14 @@ namespace DuraRider.Bootstrap
             FreshIOC.Container.Register<GCashAccountDetailsPageViewModel, GCashAccountDetailsPageViewModel>().AsSingleton();
             FreshIOC.Container.Register<ProfilePageViewModel, ProfilePageViewModel>().AsSingleton();
             FreshIOC.Container.Register<DuraBageServicePageViewModel, DuraBageServicePageViewModel>().AsSingleton();
+            FreshIOC.Container.Register<HomePageViewModel, HomePageViewModel>().AsSingleton();
+            FreshIOC.Container.Register<NotificationPageViewModel, NotificationPageViewModel>().AsSingleton();
+            FreshIOC.Container.Register<VerifyItemPageViewModel, VerifyItemPageViewModel>().AsSingleton();
+            FreshIOC.Container.Register<ReachLocationPopUpViewModel, ReachLocationPopUpViewModel>().AsSingleton();
+            FreshIOC.Container.Register<ReachedLocationPageViewModel, ReachedLocationPageViewModel>().AsSingleton();
+            FreshIOC.Container.Register<ReachedPickupLocationPageViewModel, ReachedPickupLocationPageViewModel>().AsSingleton();
+            FreshIOC.Container.Register<PaymentCollectedPopupViewModel, PaymentCollectedPopupViewModel>().AsSingleton();
+            FreshIOC.Container.Register<ReviewPageViewModel, ReviewPageViewModel>().AsSingleton();
         }
     }
 }

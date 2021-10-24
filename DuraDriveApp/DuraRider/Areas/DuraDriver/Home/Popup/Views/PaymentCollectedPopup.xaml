@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage
+    x:Class="DuraRider.Areas.DuraDriver.Home.Popup.Views.PaymentCollectedPopup"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
+    xmlns:control="clr-namespace:DuraRider.Controls"
+    xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    BindingContext="{Binding PaymentCollectedPopup, Source={StaticResource Locator}}"
+    Visual="Material">
+    <pages:PopupPage.Animation>
+        <animations:ScaleAnimation
+            DurationIn="400"
+            DurationOut="300"
+            EasingIn="SinOut"
+            EasingOut="SinIn"
+            HasBackgroundAnimation="True"
+            PositionIn="Center"
+            PositionOut="Center"
+            ScaleIn="1.2"
+            ScaleOut="0.8" />
+    </pages:PopupPage.Animation>
+    <pages:PopupPage.Content>
+        <Frame Margin="30,0" VerticalOptions="CenterAndExpand">
+            <StackLayout>
+                <StackLayout Spacing="15">
+                    <Label
+                        FontAttributes="Bold"
+                        FontFamily="ProximaNovaSemibold"
+                        FontSize="20"
+                        HorizontalOptions="CenterAndExpand"
+                        HorizontalTextAlignment="Center"
+                        Text="Payment Collected?"
+                        TextColor="#D72625" />
+                    <Label
+                        FontSize="15"
+                        HorizontalOptions="CenterAndExpand"
+                        HorizontalTextAlignment="Center"
+                        Text="Make sure amount of ₱ 500 you collet and deliver the items()"
+                        TextColor="Black" />
+                </StackLayout>
+                <Button
+                    Margin="0,15,0,10"
+                    Command="{Binding ConfirmDeliveryCommand}"
+                    Text="Confirm Delivery" />
+            </StackLayout>
+        </Frame>
+    </pages:PopupPage.Content>
+</pages:PopupPage>

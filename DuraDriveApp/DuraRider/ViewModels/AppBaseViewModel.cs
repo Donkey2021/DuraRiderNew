@@ -27,7 +27,7 @@ namespace DuraRider.ViewModels
         public bool IsInitialized { get; protected set; } = false;
 
         public ICommand ShellNavigateBackCommand { get; private set; }
-        public ICommand NavigateBackCommand { get; private set; }
+        public ICommand BackCommand { get; private set; }
         public ICommand ClosePopupCommand { get; private set; }
         public object Parameter
         {
@@ -65,7 +65,7 @@ namespace DuraRider.ViewModels
         {
             NavigationService = App.Container.Resolve<INavigationService>();
             ShellNavigateBackCommand = new Command(async () => await NavigationService.ShellNavigationPopAsync());
-            NavigateBackCommand = new Command(async () => await NavigationService.NavigateBackAsync());
+            BackCommand = new Command(async () => await NavigationService.NavigateBackAsync());
             ClosePopupCommand = new Command(async () => await NavigationService.ClosePopupsAsync());
             Initialize();
         }

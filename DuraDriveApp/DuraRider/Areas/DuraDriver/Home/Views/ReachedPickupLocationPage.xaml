@@ -1,0 +1,397 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="DuraRider.Areas.DuraDriver.Home.Views.ReachedPickupLocationPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:Yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    BackgroundImageSource="map_two"
+    BindingContext="{Binding ReachedPickupLocationPage, Source={StaticResource Locator}}">
+    <ContentPage.Content>
+        <Grid RowDefinitions="60,*">
+            <Yummy:PancakeView
+                Padding="10,20"
+                BackgroundColor="#211E66"
+                CornerRadius="0,0,10,10">
+                <Grid VerticalOptions="CenterAndExpand">
+                    <StackLayout Orientation="Horizontal">
+                        <Image
+                            HeightRequest="20"
+                            HorizontalOptions="Start"
+                            Rotation="180"
+                            Source="backarrowwhite"
+                            WidthRequest="20" />
+                        <Label FontSize="16" Text="Back" />
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding BackCommand}" />
+                        </StackLayout.GestureRecognizers>
+                    </StackLayout>
+                    <StackLayout HorizontalOptions="CenterAndExpand">
+                        <Label
+                            FontSize="15"
+                            HorizontalTextAlignment="Center"
+                            Text="Reached Pickup Location" />
+                    </StackLayout>
+                    <ImageButton
+                        Margin="0,0,5,0"
+                        HeightRequest="16"
+                        HorizontalOptions="EndAndExpand"
+                        Source="help_message"
+                        WidthRequest="16" />
+                </Grid>
+            </Yummy:PancakeView>
+
+            <Yummy:PancakeView
+                Grid.Row="1"
+                Margin="15,20,15,0"
+                BackgroundColor="#000127"
+                CornerRadius="10,10,0,0"
+                VerticalOptions="EndAndExpand">
+                <StackLayout>
+                    <StackLayout IsVisible="{Binding IsVerifyItems}">
+                        <StackLayout Orientation="Horizontal">
+                            <StackLayout HorizontalOptions="StartAndExpand" Orientation="Horizontal">
+                                <Label
+                                    FontFamily="ProximaNovaRegular"
+                                    FontSize="12"
+                                    Text="Service Type"
+                                    TextColor="#908FB3"
+                                    VerticalOptions="CenterAndExpand" />
+                                <Label
+                                    FontFamily="ProximaNovaBold"
+                                    FontSize="12"
+                                    HorizontalOptions="FillAndExpand"
+                                    Text="Dura Express"
+                                    VerticalOptions="CenterAndExpand" />
+                            </StackLayout>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <StackLayout Spacing="0">
+                                <xct:AvatarView
+                                    HorizontalOptions="Start"
+                                    Size="10"
+                                    TextColor="Transparent"
+                                    VerticalOptions="Center"
+                                    Color="#6EB76C" />
+                                <BoxView
+                                    Margin="4,0"
+                                    HorizontalOptions="Start"
+                                    VerticalOptions="FillAndExpand"
+                                    WidthRequest="2" />
+
+                                <xct:AvatarView
+                                    HorizontalOptions="Start"
+                                    Size="10"
+                                    TextColor="Transparent"
+                                    VerticalOptions="Center"
+                                    Color="#F67A7A" />
+                            </StackLayout>
+                            <StackLayout Spacing="5">
+                                <StackLayout Orientation="Horizontal">
+                                    <Label
+                                        Margin="0,0,0,0"
+                                        FontFamily="ProximaNovaRegular"
+                                        FontSize="12"
+                                        HorizontalOptions="Start"
+                                        Text="Pickup"
+                                        TextColor="#908FB3"
+                                        VerticalOptions="StartAndExpand"
+                                        WidthRequest="60" />
+                                    <Label
+                                        FontFamily="ProximaNovaRegular"
+                                        FontSize="12"
+                                        HorizontalOptions="Start"
+                                        Text="2540 Capt. M. Reyes, Makati, Metro Manila Phillipnes"
+                                        VerticalOptions="StartAndExpand" />
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label
+                                        FontFamily="ProximaNovaRegular"
+                                        FontSize="12"
+                                        HorizontalOptions="Start"
+                                        Text="Drop Off"
+                                        TextColor="#908FB3"
+                                        VerticalOptions="EndAndExpand"
+                                        WidthRequest="60" />
+                                    <Label
+                                        FontFamily="ProximaNovaRegular"
+                                        FontSize="12"
+                                        HorizontalOptions="Start"
+                                        Text="2540 Capt. M. Reyes, Makati, Metro Manila Phillipnes"
+                                        TextColor="#908FB3"
+                                        VerticalOptions="EndAndExpand"
+                                        VerticalTextAlignment="Center" />
+                                </StackLayout>
+                            </StackLayout>
+                        </StackLayout>
+
+                        <Grid Margin="0,5,0,0">
+                            <StackLayout HorizontalOptions="StartAndExpand">
+                                <StackLayout Orientation="Horizontal">
+                                    <Label
+                                        FontSize="13"
+                                        Text="Total Distance"
+                                        TextColor="#908FB3" />
+                                    <Label
+                                        FontSize="13"
+                                        HorizontalOptions="StartAndExpand"
+                                        Text="5.4 km" />
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label
+                                        FontSize="13"
+                                        Text="Recipient"
+                                        TextColor="#908FB3" />
+                                    <Label
+                                        FontSize="13"
+                                        HorizontalOptions="StartAndExpand"
+                                        Text="Jaiks Doe" />
+                                </StackLayout>
+                            </StackLayout>
+                            <StackLayout
+                                Grid.Column="1"
+                                Margin="0,0,0,10"
+                                HorizontalOptions="CenterAndExpand"
+                                Orientation="Horizontal"
+                                VerticalOptions="EndAndExpand">
+                                <Image
+                                    HeightRequest="15"
+                                    Source="greencall"
+                                    WidthRequest="15" />
+                                <Label
+                                    FontSize="13"
+                                    HorizontalOptions="StartAndExpand"
+                                    Text="+6245354546" />
+                            </StackLayout>
+                        </Grid>
+                        <Frame
+                            Margin="0,10"
+                            BackgroundColor="#EBE9FF"
+                            CornerRadius="5">
+                            <Label FontSize="13" HorizontalOptions="Center">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span
+                                            FontFamily="ProximaNovaRegular"
+                                            Text="Verification ID : "
+                                            TextColor="#3B3B3B" />
+                                        <Span
+                                            FontAttributes="Bold"
+                                            FontFamily="ProximaNovaSemibold"
+                                            Text="834e9ed"
+                                            TextColor="Black" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding VerificationIdCommand}" />
+                            </Frame.GestureRecognizers>
+                        </Frame>
+                        <Grid Margin="0,5" ColumnSpacing="1">
+                            <StackLayout HorizontalOptions="StartAndExpand">
+                                <StackLayout Orientation="Horizontal">
+                                    <Label
+                                        FontSize="12"
+                                        Text="Total Amount to Pay"
+                                        TextColor="#908FB3"
+                                        VerticalOptions="Center" />
+                                    <Label HorizontalOptions="StartAndExpand" Text="₱ 350" />
+                                </StackLayout>
+
+
+                            </StackLayout>
+                            <StackLayout
+                                Grid.Column="1"
+                                HorizontalOptions="CenterAndExpand"
+                                Orientation="Horizontal">
+                                <Label
+                                    FontSize="12"
+                                    HorizontalOptions="StartAndExpand"
+                                    Text="Payment Method"
+                                    TextColor="#908FB3" />
+                                <Label HorizontalOptions="StartAndExpand" Text="Cash" />
+                            </StackLayout>
+
+                        </Grid>
+                        <Label
+                            Margin="2,10,0,5"
+                            FontSize="13"
+                            Text="Payment to be Collect from"
+                            TextColor="#908FB3"
+                            VerticalOptions="EndAndExpand" />
+                        <StackLayout Orientation="Horizontal">
+                            <RadioButton Content="Recipient" IsChecked="True" />
+                            <RadioButton Content="Sender" />
+                        </StackLayout>
+                        <Grid Margin="0,15,0,5">
+                            <Button
+                                x:Name="Cancel"
+                                BackgroundColor="Transparent"
+                                BorderColor="#D72625"
+                                Clicked="Cancel_Clicked"
+                                FontSize="14"
+                                Text="Cancel"
+                                TextColor="#D72625" />
+                            <Button
+                                Grid.Column="1"
+                                Command="{Binding VerifyItemsCommand}"
+                                FontSize="14"
+                                Text="Verify Items" />
+                        </Grid>
+                    </StackLayout>
+
+                    <StackLayout IsVisible="{Binding IsPaymentStatus}">
+                        <StackLayout Orientation="Horizontal">
+                            <StackLayout HorizontalOptions="StartAndExpand" Orientation="Horizontal">
+                                <Label
+                                    FontFamily="ProximaNovaRegular"
+                                    FontSize="12"
+                                    Text="Service Type"
+                                    TextColor="#908FB3"
+                                    VerticalOptions="CenterAndExpand" />
+                                <Label
+                                    FontFamily="ProximaNovaBold"
+                                    FontSize="12"
+                                    HorizontalOptions="FillAndExpand"
+                                    Text="Dura Express"
+                                    VerticalOptions="CenterAndExpand" />
+                            </StackLayout>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <StackLayout Spacing="0">
+                                <xct:AvatarView
+                                    HorizontalOptions="Start"
+                                    Size="10"
+                                    TextColor="Transparent"
+                                    VerticalOptions="Center"
+                                    Color="#6EB76C" />
+                                <BoxView
+                                    Margin="4,0"
+                                    HorizontalOptions="Start"
+                                    VerticalOptions="FillAndExpand"
+                                    WidthRequest="2" />
+
+                                <xct:AvatarView
+                                    HorizontalOptions="Start"
+                                    Size="10"
+                                    TextColor="Transparent"
+                                    VerticalOptions="Center"
+                                    Color="#F67A7A" />
+                            </StackLayout>
+                            <StackLayout Spacing="5">
+                                <StackLayout Orientation="Horizontal">
+                                    <Label
+                                        Margin="0,0,0,0"
+                                        FontFamily="ProximaNovaRegular"
+                                        FontSize="12"
+                                        HorizontalOptions="Start"
+                                        Text="Pickup"
+                                        TextColor="#908FB3"
+                                        VerticalOptions="StartAndExpand"
+                                        WidthRequest="60" />
+                                    <Label
+                                        FontFamily="ProximaNovaRegular"
+                                        FontSize="12"
+                                        HorizontalOptions="Start"
+                                        Text="2540 Capt. M. Reyes, Makati, Metro Manila Phillipnes"
+                                        VerticalOptions="StartAndExpand" />
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label
+                                        FontFamily="ProximaNovaRegular"
+                                        FontSize="12"
+                                        HorizontalOptions="Start"
+                                        Text="Drop Off"
+                                        TextColor="#908FB3"
+                                        VerticalOptions="EndAndExpand"
+                                        WidthRequest="60" />
+                                    <Label
+                                        FontFamily="ProximaNovaRegular"
+                                        FontSize="12"
+                                        HorizontalOptions="Start"
+                                        Text="2540 Capt. M. Reyes, Makati, Metro Manila Phillipnes"
+                                        TextColor="#908FB3"
+                                        VerticalOptions="EndAndExpand"
+                                        VerticalTextAlignment="Center" />
+                                </StackLayout>
+                            </StackLayout>
+                        </StackLayout>
+
+                        <Grid Margin="0,5,0,0">
+                            <StackLayout HorizontalOptions="StartAndExpand">
+                                <StackLayout Margin="0,10" Orientation="Horizontal">
+                                    <Label
+                                        FontSize="13"
+                                        Text="Total Distance"
+                                        TextColor="#908FB3" />
+                                    <Label
+                                        FontSize="13"
+                                        HorizontalOptions="StartAndExpand"
+                                        Text="5.4 km" />
+                                </StackLayout>
+                                <StackLayout Margin="0,8" Orientation="Horizontal">
+                                    <Label
+                                        FontSize="13"
+                                        Text="Recipient"
+                                        TextColor="#908FB3" />
+                                    <Label
+                                        FontSize="13"
+                                        HorizontalOptions="StartAndExpand"
+                                        Text="Jaiks Doe" />
+                                </StackLayout>
+                            </StackLayout>
+                            <StackLayout
+                                Grid.Column="1"
+                                Margin="0,0,0,10"
+                                HorizontalOptions="CenterAndExpand"
+                                Orientation="Horizontal"
+                                VerticalOptions="EndAndExpand">
+                                <Image
+                                    HeightRequest="15"
+                                    Source="greencall"
+                                    WidthRequest="15" />
+                                <Label
+                                    FontSize="13"
+                                    HorizontalOptions="StartAndExpand"
+                                    Text="+6245354546" />
+                            </StackLayout>
+                        </Grid>
+                        <StackLayout
+                            Margin="0,8"
+                            HorizontalOptions="Start"
+                            Orientation="Horizontal">
+                            <Label
+                                Margin="2,0,0,0"
+                                FontSize="13"
+                                Text="Payment to be Collect from"
+                                TextColor="#908FB3"
+                                VerticalOptions="CenterAndExpand" />
+                            <Label
+                                FontSize="13"
+                                HorizontalOptions="StartAndExpand"
+                                Text="₱ 350"
+                                VerticalOptions="CenterAndExpand" />
+                        </StackLayout>
+                        <Grid Margin="0,10,0,5">
+                            <Button
+                                x:Name="DeliveryNotDone"
+                                BackgroundColor="Transparent"
+                                BorderColor="#D72625"
+                                Clicked="DeliveryNotDone_Clicked"
+                                FontSize="14"
+                                Text="Delivery Not Done"
+                                TextColor="#D72625" />
+                            <Button
+                                x:Name="CollectPayment"
+                                Grid.Column="1"
+                                Clicked="CollectPayment_Clicked"
+                                Command="{Binding CollectPaymentCommand}"
+                                FontSize="14"
+                                Text="Collect Payment" />
+                        </Grid>
+                    </StackLayout>
+                </StackLayout>
+            </Yummy:PancakeView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

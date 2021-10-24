@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<xct:Popup
+    x:Class="DuraRider.Areas.Common.PopupView.View.SuccessfullyPopup"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    IsLightDismissEnabled="False"
+    Size="250,100">
+    <Frame>
+        <StackLayout Spacing="5">
+            <Image
+                HeightRequest="25"
+                Source="done"
+                VerticalOptions="EndAndExpand"
+                WidthRequest="25" />
+            <Label
+                x:Name="lblTitle"
+                FontAttributes="Bold"
+                FontFamily="ProximaNovaSemibold"
+                HorizontalOptions="CenterAndExpand"
+                HorizontalTextAlignment="Center"
+                Text="Password Reset Successfully !"
+                TextColor="Black"
+                VerticalOptions="StartAndExpand"
+                VerticalTextAlignment="Start" />
+        </StackLayout>
+    </Frame>
+</xct:Popup>

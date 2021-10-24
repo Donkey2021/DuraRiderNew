@@ -1,0 +1,216 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    x:Class="DuraRider.Areas.DuraDriver.Home.Popup.Views.ReachLocationPopUp"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    BindingContext="{Binding ReachLocationPopUp, Source={StaticResource Locator}}">
+    <ContentView.Content>
+        <Frame
+            Grid.Row="1"
+            Margin="20,0"
+            BackgroundColor="#000127"
+            BorderColor="#000127"
+            HeightRequest="200"
+            VerticalOptions="EndAndExpand"
+            WidthRequest="350">
+            <ScrollView>
+                <StackLayout>
+                    <StackLayout>
+                        <Grid ColumnDefinitions="7*,3*">
+                            <StackLayout
+                                Margin="0,8"
+                                HorizontalOptions="StartAndExpand"
+                                Orientation="Horizontal">
+                                <Label
+                                    FontFamily="ProximaNovaRegular"
+                                    FontSize="12"
+                                    Text="Service Type"
+                                    TextColor="#908FB3"
+                                    VerticalOptions="CenterAndExpand" />
+                                <Label
+                                    FontFamily="ProximaNovaBold"
+                                    FontSize="12"
+                                    HorizontalOptions="StartAndExpand"
+                                    Text="Dura Express"
+                                    VerticalOptions="CenterAndExpand" />
+                            </StackLayout>
+                        </Grid>
+                        <StackLayout Orientation="Horizontal">
+                            <StackLayout Spacing="0">
+                                <Frame
+                                    Margin="0,3,0,0"
+                                    Padding="0"
+                                    BackgroundColor="#6EB76C"
+                                    BorderColor="WhiteSmoke"
+                                    CornerRadius="5"
+                                    HeightRequest="8"
+                                    HorizontalOptions="CenterAndExpand"
+                                    VerticalOptions="StartAndExpand"
+                                    WidthRequest="10" />
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <Label
+                                    Margin="0,0,0,0"
+                                    FontFamily="ProximaNovaRegular"
+                                    FontSize="12"
+                                    HorizontalOptions="Start"
+                                    Text="Pickup"
+                                    TextColor="#908FB3"
+                                    VerticalOptions="StartAndExpand"
+                                    WidthRequest="60" />
+                                <Label
+                                    FontFamily="ProximaNovaRegular"
+                                    FontSize="12"
+                                    HorizontalOptions="Start"
+                                    Text="2540 Capt. M. Reyes, Makati, Metro Manila Phillipnes"
+                                    VerticalOptions="StartAndExpand" />
+                            </StackLayout>
+                        </StackLayout>
+
+                        <Grid Margin="0,8,0,10">
+                            <StackLayout HorizontalOptions="StartAndExpand" Orientation="Horizontal">
+                                <Label
+                                    FontSize="12"
+                                    Text="Total Distance"
+                                    TextColor="#908FB3" />
+                                <Label HorizontalOptions="StartAndExpand" Text="5.4 km" />
+                            </StackLayout>
+                            <Frame
+                                Grid.Column="1"
+                                Padding="10,8"
+                                BackgroundColor="#211E66"
+                                BorderColor="WhiteSmoke"
+                                CornerRadius="3"
+                                HorizontalOptions="EndAndExpand">
+                                <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand">
+                                    <Image
+                                        HeightRequest="12"
+                                        HorizontalOptions="Start"
+                                        Source="navigate"
+                                        WidthRequest="12" />
+                                    <Label
+                                        FontSize="10"
+                                        HorizontalOptions="StartAndExpand"
+                                        Text="Navigate" />
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding NavigateCommand}" />
+                                    </StackLayout.GestureRecognizers>
+                                </StackLayout>
+                            </Frame>
+                        </Grid>
+                        <Button
+                            Command="{Binding ReachedPickupLocationCommand}"
+                            FontSize="14"
+                            Text="Reached Pickup Location" />
+                    </StackLayout>
+
+                    <!--<StackLayout x:Name="StkItems">
+                            <StackLayout
+                                Margin="0,8"
+                                HorizontalOptions="StartAndExpand"
+                                Orientation="Horizontal">
+                                <Label
+                                    FontFamily="ProximaNovaRegular"
+                                    FontSize="12"
+                                    Text=" Item(s) "
+                                    TextColor="#908FB3"
+                                    VerticalOptions="CenterAndExpand" />
+                                <Label
+                                    Margin="20,0,0,0"
+                                    FontFamily="ProximaNovaBold"
+                                    FontSize="12"
+                                    HorizontalOptions="StartAndExpand"
+                                    Text="Lorem ipsum dolor sit amet..."
+                                    VerticalOptions="CenterAndExpand" />
+                                <StackLayout
+                                    Margin="10,0,0,0"
+                                    HorizontalOptions="EndAndExpand"
+                                    Orientation="Horizontal"
+                                    Spacing="2">
+                                    <Image
+                                        HeightRequest="10"
+                                        HorizontalOptions="End"
+                                        Source="verified"
+                                        WidthRequest="10" />
+                                    <Label
+                                        FontFamily="ProximaNovaRegular"
+                                        FontSize="10"
+                                        Text="Verified"
+                                        TextColor="#0BAC00"
+                                        VerticalOptions="CenterAndExpand" />
+                                </StackLayout>
+                            </StackLayout>
+
+                            <StackLayout Orientation="Horizontal">
+                                <StackLayout Spacing="0">
+                                    <Frame
+                                        Padding="0"
+                                        BackgroundColor="Red"
+                                        BorderColor="#6EB76C"
+                                        CornerRadius="5"
+                                        HeightRequest="8" Margin="0,3,0,0"
+                                        HorizontalOptions="CenterAndExpand"
+                                        VerticalOptions="StartAndExpand"
+                                        WidthRequest="10" />
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label
+                                        Margin="0,0,0,0"
+                                        FontFamily="ProximaNovaRegular"
+                                        FontSize="12"
+                                        HorizontalOptions="CenterAndExpand"
+                                        Text="Drop Off"
+                                        TextColor="#908FB3"
+                                        VerticalOptions="StartAndExpand"
+                                        WidthRequest="60" />
+                                    <Label
+                                        FontFamily="ProximaNovaRegular"
+                                        FontSize="12"
+                                        HorizontalOptions="Start"
+                                        Text="2540 Capt. M. Reyes, Makati, Metro Manila Phillipnes"
+                                        VerticalOptions="StartAndExpand" />
+                                </StackLayout>
+                            </StackLayout>
+
+                            <Grid Margin="0,8,0,10">
+                                <StackLayout HorizontalOptions="StartAndExpand" Orientation="Horizontal">
+                                    <Label
+                                        FontSize="12"
+                                        Text="Total Distance"
+                                        TextColor="#908FB3" />
+                                    <Label HorizontalOptions="StartAndExpand" Text="7.4 km" />
+                                </StackLayout>
+                                <Frame
+                                    Grid.Column="1"
+                                    Padding="10,8"
+                                    BackgroundColor="#211E66"
+                                    BorderColor="WhiteSmoke"
+                                    CornerRadius="3"
+                                    HorizontalOptions="EndAndExpand">
+                                    <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand">
+                                        <Image
+                                            HeightRequest="12"
+                                            HorizontalOptions="Start"
+                                            Source="navigate"
+                                            WidthRequest="12" />
+                                        <Label
+                                            FontSize="10"
+                                            HorizontalOptions="StartAndExpand"
+                                            Text="Navigate" />
+                                        <StackLayout.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding NavigateCommand}"/>
+                                        </StackLayout.GestureRecognizers>
+                                    </StackLayout>
+                                </Frame>
+                            </Grid>
+                            <Button
+                                Command="{Binding ReachedDropoffLocatioCommand}"
+                                FontSize="14"
+                                Text="Reached Drop off Location" />
+                        </StackLayout>-->
+                </StackLayout>
+            </ScrollView>
+        </Frame>
+
+    </ContentView.Content>
+</ContentView>

@@ -30,20 +30,15 @@
     <PackageReference Include="Xam.Plugin.Media" Version="5.0.1" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Areas\" />
-    <Folder Include="Areas\DuraDriver\" />
     <Folder Include="FontIcons\" />
     <Folder Include="Images\" />
     <Folder Include="ViewModels\" />
     <Folder Include="Services\" />
     <Folder Include="Models\" />
     <Folder Include="Converters\" />
-    <Folder Include="Areas\Common\" />
     <Folder Include="Areas\Common\Views\" />
     <Folder Include="Areas\Common\ViewModels\" />
     <Folder Include="Extensions\" />
-    <Folder Include="Areas\Common\PopupView\" />
-    <Folder Include="Areas\Common\PopupView\View\" />
     <Folder Include="Areas\Common\PopupView\ViewModel\" />
     <Folder Include="Behaviours\" />
     <Folder Include="MockData\" />
@@ -99,5 +94,43 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DuraRider.Core\DuraRider.Core.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="Areas\Common\PopupView\View\SuccessfullyPopup.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Areas\DuraDriver\Home\Popup\Views\AmountPopup.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Areas\DuraDriver\Home\Popup\Views\DeclinePopUp.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Areas\DuraDriver\Home\Popup\Views\DuraExpressPopUpPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Areas\DuraDriver\Home\Popup\Views\PaymentCollectedPopup.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Areas\DuraDriver\Home\Popup\Views\ReachLocationPopUp.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Areas\DuraDriver\Home\Views\NotificationPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Areas\DuraDriver\Home\Views\ReachedLocationPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Areas\DuraDriver\Home\Views\ReachedPickupLocationPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Areas\DuraDriver\Home\Views\ReviewPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Areas\DuraDriver\Home\Views\VerifyItemPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Controls\RattingBar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
   </ItemGroup>
 </Project>
