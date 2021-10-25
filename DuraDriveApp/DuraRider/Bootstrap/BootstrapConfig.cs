@@ -8,9 +8,11 @@ using DuraRider.Core.Services.Interfaces;
 using DuraRider.Services;
 using DuraRider.Areas.Common.ViewModels;
 using DuraRider.Areas.Common.PopupView.ViewModel;
-using DuraRider.Areas.DuraDriver.Home.ViewModels;
-using DuraDriveRider.Pages.ViewModels; 
+using DuraRider.Areas.DuraDriver.Home.ViewModels; 
 using DuraRider.Areas.DuraDriver.Home.Popup.ViewModels;
+using DuraRider.Areas.DuraDriver.Wallet.Popup.ViewModels;
+using DuraRider.Areas.DuraDriver.Wallet.ViewModels;
+using DuraRider.Areas.DuraDriver.Profile.ViewModels;
 
 namespace DuraRider.Bootstrap
 {
@@ -57,6 +59,18 @@ namespace DuraRider.Bootstrap
             FreshIOC.Container.Register<ReachedPickupLocationPageViewModel, ReachedPickupLocationPageViewModel>().AsSingleton();
             FreshIOC.Container.Register<PaymentCollectedPopupViewModel, PaymentCollectedPopupViewModel>().AsSingleton();
             FreshIOC.Container.Register<ReviewPageViewModel, ReviewPageViewModel>().AsSingleton();
+            FreshIOC.Container.Register<AmountPopupViewModel, AmountPopupViewModel>().AsSingleton();
+            FreshIOC.Container.Register<GCashPageViewModel, GCashPageViewModel>().AsSingleton();
+            FreshIOC.Container.Register<SuccessfulPageViewModel, SuccessfulPageViewModel>().AsSingleton(); 
+            FreshIOC.Container.Register<AboutusPageViewModel, AboutusPageViewModel>().AsSingleton(); 
+            FreshIOC.Container.Register<HelpCenterPageViewModel, HelpCenterPageViewModel>().AsSingleton(); 
+            FreshIOC.Container.Register<MyRatingPageViewModel, MyRatingPageViewModel>().AsSingleton(); 
+            FreshIOC.Container.Register<PrivacyPolicyPageViewModel, PrivacyPolicyPageViewModel>().AsSingleton(); 
+            FreshIOC.Container.Register<ProfileTabPageViewModel, ProfileTabPageViewModel>().AsSingleton(); 
+            FreshIOC.Container.Register<QrCodePageViewModel, QrCodePageViewModel>().AsSingleton(); 
+            FreshIOC.Container.Register<ReferRiderPageViewModel, ReferRiderPageViewModel>().AsSingleton(); 
+            FreshIOC.Container.Register<SupportPageViewModel, SupportPageViewModel>().AsSingleton(); 
+            FreshIOC.Container.Register<TermsConditionPageViewModel, TermsConditionPageViewModel>().AsSingleton(); 
         }
     }
 }

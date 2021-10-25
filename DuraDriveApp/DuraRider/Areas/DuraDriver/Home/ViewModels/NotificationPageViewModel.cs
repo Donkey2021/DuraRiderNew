@@ -12,21 +12,22 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 
-namespace DuraDriveRider.Pages.ViewModels
+namespace DuraRider.Areas.DuraDriver.Home.ViewModels
 {
     public class NotificationPageViewModel : AppBaseViewModel
     {
 
         #region localVariable
         private INavigationService _navigationService;
-        private IAuthenticationService _authenticationService;
+        private IUserCoreService _userCoreService;
+
         public IAsyncCommand DoneCommand { get; set; }
         #endregion
 
-        public NotificationPageViewModel(INavigationService navigationService, IAuthenticationService authenticationService)
+        public NotificationPageViewModel(INavigationService navigationService, IUserCoreService userCoreService)
         {
             _navigationService = navigationService;
-            _authenticationService = authenticationService;
+            _userCoreService = userCoreService;
             DoneCommand = new AsyncCommand(DoneCommandExecute);
         }
         #region Method 

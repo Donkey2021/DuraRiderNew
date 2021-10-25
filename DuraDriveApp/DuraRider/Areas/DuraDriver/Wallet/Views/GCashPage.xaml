@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="DuraRider.Areas.DuraDriver.Wallet.Views.GCashPage" BindingContext="{Binding GCashPage, Source={StaticResource Locator}}"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    BackgroundColor="White">
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="Center">
+            <Label
+                FontAttributes="Bold"
+                FontFamily="ProximaNovaSemibold"
+                FontSize="18"
+                HorizontalOptions="Center"
+                Text="GCash Access Screen"
+                TextColor="#211E66" />
+            <StackLayout>
+                <Button
+                    Margin="50,30,50,0"
+                    Command="{Binding SubmitCommand}"
+                    Text="Submit" />
+
+            </StackLayout>
+
+        </StackLayout>
+
+    </ContentPage.Content>
+</ContentPage>

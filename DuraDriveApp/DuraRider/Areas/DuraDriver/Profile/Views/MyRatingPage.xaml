@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="DuraRider.Areas.DuraDriver.Profile.Views.MyRatingPage"
+    xmlns="http://xamarin.com/schemas/2014/forms" BindingContext="{Binding MyRatingPage, Source={StaticResource Locator}}"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    x:Name="thispage" >
+    <ContentPage.Content>
+        <Grid RowDefinitions="60,*">
+            <yummy:PancakeView
+                Padding="10,20"
+                BackgroundColor="#211E66"
+                CornerRadius="0,0,10,10">
+                <Grid VerticalOptions="CenterAndExpand">
+                    <StackLayout Orientation="Horizontal">
+                        <Image
+                            HeightRequest="20"
+                            HorizontalOptions="Start"
+                            Rotation="180"
+                            Source="backarrowwhite"
+                            WidthRequest="20" />
+                        <Label FontSize="16" Text="Back" />
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding BackCommand}" />
+                        </StackLayout.GestureRecognizers>
+                    </StackLayout>
+                    <StackLayout HorizontalOptions="CenterAndExpand">
+                        <Label
+                            FontSize="16"
+                            HorizontalTextAlignment="Center"
+                            Text="My Rating"
+                            TextType="Text" />
+                    </StackLayout>
+                </Grid>
+            </yummy:PancakeView>
+
+            <CollectionView
+                Grid.Row="1"
+                Margin="10,5"
+                ItemsSource="{Binding ListOfMyRating}">
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical" VerticalItemSpacing="10" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame BackgroundColor="#FBFBFF" BorderColor="#FBFBFF">
+                            <StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <xct:AvatarView
+                                        BorderColor="WhiteSmoke"  
+                                        Source="{Binding Images}"
+                                        Text="Name" CornerRadius="6"
+                                        TextColor="Gray"
+                                        Color="Transparent" />
+                                    <StackLayout Spacing="0">
+                                        <Label
+                                            FontAttributes="Bold"
+                                            FontFamily="ProximaNovaSemibold"
+                                            FontSize="12"
+                                            HorizontalOptions="StartAndExpand"
+                                            Text="{Binding Title}"
+                                            TextColor="Black"
+                                            VerticalOptions="StartAndExpand" />
+                                        <Label
+                                            FontSize="12"
+                                            Opacity=".6"
+                                            Text="Makati Avenue 1200"
+                                            TextColor="Black"
+                                            VerticalOptions="StartAndExpand" />
+
+                                    </StackLayout>
+                                    <StackLayout Spacing="0" HorizontalOptions="EndAndExpand">
+                                        <Label
+                                            FontAttributes="Bold"
+                                            FontFamily="ProximaNovaSemibold"
+                                            FontSize="12"
+                                            HorizontalOptions="EndAndExpand"
+                                            Text="{Binding Id}"
+                                            TextColor="Black"
+                                            VerticalOptions="StartAndExpand" />
+
+                                        <Label
+                                            FontSize="12"
+                                            HorizontalOptions="EndAndExpand"
+                                            Opacity="0.6"
+                                            Text="{Binding Date}"
+                                            TextColor="Black"
+                                            VerticalOptions="StartAndExpand" />
+                                    </StackLayout>
+                                </StackLayout>
+
+                                <StackLayout HorizontalOptions="StartAndExpand" Orientation="Horizontal">
+                                    <Image
+                                        HeightRequest="12"
+                                        Source="rate_star_filled"
+                                        WidthRequest="12" />
+                                    <Image
+                                        HeightRequest="12"
+                                        Source="rate_star_filled"
+                                        WidthRequest="12" />
+                                    <Image
+                                        HeightRequest="12"
+                                        Source="rate_star_filled"
+                                        WidthRequest="12" />
+                                    <Image
+                                        HeightRequest="12"
+                                        Source="rate_star_filled"
+                                        WidthRequest="12" />
+                                    <Image
+                                        HeightRequest="12"
+                                        Source="rate_star"
+                                        WidthRequest="12" />
+                                </StackLayout>
+                                <Label
+                                    FontSize="13"
+                                    Opacity=".6"
+                                    Text="{Binding Description}"
+                                    TextColor="Black"
+                                    VerticalOptions="CenterAndExpand" />
+
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding Path=BindingContext.NotificationCommand, Source={x:Reference thispage}}" CommandParameter="{Binding .}" />
+                                </StackLayout.GestureRecognizers>
+                            </StackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

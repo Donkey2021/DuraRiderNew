@@ -2,11 +2,14 @@
 <xct:Popup
     x:Class="DuraRider.Areas.DuraDriver.Home.Popup.Views.DeclinePopUp"
     xmlns="http://xamarin.com/schemas/2014/forms"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
     IsLightDismissEnabled="True">
     <StackLayout>
-        <Frame Margin="25,0" x:Name="DeclineFrm" VerticalOptions="CenterAndExpand">
+        <Frame
+            x:Name="DeclineFrm"
+            Margin="25,0"
+            VerticalOptions="CenterAndExpand">
             <StackLayout>
                 <StackLayout Spacing="12">
                     <Label
@@ -43,8 +46,9 @@
                 </Grid>
             </StackLayout>
         </Frame>
-        <Frame Margin="25,0"
+        <Frame
             x:Name="CancleFrm"
+            Margin="25,0"
             BackgroundColor="#d9d9d9"
             VerticalOptions="CenterAndExpand">
             <StackLayout Margin="2,0">
@@ -108,8 +112,9 @@
             </StackLayout>
         </Frame>
 
-        <Frame Margin="25,0"
+        <Frame
             x:Name="RejectFrm"
+            Margin="25,0"
             BackgroundColor="#d9d9d9"
             VerticalOptions="CenterAndExpand">
             <StackLayout Margin="2,0">
@@ -130,17 +135,24 @@
                     <StackLayout Margin="0,5">
                         <Label
                             FontAttributes="Bold"
-                            FontSize="16" 
+                            FontSize="16"
                             Text="Please select reason"
-                            TextColor="Black" /> 
-                        <RadioButton IsChecked="True" Content="Payment not paid" FontSize="15" TextColor="Black" />
-                        <RadioButton Content="Customer not available at Delivery location" FontSize="15" TextColor="Black" />
-                        </StackLayout> 
+                            TextColor="Black" />
+                        <RadioButton
+                            Content="Payment not paid"
+                            FontSize="15"
+                            IsChecked="True"
+                            TextColor="Black" />
+                        <RadioButton
+                            Content="Customer not available at Delivery location"
+                            FontSize="15"
+                            TextColor="Black" />
+                    </StackLayout>
                 </StackLayout>
                 <Grid Margin="2,15,2,8" VerticalOptions="CenterAndExpand">
                     <Button
                         x:Name="NoDiscard3"
-                        Clicked="NoDiscard_Clicked" 
+                        Clicked="NoDiscard_Clicked"
                         FontSize="14"
                         Text="No, Discard" />
                     <Button
@@ -148,7 +160,7 @@
                         Grid.Column="1"
                         BackgroundColor="Transparent"
                         BorderColor="#D72625"
-                        Clicked="YesReject_Clicked" 
+                        Clicked="YesReject_Clicked"
                         FontSize="14"
                         Text="Yes, Reject"
                         TextColor="#D72625" />

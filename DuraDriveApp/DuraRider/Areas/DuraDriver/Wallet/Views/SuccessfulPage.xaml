@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="DuraRider.Areas.DuraDriver.Wallet.Views.SuccessfulPage"
+    xmlns="http://xamarin.com/schemas/2014/forms" BindingContext="{Binding SuccessfulPage, Source={StaticResource Locator}}"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    BackgroundColor="White">
+    <ContentPage.Content>
+        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+            <Frame
+                Margin="50,0"
+                Padding="0,15"
+                BackgroundColor="WhiteSmoke"
+                BorderColor="#e6e6e6"
+                HasShadow="True">
+                <StackLayout Spacing="10">
+                    <Image
+                        HeightRequest="35"
+                        Source="done"
+                        VerticalOptions="EndAndExpand"
+                        WidthRequest="35" />
+                    <Label 
+                        FontAttributes="Bold"
+                        FontFamily="ProximaNovaSemibold"
+                        HorizontalOptions="CenterAndExpand"
+                        HorizontalTextAlignment="Center"
+                        Text="Wallet Recharge was Successful"
+                        TextColor="#0C9E1A"
+                        VerticalOptions="StartAndExpand"
+                        VerticalTextAlignment="Start" />
+                    <Label Margin="0,5,0,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span
+                                    FontSize="12"
+                                    Text="Merchant : "
+                                    TextColor="#928A8A" />
+                                <Span
+                                    FontAttributes="Bold"
+                                    FontFamily="ProximaNovaSemibold"
+                                    FontSize="14"
+                                    Text="Dura Drive"
+                                    TextColor="Black" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Label HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span
+                                    FontSize="12"
+                                    Text="Amount added : "
+                                    TextColor="#928A8A" />
+                                <Span
+                                    FontAttributes="Bold"
+                                    FontFamily="ProximaNovaSemibold"
+                                    FontSize="14"
+                                    Text="₱ 100.00"
+                                    TextColor="Black" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Button
+                        Margin="25,10"
+                        Command="{Binding OkayCommand}"
+                        Text="Okay" />
+                </StackLayout>
+            </Frame>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -42,7 +42,7 @@ namespace DuraRider.Areas.DuraDriver.Home.ViewModels
                 if (_navigationService.GetCurrentPageViewModel() != typeof(HomePageViewModel))
                 {
                     await _navigationService.NavigateToAsync<HomePageViewModel>();
-                    await App.Locator.DocumentPage.InitilizeData();
+                    await App.Locator.HomePage.InitilizeData();
                 }
             }
             catch (Exception ex)

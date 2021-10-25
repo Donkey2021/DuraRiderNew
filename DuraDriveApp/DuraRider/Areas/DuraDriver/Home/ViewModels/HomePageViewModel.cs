@@ -1,17 +1,23 @@
-﻿using DuraDriveRider.Pages.ViewModels;
-using DuraRider.Areas.DuraDriver.Home.HomeModels; 
+﻿using DuraRider.Areas.DuraDriver.Home.HomeModels;
+using DuraRider.Areas.DuraDriver.Home.Popup.Views;
+using DuraRider.Areas.DuraDriver.Profile.ViewModels;
+using DuraRider.Areas.DuraDriver.Wallet.Popup.ViewModels;
+using DuraRider.Areas.DuraDriver.Wallet.Popup.Views;
 using DuraRider.Core.Helpers;
 using DuraRider.Core.Services.Interfaces;
+using DuraRider.Helpers;
 using DuraRider.Services.Interfaces;
 using DuraRider.ViewModels;
 using MvvmHelpers.Commands;
 using MvvmHelpers.Interfaces;
+using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Xamarin.CommunityToolkit.Extensions;
 using Xamarin.Forms;
 
 namespace DuraRider.Areas.DuraDriver.Home.ViewModels
@@ -21,6 +27,9 @@ namespace DuraRider.Areas.DuraDriver.Home.ViewModels
         #region localVariable 
         public IAsyncCommand DoneCommand { get; set; }
         public IAsyncCommand NotificationCommand { get; set; }
+        public IAsyncCommand TopUpCommand { get; set; }
+        public IAsyncCommand RequestCashoutCommand { get; set; }
+        public IAsyncCommand<Object> ProfileTabCommand { get; set; }
         #endregion
         private INavigationService _navigationService;
         private IAuthenticationService _authenticationService;
@@ -143,6 +152,9 @@ namespace DuraRider.Areas.DuraDriver.Home.ViewModels
             _authenticationService = authenticationService;
             DoneCommand = new AsyncCommand(DoneCommandExecute);
             NotificationCommand = new AsyncCommand(NotificationCommandExecute);
+            TopUpCommand = new AsyncCommand(TopUpCommandExecute);
+            RequestCashoutCommand = new AsyncCommand(RequestCashoutCommandExecute);
+            ProfileTabCommand = new AsyncCommand<Object>(ProfileTabCommandExecute);
             PersonalDetailsIsVisible = true;
             OfficialDetailsIsVisible = false;
             PaymentDetailsIsVisible = false;
@@ -151,7 +163,7 @@ namespace DuraRider.Areas.DuraDriver.Home.ViewModels
             OfficalDetailsBoxviewColor = Color.Transparent;
             OfficalDetailsTextColor = Color.FromHex("#75747F");
             PaymentDetailsBoxviewColor = Color.Transparent;
-            PaymentDetailsTextColor = Color.FromHex("#75747F"); 
+            PaymentDetailsTextColor = Color.FromHex("#75747F");
             HomeIsVisible = false;
             StkIsVisisble = false;
             ArrowImageRotation = 90;
@@ -206,6 +218,54 @@ namespace DuraRider.Areas.DuraDriver.Home.ViewModels
                 HideLoading();
             }
         }
+        private async Task TopUpCommandExecute()
+        {
+            if (!CheckConnection())
+            {
+                ShowToast(CommonMessages.NoInternet);
+                return;
+            }
+            try
+            {
+                if (_navigationService.GetCurrentPageViewModel() != typeof(AmountPopup))
+                {
+                    await PopupNavigation.Instance.PushAsync(new AmountPopup());
+                    await App.Locator.AmountPopup.InitilizeData("TopUpPopup");
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                HideLoading();
+            }
+        }
+        private async Task RequestCashoutCommandExecute()
+        {
+            if (!CheckConnection())
+            {
+                ShowToast(CommonMessages.NoInternet);
+                return;
+            }
+            try
+            {
+                if (_navigationService.GetCurrentPageViewModel() != typeof(AmountPopup))
+                {
+                    await PopupNavigation.Instance.PushAsync(new AmountPopup());
+                    await App.Locator.AmountPopup.InitilizeData("RequestCashoutPopup");
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                HideLoading();
+            }
+        }
         #endregion
         public async Task InitilizeData()
         {
@@ -213,7 +273,7 @@ namespace DuraRider.Areas.DuraDriver.Home.ViewModels
         }
         public ObservableCollection<string> DaysList { get; set; } = new ObservableCollection<string>
         {
-            "Today"
+            "Today","Tomarrow"
         };
 
         public ICommand HomeExpanderViewCommand => new Xamarin.Forms.Command(async (obj) =>
@@ -337,10 +397,10 @@ namespace DuraRider.Areas.DuraDriver.Home.ViewModels
         //{
         //    // await RichNavigation.PushAsync(new ProfileTabPage(), typeof(ProfileTabPage));
         //});
-        public ICommand RequestCashoutCommand => new Xamarin.Forms.Command(async (obj) =>
-        {
-            // await RichNavigation.PushAsync(new ProfileTabPage(), typeof(ProfileTabPage));
-        });
+        //public ICommand RequestCashoutCommand => new Xamarin.Forms.Command(async (obj) =>
+        //{
+        //    // await RichNavigation.PushAsync(new ProfileTabPage(), typeof(ProfileTabPage));
+        //});
 
         public ObservableCollection<string> ProfileNameList { get; set; } = new ObservableCollection<string>
         {
@@ -355,17 +415,17 @@ namespace DuraRider.Areas.DuraDriver.Home.ViewModels
         //{
         //    MaterialDialog.Instance.AlertAsync("MenuSelected");
         //}
-       // public MaterialMenuItem[] Actions => new MaterialMenuItem[]
-       //{
-       //     new MaterialMenuItem
-       //     {
-       //         Text = "Edit"
-       //     },
-       //     new MaterialMenuItem
-       //     {
-       //         Text = "Delete"
-       //     }
-       //};
+        // public MaterialMenuItem[] Actions => new MaterialMenuItem[]
+        //{
+        //     new MaterialMenuItem
+        //     {
+        //         Text = "Edit"
+        //     },
+        //     new MaterialMenuItem
+        //     {
+        //         Text = "Delete"
+        //     }
+        //};
 
         //public ICommand MenuCommand = new Command(
         //    execute: (arg) =>
@@ -418,41 +478,74 @@ namespace DuraRider.Areas.DuraDriver.Home.ViewModels
             //Settings.IsWalkthroughCompleted = false;
         });
 
-        //public ICommand ProfileTabCommand => new Command(async (obj) =>
-        //{
-        //    var ProfileMdl = obj as ProfileModel;
-        //    switch (ProfileMdl.id)
-        //    {
-        //        case 1:
-        //            await RichNavigation.PushAsync(new QrCodePage(), typeof(QrCodePage));
-        //            break;
-        //        case 2:
-        //            await RichNavigation.PushAsync(new ReferRiderPage(), typeof(ReferRiderPage));
-        //            break;
-        //        case 3:
-        //            await RichNavigation.PushAsync(new MyRatingPage(), typeof(MyRatingPage));
-        //            break;
-        //        case 4:
-        //            await RichNavigation.PushAsync(new SupportPage(), typeof(SupportPage));
-        //            break;
-        //        case 5:
-        //            await RichNavigation.PushAsync(new HelpCenterPage(), typeof(HelpCenterPage));
-        //            break;
-        //        case 6:
-        //            await RichNavigation.PushAsync(new AboutusPage(), typeof(AboutusPage));
-        //            break;
-        //        case 7:
-        //            await RichNavigation.PushAsync(new PrivacyPolicy(), typeof(PrivacyPolicy));
-        //            break;
-        //        case 8:
-        //            await RichNavigation.PushAsync(new TermsConditionPage(), typeof(TermsConditionPage));
-        //            break;
-        //        case 9:
-        //            // App.Current.MainPage = new MaterialNavigationPage(new LogInPage());
-        //            //Settings.IsWalkthroughCompleted = false;
-        //            break;
-        //    }
-        //});
+        private async Task ProfileTabCommandExecute(object obj)
+        {
+            {
+                var ProfileMdl = obj as ProfileModel;
+                switch (ProfileMdl.id)
+                {
+                    case 1:
+                        if (_navigationService.GetCurrentPageViewModel() != typeof(QrCodePageViewModel))
+                        {
+                            await _navigationService.NavigateToAsync<QrCodePageViewModel>();
+                            //await App.Locator.SignUpPage.InitilizeData();                            
+                        }
+                        break;
+                    case 2:
+                        if (_navigationService.GetCurrentPageViewModel() != typeof(ReferRiderPageViewModel))
+                        {
+                            await _navigationService.NavigateToAsync<ReferRiderPageViewModel>();
+                            //await App.Locator.SignUpPage.InitilizeData();                            
+                        }
+                        break;
+                    case 3:
+                        if (_navigationService.GetCurrentPageViewModel() != typeof(MyRatingPageViewModel))
+                        {
+                            await _navigationService.NavigateToAsync<MyRatingPageViewModel>();
+                            //await App.Locator.SignUpPage.InitilizeData();                            
+                        }
+                        break;
+                    case 4:
+                        if (_navigationService.GetCurrentPageViewModel() != typeof(SupportPageViewModel))
+                        {
+                            await _navigationService.NavigateToAsync<SupportPageViewModel>();
+                            //await App.Locator.SignUpPage.InitilizeData();                            
+                        }
+                        break;
+                    case 5:
+                        if (_navigationService.GetCurrentPageViewModel() != typeof(HelpCenterPageViewModel))
+                        {
+                            await _navigationService.NavigateToAsync<HelpCenterPageViewModel>();
+                            //await App.Locator.SignUpPage.InitilizeData();                            
+                        }
+                        break;
+                    case 6:
+                        if (_navigationService.GetCurrentPageViewModel() != typeof(AboutusPageViewModel))
+                        {
+                            await _navigationService.NavigateToAsync<AboutusPageViewModel>();
+                            //await App.Locator.SignUpPage.InitilizeData();                            
+                        }
+                        break;
+                    case 7:
+                        if (_navigationService.GetCurrentPageViewModel() != typeof(PrivacyPolicyPageViewModel))
+                        {
+                            await _navigationService.NavigateToAsync<PrivacyPolicyPageViewModel>();
+                            //await App.Locator.SignUpPage.InitilizeData();                            
+                        }
+                        break;
+                    case 8:
+                        if (_navigationService.GetCurrentPageViewModel() != typeof(TermsConditionPageViewModel))
+                        {
+                            await _navigationService.NavigateToAsync<TermsConditionPageViewModel>();
+                            //await App.Locator.SignUpPage.InitilizeData();                            
+                        }
+                        break;
+                    case 9:
+                        await _navigationService.NavigateToAsync<TermsConditionPageViewModel>();
+                        //Settings.IsWalkthroughCompleted = false;
+                        break;
+                }
+            }
+        }
     }
 }
-     

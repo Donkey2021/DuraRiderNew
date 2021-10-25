@@ -16,12 +16,13 @@ namespace DuraRider.Areas.DuraDriver.Home.Popup.ViewModels
    public class PaymentCollectedPopupViewModel : AppBaseViewModel
     {
         private INavigationService _navigationService;
-        private IAuthenticationService _authenticationService;
-        public IAsyncCommand ConfirmDeliveryCommand { get; set; } 
-        public PaymentCollectedPopupViewModel(INavigationService navigationService, IAuthenticationService authenticationService)
+        private IUserCoreService _userCoreService;
+
+        public IAsyncCommand ConfirmDeliveryCommand { get; set; }
+        public PaymentCollectedPopupViewModel(INavigationService navigationService, IUserCoreService userCoreService)
         {
             _navigationService = navigationService;
-            _authenticationService = authenticationService;
+            _userCoreService = userCoreService;
             ConfirmDeliveryCommand = new AsyncCommand(ConfirmDeliveryCommandExecute); 
         } 
         private async Task ConfirmDeliveryCommandExecute()

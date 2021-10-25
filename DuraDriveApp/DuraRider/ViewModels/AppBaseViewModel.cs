@@ -16,8 +16,9 @@ using DuraRider.Areas.Common.PopupView.View;
 namespace DuraRider.ViewModels
 {
     public class AppBaseViewModel : BaseViewModel
-    {
+    { 
         protected NavigationPage _navigation => (Application.Current.MainPage as NavigationPage) ?? Application.Current.MainPage as NavigationPage;
+        public INavigation Navigation => Application.Current.MainPage.Navigation;  
         protected IUserDialogs _userDialogs => UserDialogs.Instance;
         protected readonly INavigationService NavigationService;
         private object _parameter;

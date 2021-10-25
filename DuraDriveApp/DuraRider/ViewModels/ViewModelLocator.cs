@@ -2,9 +2,11 @@
 using DuraRider.Areas.Common.ViewModels;
 using DuraRider.Services;
 using DuraRider.Areas.Common.PopupView.ViewModel;
-using DuraRider.Areas.DuraDriver.Home.ViewModels;
-using DuraDriveRider.Pages.ViewModels; 
+using DuraRider.Areas.DuraDriver.Home.ViewModels; 
 using DuraRider.Areas.DuraDriver.Home.Popup.ViewModels;
+using DuraRider.Areas.DuraDriver.Wallet.Popup.ViewModels;
+using DuraRider.Areas.DuraDriver.Wallet.ViewModels;
+using DuraRider.Areas.DuraDriver.Profile.ViewModels;
 
 namespace DuraRider.ViewModels
 {
@@ -38,6 +40,18 @@ namespace DuraRider.ViewModels
         public ReachedPickupLocationPageViewModel ReachedPickupLocationPage => FreshIOC.Container.Resolve<ReachedPickupLocationPageViewModel>();
         public PaymentCollectedPopupViewModel PaymentCollectedPopup => FreshIOC.Container.Resolve<PaymentCollectedPopupViewModel>();
         public ReviewPageViewModel ReviewPage => FreshIOC.Container.Resolve<ReviewPageViewModel>();
+        public AmountPopupViewModel AmountPopup => FreshIOC.Container.Resolve<AmountPopupViewModel>();
+        public GCashPageViewModel GCashPage => FreshIOC.Container.Resolve<GCashPageViewModel>();
+        public SuccessfulPageViewModel SuccessfulPage => FreshIOC.Container.Resolve<SuccessfulPageViewModel>();
+        public AboutusPageViewModel AboutPageus => FreshIOC.Container.Resolve<AboutusPageViewModel>();
+        public HelpCenterPageViewModel HelpCenterPage => FreshIOC.Container.Resolve<HelpCenterPageViewModel>();
+        public MyRatingPageViewModel MyRatingPage => FreshIOC.Container.Resolve<MyRatingPageViewModel>();
+        public PrivacyPolicyPageViewModel PrivacyPolicyPage => FreshIOC.Container.Resolve<PrivacyPolicyPageViewModel>();
+        public ProfileTabPageViewModel ProfileTabPage => FreshIOC.Container.Resolve<ProfileTabPageViewModel>();
+        public QrCodePageViewModel QrCodePage => FreshIOC.Container.Resolve<QrCodePageViewModel>();
+        public ReferRiderPageViewModel ReferRiderPage => FreshIOC.Container.Resolve<ReferRiderPageViewModel>();
+        public SupportPageViewModel SupportPage => FreshIOC.Container.Resolve<SupportPageViewModel>();
+        public TermsConditionPageViewModel TermsConditionPage => FreshIOC.Container.Resolve<TermsConditionPageViewModel>();
 
     }
 }

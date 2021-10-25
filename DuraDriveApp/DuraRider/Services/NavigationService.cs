@@ -1,5 +1,4 @@
-﻿using DuraDriveRider.Pages.ViewModels;
-using DuraRider.Areas.Common.PopupView.View;
+﻿using DuraRider.Areas.Common.PopupView.View;
 using DuraRider.Areas.Common.PopupView.ViewModel;
 using DuraRider.Areas.Common.ViewModels;
 using DuraRider.Areas.Common.Views;
@@ -7,6 +6,12 @@ using DuraRider.Areas.DuraDriver.Home.Popup.ViewModels;
 using DuraRider.Areas.DuraDriver.Home.Popup.Views;
 using DuraRider.Areas.DuraDriver.Home.ViewModels;
 using DuraRider.Areas.DuraDriver.Home.Views;
+using DuraRider.Areas.DuraDriver.Profile.ViewModels;
+using DuraRider.Areas.DuraDriver.Profile.Views;
+using DuraRider.Areas.DuraDriver.Wallet.Popup.ViewModels;
+using DuraRider.Areas.DuraDriver.Wallet.Popup.Views;
+using DuraRider.Areas.DuraDriver.Wallet.ViewModels;
+using DuraRider.Areas.DuraDriver.Wallet.Views;
 using DuraRider.Interfaces;
 using DuraRider.Services.Interfaces;
 using DuraRider.ViewModels;
@@ -308,6 +313,20 @@ namespace DuraRider.Services
             _mappings.Add(new Tuple<Type, Type, bool>(typeof(ReachedPickupLocationPageViewModel), typeof(ReachedPickupLocationPage), false));
             _mappings.Add(new Tuple<Type, Type, bool>(typeof(ReachedLocationPageViewModel), typeof(ReachedLocationPage), false));
             _mappings.Add(new Tuple<Type, Type, bool>(typeof(ReviewPageViewModel), typeof(ReviewPage), false));
+            _mappings.Add(new Tuple<Type, Type, bool>(typeof(AmountPopupViewModel), typeof(AmountPopup), false));
+            _mappings.Add(new Tuple<Type, Type, bool>(typeof(GCashPageViewModel), typeof(GCashPage), false));
+            _mappings.Add(new Tuple<Type, Type, bool>(typeof(SuccessfulPageViewModel), typeof(SuccessfulPage), false));
+            _mappings.Add(new Tuple<Type, Type, bool>(typeof(AboutusPageViewModel), typeof(AboutusPage), false));
+            _mappings.Add(new Tuple<Type, Type, bool>(typeof(HelpCenterPageViewModel), typeof(HelpCenterPage), false));
+            _mappings.Add(new Tuple<Type, Type, bool>(typeof(MyRatingPageViewModel), typeof(MyRatingPage), false));
+            _mappings.Add(new Tuple<Type, Type, bool>(typeof(PrivacyPolicyPageViewModel), typeof(PrivacyPolicy), false));
+            _mappings.Add(new Tuple<Type, Type, bool>(typeof(ProfileTabPageViewModel), typeof(ProfileTabPage), false));
+            _mappings.Add(new Tuple<Type, Type, bool>(typeof(QrCodePageViewModel), typeof(QrCodePage), false));
+            _mappings.Add(new Tuple<Type, Type, bool>(typeof(ReferRiderPageViewModel), typeof(ReferRiderPage), false));
+            _mappings.Add(new Tuple<Type, Type, bool>(typeof(SupportPageViewModel), typeof(SupportPage), false));
+            _mappings.Add(new Tuple<Type, Type, bool>(typeof(TermsConditionPageViewModel), typeof(TermsConditionPage), false));
+
+
             //PopupViews
             _mappings.Add(new Tuple<Type, Type, bool>(typeof(ReferralPopUpPageViewModel), typeof(ReferralPopUpPage), true));
             _mappings.Add(new Tuple<Type, Type, bool>(typeof(CameraGalleryPopupPageViewModel), typeof(CameraGalleryPopupPage), true));

@@ -426,8 +426,9 @@
                                     WidthRequest="90">
                                     <Grid InputTransparent="False">
                                         <Picker
-                                            Title="Days"
+                                            Title="Today"
                                             FontFamily="ProximaNovaRegular"
+                                            FontSize="14"
                                             ItemDisplayBinding="{Binding .}"
                                             ItemsSource="{Binding DaysList}"
                                             SelectedItem="{Binding DaysSelected}"
@@ -1029,12 +1030,12 @@
                                     <StackLayout Grid.Column="1" Padding="8,0">
                                         <Button
                                             Margin="0,10,0,0"
-                                            Clicked="TopUp_Clicked"
+                                            Command="{Binding TopUpCommand}"
                                             FontSize="15"
                                             HeightRequest="42"
                                             Text="Top Up" />
                                         <Button
-                                            Clicked="RequestCashout_Clicked"
+                                            Command="{Binding RequestCashoutCommand}"
                                             FontSize="15"
                                             HeightRequest="42"
                                             Text="Request Cashout"

@@ -6,7 +6,8 @@
     xmlns:xct="http://xamarin.com/schemas/2020/toolkit">
     <ContentView.Content>
         <StackLayout
-            Margin="0"
+            Margin="0,0,0,80"
+            BackgroundColor="Red"
             HeightRequest="400"
             HorizontalOptions="CenterAndExpand"
             VerticalOptions="EndAndExpand"

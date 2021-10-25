@@ -18,7 +18,7 @@ namespace DuraRider.Areas.DuraDriver.Home.Views
         public HomePage()
         {
             InitializeComponent();
-            Navigation.PushPopupAsync(new TransparentModel(new DuraExpressPopUpPage()));
+            //Navigation.PushPopupAsync(new TransparentModel(new DuraExpressPopUpPage()));
         }
         public HomePage(int SelectedTab)
         {
@@ -47,14 +47,14 @@ namespace DuraRider.Areas.DuraDriver.Home.Views
             this.DisplayToastAsync("Toast");
         }
 
-        private async void TopUp_Clicked(object sender, EventArgs e)
-        {
-          //  await Navigation.ShowPopupAsync(new AmountPopup("TopUpPopup"));
-        }
+        //private async void TopUp_Clicked(object sender, EventArgs e)
+        //{
+        //  //  await Navigation.ShowPopupAsync(new AmountPopup("TopUpPopup"));
+        //}
 
-        private async void RequestCashout_Clicked(object sender, EventArgs e)
-        {
-          //  await Navigation.ShowPopupAsync(new AmountPopup("RequestCashoutPopup"));
-        }
+        //private async void RequestCashout_Clicked(object sender, EventArgs e)
+        //{
+        //  //  await Navigation.ShowPopupAsync(new AmountPopup("RequestCashoutPopup"));
+        //}
     }
 }

@@ -7,14 +7,14 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace DuraRider.Areas.DuraDriver.Home.Views
+namespace DuraRider.Areas.DuraDriver.Wallet.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class NotificationPage 
+    public partial class GCashPage : ContentPage
     {
-        public NotificationPage()
+        public GCashPage()
         {
             InitializeComponent(); 
-        }
+        }  
     }
 }

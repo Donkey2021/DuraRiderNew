@@ -30,10 +30,12 @@
     <PackageReference Include="Xam.Plugin.Media" Version="5.0.1" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Areas\DuraDriver\Profile\Popup\ViewModels\" />
+    <Folder Include="Areas\DuraDriver\Profile\Popup\Views\" />
+    <Folder Include="Areas\DuraDriver\Orders\" />
     <Folder Include="FontIcons\" />
     <Folder Include="Images\" />
     <Folder Include="ViewModels\" />
-    <Folder Include="Services\" />
     <Folder Include="Models\" />
     <Folder Include="Converters\" />
     <Folder Include="Areas\Common\Views\" />
@@ -99,9 +101,6 @@
     <EmbeddedResource Update="Areas\Common\PopupView\View\SuccessfullyPopup.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Areas\DuraDriver\Home\Popup\Views\AmountPopup.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </EmbeddedResource>
     <EmbeddedResource Update="Areas\DuraDriver\Home\Popup\Views\DeclinePopUp.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
@@ -127,6 +126,15 @@
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Areas\DuraDriver\Home\Views\VerifyItemPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Areas\DuraDriver\Wallet\Popup\Views\AmountPopup.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Areas\DuraDriver\Wallet\Views\GCashPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Areas\DuraDriver\Wallet\Views\SuccessfulPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Controls\RattingBar.xaml">

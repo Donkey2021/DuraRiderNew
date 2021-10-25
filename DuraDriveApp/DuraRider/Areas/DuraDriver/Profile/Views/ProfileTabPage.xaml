@@ -1,0 +1,549 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="DuraRider.Areas.DuraDriver.Profile.Views.ProfileTabPage"
+    xmlns="http://xamarin.com/schemas/2014/forms" BindingContext="{Binding ProfileTabPage, Source={StaticResource Locator}}"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:Pages="clr-namespace:DuraDriveRider.Infrastructure"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" xmlns:customcontrol="clr-namespace:DuraRider.Controls">
+    <ContentPage.Content>
+        <Grid RowDefinitions="60,Auto,*">
+            <yummy:PancakeView
+                Padding="10,20"
+                BackgroundColor="#211E66"
+                CornerRadius="0,0,10,10">
+                <Grid VerticalOptions="CenterAndExpand">
+                    <StackLayout Orientation="Horizontal">
+                        <Image
+                            HeightRequest="20"
+                            HorizontalOptions="Start"
+                            Rotation="180"
+                            Source="BackArrowWhite.png"
+                            WidthRequest="20" />
+                        <Label FontSize="16" Text="Back" />
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding BackCommand}" />
+                        </StackLayout.GestureRecognizers>
+                    </StackLayout>
+                    <StackLayout HorizontalOptions="CenterAndExpand">
+                        <Label
+                            FontSize="16"
+                            HorizontalTextAlignment="Center"
+                            Text="My Profile"
+                            TextType="Text" />
+                    </StackLayout>
+                    <ImageButton
+                        Margin="0,0,10,0"
+                        Command="{Binding PasswordChangeCommand}"
+                        HeightRequest="22"
+                        HorizontalOptions="EndAndExpand"
+                        IsVisible="{Binding ImageIsVisible}"
+                        Source="password_changed"
+                        WidthRequest="22" />
+                </Grid>
+            </yummy:PancakeView>
+
+            <Frame
+                Grid.Row="1"
+                Margin="20,20,20,0"
+                Padding="0"
+                BackgroundColor="#EBE9FF"
+                CornerRadius="5"
+                VerticalOptions="StartAndExpand">
+                <Grid ColumnSpacing="0" VerticalOptions="CenterAndExpand">
+                    <Frame
+                        BackgroundColor="{Binding PersonalDetailsBoxviewColor}"
+                        BorderColor="{Binding PersonalDetailsBoxviewColor}"
+                        CornerRadius="5">
+                        <Label
+                            Margin="0,4"
+                            HorizontalOptions="CenterAndExpand"
+                            Text="Personal Info"
+                            TextColor="{Binding PersonalDetailsTextColor}" />
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding Tab1Command}" />
+                        </Frame.GestureRecognizers>
+                    </Frame>
+                    <Frame
+                        Grid.Column="1"
+                        BackgroundColor="{Binding OfficalDetailsBoxviewColor}"
+                        BorderColor="{Binding OfficalDetailsBoxviewColor}"
+                        CornerRadius="5">
+                        <Label
+                            Margin="0,4"
+                            HorizontalOptions="CenterAndExpand"
+                            Text="Document"
+                            TextColor="{Binding OfficalDetailsTextColor}" />
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding Tab2Command}" />
+                        </Frame.GestureRecognizers>
+                    </Frame>
+
+                    <Frame
+                        Grid.Column="2"
+                        BackgroundColor="{Binding PaymentDetailsBoxviewColor}"
+                        BorderColor="{Binding PaymentDetailsBoxviewColor}"
+                        CornerRadius="5">
+                        <Label
+                            Margin="0,4"
+                            HorizontalOptions="CenterAndExpand"
+                            Text="Bank Info"
+                            TextColor="{Binding PaymentDetailsTextColor}"
+                            VerticalOptions="CenterAndExpand" />
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding Tab3Command}" />
+                        </Frame.GestureRecognizers>
+                    </Frame>
+                </Grid>
+            </Frame>
+
+            <ScrollView Grid.Row="2" Margin="20">
+                <StackLayout >
+                    <StackLayout IsVisible="{Binding PersonalDetailsIsVisible}" >
+                   
+                        <!--<xct:AvatarView
+                            x:Name="photo_placeholder"
+                            HorizontalOptions="CenterAndExpand"
+                            Size="120"
+                            Source="photo_placeholder"
+                            Style="{StaticResource AvatarViewStyle}">
+                            <xct:AvatarView.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                            </xct:AvatarView.GestureRecognizers>
+                        </xct:AvatarView>-->
+                        <Grid
+                            Margin="0,30"
+                            HorizontalOptions="CenterAndExpand"
+                            WidthRequest="155">
+                            <Grid>
+                                <xct:AvatarView
+                                    x:Name="photo_placeholder"
+                                    Aspect="AspectFill"
+                                    BorderColor="#EBE9FF"
+                                    HorizontalOptions="Center"
+                                    Size="150"
+                                    Source="photo_placeholder"
+                                    Text="User Name"
+                                    TextColor="White"
+                                    VerticalOptions="Center"
+                                    Color="#EBE9FF" />
+                            </Grid>
+                            <ImageButton
+                                Margin="6"
+                                BackgroundColor="Transparent"
+                                Clicked="btnTake1_Clicked"
+                                HeightRequest="35"
+                                HorizontalOptions="EndAndExpand"
+                                Source="camera.png"
+                                VerticalOptions="EndAndExpand"
+                                WidthRequest="35" />
+                        </Grid>
+                          <StackLayout HeightRequest="45" Spacing="0" Padding="0">
+                        <customcontrol:XEntry
+                            IsReadOnly="{Binding IsReadFirstName}"
+                            Margin="10,0,0,-10"
+                            Keyboard="Default"
+                            Placeholder="First Name"
+                            Text="{Binding FirstName}"
+                            Style="{Binding Source={StaticResource EntryField}}" >
+
+                        </customcontrol:XEntry>
+                        <BoxView  HeightRequest="1" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand"></BoxView>
+                          <Label
+                        Margin="0,-5"
+                        IsVisible="{Binding FirstNameErrorVisibility}"
+                        HorizontalTextAlignment="Center"
+                        Style="{Binding Source={StaticResource ErrorLabel}}"
+                        Text="{Binding FirstNameError}"
+                        />
+                    </StackLayout>
+                   
+                    <StackLayout HeightRequest="45" Spacing="0" Padding="0">
+                        <customcontrol:XEntry
+                            IsReadOnly="{Binding IsReadMiddleName}"
+                            Margin="10,0,0,-10"
+                            Keyboard="Default"
+                            Placeholder="Middle Name"
+                            Text="{Binding MiddleName}"
+                            Style="{Binding Source={StaticResource EntryField}}" >
+
+                        </customcontrol:XEntry>
+                        <BoxView  HeightRequest="1" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand"></BoxView>
+                         
+                    </StackLayout>
+                  
+                    <StackLayout HeightRequest="45" Spacing="0" Padding="0">
+                        <customcontrol:XEntry
+                             IsReadOnly="{Binding IsReadLastName}"
+                            Margin="10,0,0,-10"
+                            Keyboard="Default"
+                            Placeholder="Last Name"
+                            Text="{Binding LastName}"
+                            Style="{Binding Source={StaticResource EntryField}}" >
+
+                        </customcontrol:XEntry>
+                        <BoxView  HeightRequest="1" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand"></BoxView>
+                         
+                    </StackLayout>
+                    <StackLayout MinimumHeightRequest="55" >
+                    <Grid   ColumnDefinitions="2*,.1*,8*" InputTransparent="False">
+                        <StackLayout Padding="0,0,10,0" Orientation="Horizontal">
+                            <Label
+                                FontSize="14"
+                                
+                                HorizontalOptions="CenterAndExpand"
+                                HorizontalTextAlignment="Start"
+                                Text="{Binding CountriesTitle}"
+                                TextColor="#211E66"
+                                VerticalOptions="CenterAndExpand" />
+                            <customcontrol:BorderlessPicker
+                                x:Name="pickercountries"
+                                FontSize="16"
+                                
+                                HeightRequest="28"
+                                IsVisible="False"
+                                ItemDisplayBinding="{Binding name}"
+                                ItemsSource="{Binding CountriesList}"
+                                SelectedItem="{Binding SelectedCountries}"
+                                TextColor="#211E66"
+                                VerticalOptions="CenterAndExpand">
+                               
+                            </customcontrol:BorderlessPicker>
+                            
+                                <Image
+                                    HeightRequest="15"
+                                    HorizontalOptions="CenterAndExpand"
+                                    InputTransparent="True"
+                                    Source="filled_dropdown.png"
+                                    VerticalOptions="CenterAndExpand"
+                                    WidthRequest="15" />
+                          
+                            <!--<StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="TapGestureRecognizer_Tapped" />
+                            </StackLayout.GestureRecognizers>-->
+
+                        </StackLayout>
+                        <BoxView
+                            Grid.Column="1"
+                            HeightRequest="20"
+                            HorizontalOptions="CenterAndExpand"
+                            VerticalOptions="CenterAndExpand"
+                            WidthRequest="1" />
+
+                        <customcontrol:XEntry
+                            IsReadOnly="{Binding IsReadMobileText}"
+                            Grid.Column="2"
+                            Margin="10,0,0,0"
+                            Keyboard="Numeric"
+                            MaxLength="10"
+                            Placeholder="Mobie No."
+                            Text="{Binding MobileText}"
+                            Style="{Binding Source={StaticResource EntryField}}"
+                            >
+                           
+                        </customcontrol:XEntry>
+                        <BoxView Grid.ColumnSpan="3" VerticalOptions="EndAndExpand" />
+                        
+                    </Grid>
+                  </StackLayout>
+                    <Label
+                      
+                        Margin="90,-5,0,-5"
+                        IsVisible="{Binding PhoneErrorVisibility}"
+                        HorizontalTextAlignment="Center"
+                        Style="{Binding Source={StaticResource ErrorLabel}}"
+                        Text="{Binding PhoneError}"
+                        />
+                    <StackLayout HeightRequest="55" Spacing="0" Padding="0">
+                        <customcontrol:XEntry
+                            Margin="10,0,0,-10"
+                             IsReadOnly="{Binding IsReadEmailText}"
+                            Keyboard="Email"
+                            Placeholder="Email Address"
+                            Text="{Binding EmailText}"
+                            
+                            Style="{Binding Source={StaticResource EntryField}}" ></customcontrol:XEntry>
+                        <BoxView  HeightRequest="1" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand"></BoxView>
+                         <Label
+                        Margin="0,-5"
+                        IsVisible="{Binding LogEmailErrorVisibility}"
+                        HorizontalTextAlignment="Center"
+                        Style="{Binding Source={StaticResource ErrorLabel}}"
+                        Text="{Binding LogEmailError}"
+                        />
+                    </StackLayout>
+                    
+                    <StackLayout HeightRequest="55" >
+                        <customcontrol:BorderlessDatePicker
+                            Margin="10,0,0,0"
+                            IsEnabled="{Binding IsEnabledDOBText}"
+                            VerticalOptions="EndAndExpand"
+                            Placeholder="Date of Birth"
+                            Format="dd-mm-yyyy"
+                            Date="{Binding DOBText}"></customcontrol:BorderlessDatePicker>
+
+                        <Image
+                            Margin="0,0,10,0"
+                            HeightRequest="15"
+                            HorizontalOptions="EndAndExpand"
+                            InputTransparent="True"
+                            Source="calender"
+                            VerticalOptions="Center"
+                            WidthRequest="15" />
+                        <BoxView  HeightRequest="1" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand"></BoxView>
+                          <Label
+                        Margin="0,-5"
+                        IsVisible="{Binding DOBErrorVisibility}"
+                        HorizontalTextAlignment="Center"
+                        Style="{Binding Source={StaticResource ErrorLabel}}"
+                        Text="{Binding DOBError}"
+                        />
+
+                    </StackLayout>
+                       
+                        <Label
+                            FontFamily="ProximaNovaBold"
+                            FontSize="16"
+                            Text="Social Account"
+                            TextColor="#C7C6D8" />
+
+                        <Grid HeightRequest="45" Padding="0" VerticalOptions="CenterAndExpand">
+                            <customcontrol:XEntry
+                            Margin="10,0,0,-10"
+                            IsReadOnly="{Binding IsReadFaceBookText}"
+                            Keyboard="Default"
+                            Placeholder="FaceBook"
+                            Text="{Binding FaceBookText}"
+                            
+                            Style="{Binding Source={StaticResource EntryField}}" ></customcontrol:XEntry>
+                            <BoxView VerticalOptions="EndAndExpand" />
+                            <Label
+                                FontSize="16"
+                                HorizontalOptions="EndAndExpand"
+                                Opacity=".8"
+                                Text="Linked"
+                                TextColor="Black" />
+                        </Grid>
+
+                        
+                         <Grid HeightRequest="45" Padding="0" VerticalOptions="CenterAndExpand">
+                            <customcontrol:XEntry
+                            Margin="10,0,0,-10"
+                            IsReadOnly="{Binding IsReadGoogleText}"
+                            Keyboard="Default"
+                            Placeholder="Google"
+                            Text="{Binding GoogleText}"
+                            
+                            Style="{Binding Source={StaticResource EntryField}}" ></customcontrol:XEntry>
+                            <BoxView VerticalOptions="EndAndExpand" />
+                           <Image
+                                Margin="0,0,10,0"
+                                HeightRequest="20"
+                                HorizontalOptions="EndAndExpand"
+                                Source="link"
+                                WidthRequest="20" />
+                        </Grid>
+                        <Label
+                            FontFamily="ProximaNovaBold"
+                            FontSize="16"
+                            Text="Manager Details"
+                            TextColor="#C7C6D8" />
+
+                        <StackLayout Spacing="0" Padding="0" HeightRequest="55">
+                            <customcontrol:XEntry
+                            Margin="10,0,0,-10"
+                          IsReadOnly="{Binding IsReadMngDetailText}"
+                            Keyboard="Default"
+                            Placeholder="Manager Details"
+                            Text="{Binding MngDetailText}"
+                            
+                            Style="{Binding Source={StaticResource EntryField}}" ></customcontrol:XEntry>
+                            <BoxView VerticalOptions="EndAndExpand" />
+                        </StackLayout>
+                       
+                       <StackLayout IsVisible="{Binding  PersonalDetailsEditButtonIsVisible}" >
+                        <Button Command="{Binding EditCommand}" Text="Edit" />
+                    </StackLayout>
+                       </StackLayout>
+                    <StackLayout IsVisible="{Binding SaveDetailsIsVisible}" Spacing="10">
+                        <Button
+                            Margin="5,30,5,5"
+                            Command="{Binding SaveCommand}"
+                            Text="Save" />
+                    </StackLayout>
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    <StackLayout IsVisible="{Binding OfficialDetailsIsVisible}">
+                        <StackLayout Spacing="10">
+                            <Grid VerticalOptions="CenterAndExpand">
+                                <!--<Entry
+                                    FontFamily="ProximaNovaRegular"
+                                    FontSize="18"
+                                    Keyboard="Numeric"
+                                    Placeholder="490349784097854"
+                                    PlaceholderColor="#000000">
+                                    <Entry.Effects>
+                                        <xct:RemoveBorderEffect />
+                                    </Entry.Effects>
+                                </Entry>-->
+
+                                 <customcontrol:XEntry
+                                    Margin="10,0,0,-10"
+                                    IsReadOnly="{Binding IsReadLicenseNo}"
+                                    Keyboard="Default"
+                                    Placeholder="License No."
+                                    Text="{Binding LicenseNo}"
+                                    Style="{Binding Source={StaticResource EntryField}}" >
+
+                                 </customcontrol:XEntry>
+                                <BoxView VerticalOptions="EndAndExpand" />
+                            </Grid>
+
+                            <Grid HeightRequest="100" VerticalOptions="CenterAndExpand">
+                                <Image
+                                    HorizontalOptions="FillAndExpand"
+                                    Source="Doc.png"
+                                    VerticalOptions="FillAndExpand" />
+                                <Image
+                                    Grid.Column="1"
+                                    HorizontalOptions="FillAndExpand"
+                                    Source="Doc_F.png"
+                                    VerticalOptions="FillAndExpand" />
+
+                            </Grid>
+                            <Grid>
+                                <Entry
+                                    FontFamily="ProximaNovaRegular"
+                                    FontSize="18"
+                                    Keyboard="Numeric"
+                                    Placeholder="DAS9047643y4834"
+                                    PlaceholderColor="#000000">
+                                    <Entry.Effects>
+                                        <xct:RemoveBorderEffect />
+                                    </Entry.Effects>
+                                </Entry>
+                                <BoxView VerticalOptions="EndAndExpand" />
+                            </Grid>
+
+                            <Image
+                                Aspect="Fill"
+                                HeightRequest="170"
+                                HorizontalOptions="FillAndExpand"
+                                Source="Doc_S.png"
+                                VerticalOptions="StartAndExpand" />
+                            <Grid VerticalOptions="CenterAndExpand">
+                                <Entry
+                                    FontFamily="ProximaNovaRegular"
+                                    FontSize="18"
+                                    Keyboard="Numeric"
+                                    Placeholder="65468749879434"
+                                    PlaceholderColor="#000000">
+                                    <Entry.Effects>
+                                        <xct:RemoveBorderEffect />
+                                    </Entry.Effects>
+                                </Entry>
+                                <BoxView VerticalOptions="EndAndExpand" />
+                            </Grid>
+                            <Image
+                                Aspect="Fill"
+                                HeightRequest="170"
+                                HorizontalOptions="FillAndExpand"
+                                Source="Doc_T.png"
+                                VerticalOptions="StartAndExpand" />
+
+                            <Label
+                                Margin="0,10,0,0"
+                                FontFamily="ProximaNovaBold"
+                                FontSize="16"
+                                HorizontalOptions="StartAndExpand"
+                                Text="Picture of unit/vehicle"
+                                TextColor="#C7C6D8" />
+
+                            <Grid Margin="0,0,0,10" InputTransparent="False">
+                                <Picker
+                                    Title="Select bike"
+                                    ItemDisplayBinding="{Binding Name}"
+                                    ItemsSource="{Binding VehicleList}"
+                                    SelectedItem="{Binding VehicleSelected}"
+                                    TextColor="Black"
+                                    TitleColor="Black"
+                                    VerticalOptions="CenterAndExpand">
+                                    <Picker.Effects>
+                                        <xct:RemoveBorderEffect />
+                                    </Picker.Effects>
+                                </Picker>
+                                <Image
+                                    Margin="0,0,10,0"
+                                    HeightRequest="15"
+                                    HorizontalOptions="EndAndExpand"
+                                    InputTransparent="True"
+                                    Source="filled_dropdown"
+                                    VerticalOptions="Center"
+                                    WidthRequest="15" />
+                                <BoxView VerticalOptions="EndAndExpand" />
+
+                            </Grid>
+
+                            <Image
+                                Aspect="Fill"
+                                HeightRequest="170"
+                                HorizontalOptions="FillAndExpand"
+                                Source="Bike.png"
+                                VerticalOptions="StartAndExpand" />
+
+                            <Button
+                                Margin="10,15,10,5"
+                                Command="{Binding EditDocumentCommand}"
+                                Text="{Binding EditBtn}" />
+                        </StackLayout>
+
+                    </StackLayout>
+
+                    <StackLayout IsVisible="{Binding PaymentDetailsIsVisible}">
+                        <Frame
+                            Margin="0,0,0,20"
+                            BackgroundColor="#EBE9FF"
+                            CornerRadius="5">
+                            <StackLayout>
+                                <Label
+                                    FontAttributes="Bold"
+                                    FontSize="18"
+                                    Text="XYZ Bank"
+                                    TextColor="Black" />
+                                <Label
+                                    FontAttributes="Bold"
+                                    FontSize="18"
+                                    Text="43453450344232432"
+                                    TextColor="Black" />
+                            </StackLayout>
+                        </Frame>
+
+                        <Button
+                            BackgroundColor="Transparent"
+                            BorderColor="#211E66"
+                            Command="{Binding AddAnotherBankCommand}"
+                            FontAttributes="Bold"
+                            FontFamily=""
+                            Text="Add Another Bank"
+                            TextColor="#211E66" />
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>
+
+        </Grid>
+
+
+
+    </ContentPage.Content>
+</ContentPage>
