@@ -48,6 +48,19 @@ namespace DuraRider.Core.Services
             return response;
         }
 
+        public async Task<Result<ForgetPasswordResponseModel>> ForgetPassword(MultipartFormDataContent request)
+        {
+            var response = await _httpService.PostJsonAsync<ForgetPasswordResponseModel>(Urls.BASE_URL + Urls.ChangepasswordUrl, request);
+            if (response?.ResultType == ResultType.Ok)
+            {
+                if (response?.Data != null)
+                {
+                    //App.Locator.CurrentUser.AppointmentData = response?.Data;
+                }
+            }
+            return response;
+        }
+
         public async Task<Result<GetAllLocationResponseModel>> GetAllLocationsNew()
         {
             var response = await _httpService.GetJsonAsync<GetAllLocationResponseModel>(Urls.BASE_URL + Urls.GET_ALL_LOCATION);

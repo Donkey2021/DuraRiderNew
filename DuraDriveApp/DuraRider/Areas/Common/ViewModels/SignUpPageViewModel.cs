@@ -313,7 +313,6 @@ namespace DuraRider.Areas.Common.ViewModels
             }
         }
 
-
         public string PasswordText
         {
             get
@@ -337,7 +336,6 @@ namespace DuraRider.Areas.Common.ViewModels
                 SetProperty(ref _cnfpasswordText, value);
             }
         }
-
 
         public string PasswordError
         {
@@ -399,7 +397,6 @@ namespace DuraRider.Areas.Common.ViewModels
             }
         }
 
-
         public string PhoneError
         {
             get
@@ -423,6 +420,7 @@ namespace DuraRider.Areas.Common.ViewModels
                 SetProperty(ref _passwordErrorVisibility, value);
             }
         }
+
         public bool IsTermsConditionChecked
         {
             get
@@ -458,7 +456,6 @@ namespace DuraRider.Areas.Common.ViewModels
                 SetProperty(ref _logEmailErrorVisibility, value);
             }
         }
-
 
         public bool PhoneErrorVisibility
         {

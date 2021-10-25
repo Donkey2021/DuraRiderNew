@@ -24,5 +24,6 @@ namespace DuraRider.Core.Services.Interfaces
         Task<Result<DriverDocumentResponseModel>> SaveDriverDuraBag(MultipartFormDataContent request);
         Task<Result<ServiceAreaResponseModel>> GetServiceArea(MultipartFormDataContent request);
         Task<Result<DriverLoginResponseModel>> DriverLogin(DriverLoginRequestModel request);
+        Task<Result<ForgetPasswordResponseModel>> ForgetPassword(MultipartFormDataContent request);
     }
 }

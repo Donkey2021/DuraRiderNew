@@ -8,8 +8,10 @@ using App.User.LocationInfo.Services;
 using DuraRider.Core.Helpers;
 using DuraRider.Core.Helpers.Enums;
 using DuraRider.Core.Models.Common;
+using DuraRider.Core.Models.RequestModels;
 using DuraRider.Core.Models.ResponseModels;
 using DuraRider.Core.Services.Interfaces;
+using DuraRider.Helpers;
 using DuraRider.Services.Interfaces;
 using DuraRider.ViewModels;
 using Xamarin.CommunityToolkit.ObjectModel;
@@ -22,14 +24,12 @@ namespace DuraRider.Areas.Common.ViewModels
         INavigationService _navigationService;
         public IAsyncCommand NavigateToHomeCommand { get; set; }
         public IAsyncCommand RegisterCommand { get; set; }
-        private string _buttonText = "Login With Email";
         private bool _isVisibleEmailLayout;
         private bool _isVisiblePhoneLayout = true;
         private List<NewLocationDataResponse> locList;
         public IAsyncCommand<object> SwitchToEmailLayout { get; set; }
         private ObservableCollection<NewLocationDataResponse> _allLocationList;
         private bool _isAreaErrorVisible;
-        private bool _emailNotValid;
         private bool _passwordNotValid;
         private bool _phoneNumberNotValid;
         private bool _isLoginButtoinEnabled;
@@ -42,7 +42,6 @@ namespace DuraRider.Areas.Common.ViewModels
             set { _isPhoneErrorVisible = value; OnPropertyChanged(nameof(IsPhoneErrorVisible)); }
         }
         private string _mobileNumber;
-        private string _email;
         private string _password;
         public string MobileNumber
         {
@@ -83,14 +82,64 @@ namespace DuraRider.Areas.Common.ViewModels
         {
             _navigationService = navigationService;
             _authenticationService = authenticationService;
-            SwitchToEmailLayout = new AsyncCommand<object>(SwitchCommandExecute, allowsMultipleExecutions: false);
             NavigateToHomeCommand = new AsyncCommand(LoginAndNavigateToHome, allowsMultipleExecutions: false);
             RegisterCommand = new AsyncCommand(RegisterCommandExecute, allowsMultipleExecutions: false);
+            GetAllLocation();
         }
 
         private async Task LoginAndNavigateToHome()
         {
+            if (LoginListSelected == null)
+            {
+                ShowToast("Please select service area");
+                return;
+            }
+            if (CheckConnection())
+            {
+                try
+                {
+                    ShowLoading();
+                    var currentLoc = await LocationHelpers.getCurrentPosition();
+                    if (currentLoc == null)
+                    {
+                        ShowToast("Current location not found, try again");
+                        return;
+                    }
+                    DriverLoginRequestModel requestModel = new DriverLoginRequestModel()
+                    {
+                        mobile = MobileNumber,
+                        country_code = CountriesTitleCode,
+                        latitude = currentLoc.Latitude.ToString(),
+                        longitude = currentLoc.Longitude.ToString(),
+                        password = Password,
+                        service_id = LoginListSelected?.id.ToString()
+                    };
 
+                    var result = await TryWithErrorAsync(_authenticationService.DriverLogin(requestModel), true, false);
+                    if (result?.ResultType == ResultType.Ok && result?.Data?.data != null)
+                    {
+                        var accesstoken = result?.Data?.data?.token?.original?.token;
+                        var driverid = result?.Data?.data?.driverDoc?.driver_id;
+                        await SecureStorage.SetAsync("token", accesstoken);
+                        await SecureStorage.SetAsync("driverid", driverid.ToString());
+                        ShowToast("login successful");
+                    }
+                    else
+                    {
+                        ShowAlert(result?.Data?.message);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    ShowToast(ex.Message.ToString());
+                }
+                finally
+                {
+                    HideLoading();
+                }
+            }
+            else
+                ShowToast(CommonMessages.NoInternet);
         }
 
         private async Task RegisterCommandExecute()
@@ -103,73 +152,24 @@ namespace DuraRider.Areas.Common.ViewModels
         }
         private bool CheckLoginValidation()
         {
-            if (IsVisiblePhoneNumberLayout)
+            if (string.IsNullOrEmpty(MobileNumber) || string.IsNullOrEmpty(Password) || string.IsNullOrEmpty(SelectedLocation?.country_name))
             {
-                if (string.IsNullOrEmpty(MobileNumber) || string.IsNullOrEmpty(Password) || string.IsNullOrEmpty(SelectedLocation?.country_name))
-                {
-                    //ShowToast("Please again select Location.");
-                    IsLoginButtoinEnabled = false;
-                    return false;
-                }
-                else if (IsAreaErrorVisible || IsPhoneErrorVisible)
-                {
-                    IsLoginButtoinEnabled = false;
-                    return false;
-                }
-                else
-                {
-                    IsLoginButtoinEnabled = true;
-                    return true;
-                }
+                //ShowToast("Please again select Location.");
+                IsLoginButtoinEnabled = false;
+                return false;
+            }
+            else if (IsAreaErrorVisible || IsPhoneErrorVisible)
+            {
+                IsLoginButtoinEnabled = false;
+                return false;
             }
             else
             {
-                if (string.IsNullOrEmpty(Email) || string.IsNullOrEmpty(Password) || string.IsNullOrEmpty(SelectedLocation?.country_name))
-                {
-                    //ShowToast("Please again select Location.");
-                    IsLoginButtoinEnabled = false;
-                    return false;
-                }
-                else if (IsAreaErrorVisible || IsEmailErrorVisible)
-                {
-                    IsLoginButtoinEnabled = false;
-                    return false;
-                }
-                else
-                {
-                    IsLoginButtoinEnabled = true;
-                    return true;
-                }
+                IsLoginButtoinEnabled = true;
+                return true;
             }
-        }
-        private bool _isEmailErrorVisible;
-        public bool IsEmailErrorVisible
-        {
-            get { return _isEmailErrorVisible; }
-            set { _isEmailErrorVisible = value; OnPropertyChanged(nameof(IsEmailErrorVisible)); }
         }
 
-        public string Email
-        {
-            get { return _email; }
-            set
-            {
-                _email = value;
-                if (!string.IsNullOrEmpty(_email))
-                {
-                    if (RegexUtilities.EmailValidation(_email))
-                        IsEmailErrorVisible = false;
-                    else
-                        IsEmailErrorVisible = true;
-                    CheckLoginValidation();
-                }
-                else
-                {
-                    IsEmailErrorVisible = false;
-                }
-                this.OnPropertyChanged(nameof(Email));
-            }
-        }
         public string Password
         {
             get { return _password; }
@@ -207,6 +207,7 @@ namespace DuraRider.Areas.Common.ViewModels
                     this.OnPropertyChanged(nameof(SelectedCountriesCode));
                     //this.OnPropertyChanged(nameof(CountriesTitle));
                     CountriesTitleCode = $"+{_selectedCountriesCode.country_code}";
+                    GetServiceArea();
                 }
                 catch (Exception ex) { }
             }
@@ -324,11 +325,6 @@ namespace DuraRider.Areas.Common.ViewModels
             get { return _isAreaErrorVisible; }
             set { _isAreaErrorVisible = value; OnPropertyChanged(nameof(IsAreaErrorVisible)); }
         }
-        public bool EmailNotValid
-        {
-            get { return _emailNotValid; }
-            set { _emailNotValid = value; OnPropertyChanged(nameof(EmailNotValid)); }
-        }
         public bool PasswordNotValid
         {
             get { return _passwordNotValid; }
@@ -343,11 +339,6 @@ namespace DuraRider.Areas.Common.ViewModels
         {
             get { return _isLoginButtoinEnabled; }
             set { _isLoginButtoinEnabled = value; OnPropertyChanged(nameof(IsLoginButtoinEnabled)); }
-        }
-        public string ButtonText
-        {
-            get { return _buttonText; }
-            set { _buttonText = value; OnPropertyChanged(nameof(ButtonText)); }
         }
         public bool IsVisiblePhoneNumberLayout
         {
@@ -379,36 +370,16 @@ namespace DuraRider.Areas.Common.ViewModels
                 SetProperty(ref _allLocationListCode, value);
             }
         }
-        private async Task SwitchCommandExecute(object arg)
-        {
-            var data = arg as LoginPageViewModels;
-            if (data != null)
-            {
-                if (data.ButtonText == "Login With Email")
-                {
-                    IsVisibleEmailLayout = true;
-                    IsVisiblePhoneNumberLayout = false;
-                    ButtonText = "Login With Phone Number";
-                }
-                else
-                {
-                    IsVisibleEmailLayout = false;
-                    IsVisiblePhoneNumberLayout = true;
-                    ButtonText = "Login With Email";
-                }
-                //Password = string.Empty; 
-                CheckLoginValidation();
-            }
-        }
+
         public async Task GetAllLocation()
         {
             if (CheckConnection())
             {
-
+                ShowLoading();
                 try
                 {
                     locList = new List<NewLocationDataResponse>();
-                    ShowLoading();
+
                     var result = await TryWithErrorAsync(_authenticationService.GetAllLocationsNew(), true, false);
                     HideLoading();
                     if (result?.ResultType == ResultType.Ok && result?.Data?.data != null)
@@ -452,6 +423,7 @@ namespace DuraRider.Areas.Common.ViewModels
                             SelectedLocation = countryData;
                             SelectedLocationTemp = countryData;
                             CountriesTitleCode = countryData != null ? $"+{countryData?.country_code}" : "";
+                            await GetServiceArea();
                         }
                     }
 
@@ -461,10 +433,34 @@ namespace DuraRider.Areas.Common.ViewModels
             else
                 ShowToast(CommonMessages.NoInternet);
         }
+        private int _selectedService;
+        private AreaData _selectedServiceArea;
 
+        public AreaData LoginListSelected
+        {
+            get { return _selectedServiceArea; }
+            set
+            {
+                _selectedServiceArea = value;
+                this.OnPropertyChanged(nameof(LoginListSelected));
+                this.OnPropertyChanged(nameof(SelectedService));
+                SelectedService = _selectedServiceArea.id;
+            }
+
+
+        }
+        public int SelectedService
+        {
+            get { return _selectedService; }
+            set
+            {
+                _selectedService = value;
+                this.OnPropertyChanged("SelectedService");
+            }
+        }
         public async Task GetServiceArea()
         {
-            if (string.IsNullOrEmpty(CountriesTitle))
+            if (string.IsNullOrEmpty(CountriesTitleCode))
             {
                 ShowToast("Please select country to get service area");
                 return;
@@ -475,7 +471,7 @@ namespace DuraRider.Areas.Common.ViewModels
                 try
                 {
                     var form = new MultipartFormDataContent();
-                    form.Add(new StringContent(CountriesTitle), "country_code");
+                    form.Add(new StringContent(CountriesTitleCode), "country_code");
                     var result = await TryWithErrorAsync(_authenticationService.GetServiceArea(form), true, false);
 
                     if (result?.ResultType == ResultType.Ok && result?.Data?.data != null)
@@ -509,7 +505,6 @@ namespace DuraRider.Areas.Common.ViewModels
 
         public async Task InitilizeData()
         {
-            Email = Password = MobileNumber = string.Empty;
             IsAreaErrorVisible = false;
             IsPhoneErrorVisible = false;
             CheckLoginValidation();

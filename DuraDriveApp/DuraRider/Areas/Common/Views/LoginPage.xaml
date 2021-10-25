@@ -37,15 +37,15 @@
                             TextColor="Black" />
                         <Grid ColumnDefinitions="*" RowDefinitions="Auto,Auto,Auto">
                             <control:CustomPicker
-                                Title="Choose Location"
+                                Title="Select Service Area"
                                 Grid.Row="0"
                                 Grid.Column="0"
                                 FontFamily="ProximaRegular"
                                 FontSize="16"
                                 Image="drop_down_arrow"
-                                ItemDisplayBinding="{Binding country_name}"
-                                ItemsSource="{Binding AllLocationList}"
-                                SelectedItem="{Binding SelectedCountries}"
+                                ItemDisplayBinding="{Binding area}"
+                                ItemsSource="{Binding ServiceAreaList}"
+                                SelectedItem="{Binding LoginListSelected}"
                                 TextColor="Black"
                                 TitleColor="{StaticResource PlaceholderColor}" />
 
@@ -55,18 +55,9 @@
                                 Margin="0,2"
                                 BackgroundColor="{StaticResource BorderColor}"
                                 HeightRequest="1" />
-                            <Label
-                                Grid.Row="2"
-                                Grid.Column="0"
-                                FontSize="12"
-                                IsVisible="{Binding IsAreaErrorVisible}"
-                                Text="Please select area"
-                                TextColor="Red" />
+
                         </Grid>
-                        <Grid
-                            ColumnDefinitions="Auto,1,*"
-                            IsVisible="{Binding IsVisiblePhoneNumberLayout}"
-                            RowDefinitions="Auto,Auto,Auto">
+                        <Grid ColumnDefinitions="Auto,1,*" RowDefinitions="Auto,Auto,Auto">
                             <Grid
                                 Grid.Row="0"
                                 Grid.Column="0"
@@ -92,7 +83,7 @@
                                     HeightRequest="10"
                                     HorizontalOptions="EndAndExpand"
                                     InputTransparent="True"
-                                    Source="{images:EmbeddedImage NewDuraApp.Images.drop_down_arrow.png}"
+                                    Source="{images:EmbeddedImage DuraRider.Images.drop_down_arrow.png}"
                                     VerticalOptions="CenterAndExpand"
                                     WidthRequest="10" />
                                 <Grid.GestureRecognizers>
@@ -138,29 +129,7 @@
                                 Text="Please enter valid phone number"
                                 TextColor="Red" />
                         </Grid>
-                        <Grid IsVisible="{Binding IsVisibleEmailLayout}" RowDefinitions="Auto,Auto,Auto">
-                            <control:CustomEntry
-                                Grid.Row="0"
-                                FontFamily="ProximaRegular"
-                                FontSize="16"
-                                Keyboard="Email"
-                                MaxLength="60"
-                                Placeholder="Email Address*"
-                                PlaceholderColor="{StaticResource PlaceholderColor}"
-                                Text="{Binding Email}"
-                                TextColor="Black" />
 
-                            <BoxView
-                                Grid.Row="1"
-                                BackgroundColor="{StaticResource BorderColor}"
-                                HeightRequest="1" />
-                            <Label
-                                Grid.Row="2"
-                                FontSize="12"
-                                IsVisible="{Binding IsEmailErrorVisible}"
-                                Text="Please enter valid email id."
-                                TextColor="Red" />
-                        </Grid>
                         <Grid Margin="{OnPlatform iOS='0,20,0,0', Android='0,8,0,0'}" RowDefinitions="Auto,Auto">
                             <control:CustomEntry
                                 Grid.Row="0"
