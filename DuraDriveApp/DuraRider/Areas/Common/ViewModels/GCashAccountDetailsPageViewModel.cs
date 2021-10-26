@@ -80,10 +80,10 @@ namespace DuraRider.Areas.Common.ViewModels
                     if (result?.ResultType == ResultType.Ok && result.Data.status == 200)
                     {
                         ShowToast("Gcash details added successfully.");
-                        if (_navigationService.GetCurrentPageViewModel() != typeof(ProfilePageViewModel))
+                        if (_navigationService.GetCurrentPageViewModel() != typeof(ProfilePicPageViewModel))
                         {
-                            await _navigationService.NavigateToAsync<ProfilePageViewModel>();
-                            await App.Locator.ProfilePage.InitilizeData();
+                            await _navigationService.NavigateToAsync<ProfilePicPageViewModel>();
+                            await App.Locator.ProfilePicPage.InitilizeData();
                         }
                     }
                     else

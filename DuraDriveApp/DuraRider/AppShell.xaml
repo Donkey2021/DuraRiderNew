@@ -4,9 +4,11 @@
     x:Class="DuraRider.AppShell"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:Page="clr-namespace:DuraRider.Areas.DuraDriver.Home.Views"
+    xmlns:Page1="clr-namespace:DuraRider.Areas.DuraDriver.Orders.Views"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:views="clr-namespace:DuraRider.Areas.Common.Views"
+    xmlns:views="clr-namespace:DuraRider.Areas.Common.Views" xmlns:Page2="clr-namespace:DuraRider.Areas.DuraDriver.Wallet.Views" xmlns:Page3="clr-namespace:DuraRider.Areas.DuraDriver.Profile.Views"
     Title="DuraApp"
     BindingContext="{Binding AppShell, Source={StaticResource Locator}}"
     FlyoutBehavior="Disabled"
@@ -15,17 +17,24 @@
     mc:Ignorable="d">
 
     <TabBar x:Name="mainTabBar">
-        <Tab
-            x:Name="home"
-            Title="Home"
-            Icon="home2.png">
+        <Tab Title="Home" Icon="home.png">
             <ShellContent>
-                <views:LoginPage />
+                <Page:HomePage />
             </ShellContent>
         </Tab>
-        <Tab Title="Account" Icon="account2.png">
+        <Tab Title="Order" Icon="order.png">
             <ShellContent>
-                <views:LoginPage />
+                <Page1:OrderPage />
+            </ShellContent>
+        </Tab>
+        <Tab Title="E-Wallet" Icon="wallet.png">
+            <ShellContent>
+                <Page2:WalletPage />
+            </ShellContent>
+        </Tab>
+        <Tab Title="Profile" Icon="profile.png">
+            <ShellContent>
+                <Page3:ProfilePage />
             </ShellContent>
         </Tab>
     </TabBar>

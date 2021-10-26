@@ -6,6 +6,8 @@ using DuraRider.Areas.DuraDriver.Home.Popup.ViewModels;
 using DuraRider.Areas.DuraDriver.Home.Popup.Views;
 using DuraRider.Areas.DuraDriver.Home.ViewModels;
 using DuraRider.Areas.DuraDriver.Home.Views;
+using DuraRider.Areas.DuraDriver.Orders.ViewModels;
+using DuraRider.Areas.DuraDriver.Orders.Views;
 using DuraRider.Areas.DuraDriver.Profile.ViewModels;
 using DuraRider.Areas.DuraDriver.Profile.Views;
 using DuraRider.Areas.DuraDriver.Wallet.Popup.ViewModels;
@@ -57,11 +59,9 @@ namespace DuraRider.Services
         {
             try
             {
-
+               // await NavigateToAsync<AppShellViewModel>();
                 await NavigateToAsync<LoginPageViewModels>();
-                await App.Locator.LoginPage.InitilizeData();
-
-
+                await App.Locator.LoginPage.InitilizeData(); 
                 //await App.Locator.TimerPage.InitilizeData();
                 //await NavigateToAsync<TimerPageViewModel>();
                 //await App.Locator.TimerPage.UpdateTextColor(0);
@@ -299,16 +299,21 @@ namespace DuraRider.Services
         private void CreatePageViewModelMappings()
         {
             //Pages
+            _mappings.Add(new Tuple<Type, Type, bool>(typeof(AppShellViewModel), typeof(AppShell), false));
             _mappings.Add(new Tuple<Type, Type, bool>(typeof(LoginPageViewModels), typeof(LoginPage), false));
             _mappings.Add(new Tuple<Type, Type, bool>(typeof(SignUpPageViewModel), typeof(SignUpPage), false));
             _mappings.Add(new Tuple<Type, Type, bool>(typeof(OTPPageViewModel), typeof(OTPPage), false));
             _mappings.Add(new Tuple<Type, Type, bool>(typeof(PersonalInfoPageViewModel), typeof(PersonalInfoPage), false));
             _mappings.Add(new Tuple<Type, Type, bool>(typeof(DocumentPageViewModel), typeof(DocumentPage), false));
             _mappings.Add(new Tuple<Type, Type, bool>(typeof(GCashAccountDetailsPageViewModel), typeof(GCashAccountDetailsPage), false));
-            _mappings.Add(new Tuple<Type, Type, bool>(typeof(ProfilePageViewModel), typeof(ProfilePage), false));
+            _mappings.Add(new Tuple<Type, Type, bool>(typeof(ProfilePicPageViewModel), typeof(ProfilePicPage), false));
             _mappings.Add(new Tuple<Type, Type, bool>(typeof(DuraBageServicePageViewModel), typeof(DuraBageServicePage), false));
             _mappings.Add(new Tuple<Type, Type, bool>(typeof(HomePageViewModel), typeof(HomePage), false));
+            _mappings.Add(new Tuple<Type, Type, bool>(typeof(OrderPageViewModel), typeof(OrderPage), false));
+            _mappings.Add(new Tuple<Type, Type, bool>(typeof(WalletPageViewModel), typeof(WalletPage), false));
+            _mappings.Add(new Tuple<Type, Type, bool>(typeof(ProfilePageViewModel), typeof(ProfilePage), false));
             _mappings.Add(new Tuple<Type, Type, bool>(typeof(NotificationPageViewModel), typeof(NotificationPage), false));
+            _mappings.Add(new Tuple<Type, Type, bool>(typeof(DuraExpressPopupViewModel), typeof(DuraExpressPopup), false));
             _mappings.Add(new Tuple<Type, Type, bool>(typeof(VerifyItemPageViewModel), typeof(VerifyItemPage), false));
             _mappings.Add(new Tuple<Type, Type, bool>(typeof(ReachedPickupLocationPageViewModel), typeof(ReachedPickupLocationPage), false));
             _mappings.Add(new Tuple<Type, Type, bool>(typeof(ReachedLocationPageViewModel), typeof(ReachedLocationPage), false));

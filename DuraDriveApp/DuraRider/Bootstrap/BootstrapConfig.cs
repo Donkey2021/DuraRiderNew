@@ -13,6 +13,8 @@ using DuraRider.Areas.DuraDriver.Home.Popup.ViewModels;
 using DuraRider.Areas.DuraDriver.Wallet.Popup.ViewModels;
 using DuraRider.Areas.DuraDriver.Wallet.ViewModels;
 using DuraRider.Areas.DuraDriver.Profile.ViewModels;
+using DuraRider.ViewModels;
+using DuraRider.Areas.DuraDriver.Orders.ViewModels;
 
 namespace DuraRider.Bootstrap
 {
@@ -41,6 +43,7 @@ namespace DuraRider.Bootstrap
         public static void RegisterViewModel()
         {
             FreshIOC.Container.Register<CurrentUser, CurrentUser>().AsSingleton();
+            FreshIOC.Container.Register<AppShellViewModel, AppShellViewModel>().AsSingleton();
             FreshIOC.Container.Register<LoginPageViewModels, LoginPageViewModels>().AsSingleton();
             FreshIOC.Container.Register<SignUpPageViewModel, SignUpPageViewModel>().AsSingleton();
             FreshIOC.Container.Register<OTPPageViewModel, OTPPageViewModel>().AsSingleton();
@@ -49,10 +52,14 @@ namespace DuraRider.Bootstrap
             FreshIOC.Container.Register<DocumentPageViewModel, DocumentPageViewModel>().AsSingleton();
             FreshIOC.Container.Register<CameraGalleryPopupPageViewModel, CameraGalleryPopupPageViewModel>().AsSingleton();
             FreshIOC.Container.Register<GCashAccountDetailsPageViewModel, GCashAccountDetailsPageViewModel>().AsSingleton();
-            FreshIOC.Container.Register<ProfilePageViewModel, ProfilePageViewModel>().AsSingleton();
+            FreshIOC.Container.Register<ProfilePicPageViewModel,ProfilePicPageViewModel>().AsSingleton();
             FreshIOC.Container.Register<DuraBageServicePageViewModel, DuraBageServicePageViewModel>().AsSingleton();
             FreshIOC.Container.Register<HomePageViewModel, HomePageViewModel>().AsSingleton();
+            FreshIOC.Container.Register<OrderPageViewModel, OrderPageViewModel>().AsSingleton();
+            FreshIOC.Container.Register<WalletPageViewModel, WalletPageViewModel>().AsSingleton();
+            FreshIOC.Container.Register<ProfilePageViewModel, ProfilePageViewModel>().AsSingleton();
             FreshIOC.Container.Register<NotificationPageViewModel, NotificationPageViewModel>().AsSingleton();
+            FreshIOC.Container.Register<DuraExpressPopupViewModel, DuraExpressPopupViewModel>().AsSingleton();
             FreshIOC.Container.Register<VerifyItemPageViewModel, VerifyItemPageViewModel>().AsSingleton();
             FreshIOC.Container.Register<ReachLocationPopUpViewModel, ReachLocationPopUpViewModel>().AsSingleton();
             FreshIOC.Container.Register<ReachedLocationPageViewModel, ReachedLocationPageViewModel>().AsSingleton();

@@ -32,16 +32,7 @@
 
         <Color x:Key="PlaceholderColor">#7F7F7F</Color>
         <Color x:Key="BorderColor">#E2E2E2</Color>
-        <Style x:Key="ShellBaseStyle" TargetType="Element">
-            <Setter Property="Shell.BackgroundColor" Value="{StaticResource PrimaryColor}" />
-            <Setter Property="Shell.TabBarBackgroundColor" Value="{StaticResource Primary2Color}" />
-            <Setter Property="Shell.TabBarTitleColor" Value="{StaticResource AppShellTabBarTitleColor}" />
-            <Setter Property="Shell.TabBarUnselectedColor" Value="{StaticResource AppShellTabBarUnselectedColor}" />
-            <Setter Property="Shell.ForegroundColor" Value="{StaticResource PrimaryColor}" />
-            <Setter Property="Shell.TitleColor" Value="{StaticResource PrimaryColor}" />
-            <Setter Property="Shell.DisabledColor" Value="#4D4D4D" />
-            <Setter Property="Shell.UnselectedColor" Value="#4D4D4D" />
-        </Style>
+   
         <!--  Entry Fields  -->
 
         <Style ApplyToDerivedTypes="True" TargetType="Button">
@@ -233,6 +224,16 @@
             <!--<Setter Property="BadgeBackgroundColorSelected" Value="Green" />-->
             <Setter Property="FontFamily" Value="ProximaNovaRegular" />
             <Setter Property="HeightRequest" Value="60" />
+        </Style>
+        <Style x:Key="ShellBaseStyle" TargetType="Element">
+            <Setter Property="Shell.BackgroundColor" Value="{StaticResource PrimaryColor}" />
+            <Setter Property="Shell.TabBarBackgroundColor" Value="{StaticResource Primary2Color}" />
+            <Setter Property="Shell.TabBarTitleColor" Value="{StaticResource AppShellTabBarTitleColor}" />
+            <Setter Property="Shell.TabBarUnselectedColor" Value="{StaticResource AppShellTabBarUnselectedColor}" />
+            <Setter Property="Shell.ForegroundColor" Value="Black" />
+            <Setter Property="Shell.TitleColor" Value="Black" />
+            <Setter Property="Shell.DisabledColor" Value="#4D4D4D" />
+            <Setter Property="Shell.UnselectedColor" Value="#4D4D4D" />
         </Style>
         <ResourceDictionary>
             <viewmodelLocator:ViewModelLocator x:Key="Locator" />

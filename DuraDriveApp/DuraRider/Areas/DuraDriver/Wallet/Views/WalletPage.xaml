@@ -1,0 +1,233 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DuraRider.Areas.DuraDriver.Wallet.Views.WalletPage"   xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    x:Name="thispage"
+    BindingContext="{Binding WalletPage, Source={StaticResource Locator}}">
+    <ContentPage.Content>
+        <Grid RowDefinitions="Auto,*">
+            <yummy:PancakeView
+                        Padding="20"
+                        BackgroundColor="#211E66"
+                        CornerRadius="0,0,10,10"
+                        VerticalOptions="StartAndExpand">
+                <StackLayout>
+                    <Grid>
+                        <StackLayout
+                                    HorizontalOptions="StartAndExpand"
+                                    InputTransparent="False"
+                                    Orientation="Horizontal"
+                                    Spacing="5">
+                            <Label
+                                        FontFamily="ProximaNovaSemibold"
+                                        FontSize="16"
+                                        HorizontalOptions="StartAndExpand"
+                                        Text="Hi, John" />
+                            <Image
+                                        HeightRequest="15"
+                                        HorizontalOptions="StartAndExpand"
+                                        InputTransparent="True"
+                                        Rotation="{Binding ArrowImageRotation}"
+                                        Source="backarrowwhite"
+                                        WidthRequest="15" />
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding WalletExpanderViewCommand}" />
+                            </StackLayout.GestureRecognizers>
+                        </StackLayout>
+                        <StackLayout
+                                    Grid.Column="1"
+                                    HorizontalOptions="EndAndExpand"
+                                    Orientation="Horizontal">
+                            <ImageButton
+                                        Margin="10,0"
+                                        Command="{Binding NotificationCommand}"
+                                        HeightRequest="22"
+                                        Source="notification"
+                                        WidthRequest="22" />
+                            <Image
+                                        HeightRequest="22"
+                                        HorizontalOptions="Center"
+                                        InputTransparent="True"
+                                        Source="help"
+                                        VerticalOptions="Center"
+                                        WidthRequest="22" />
+                        </StackLayout>
+                    </Grid>
+                    <StackLayout IsVisible="{Binding StkIsVisisble}">
+                        <Grid Margin="0,10">
+                            <Label
+                                        HorizontalOptions="StartAndExpand"
+                                        Text="Dauty Status"
+                                        VerticalOptions="CenterAndExpand" />
+                            <Switch
+                                        HorizontalOptions="EndAndExpand"
+                                        IsToggled="True"
+                                        OnColor="WhiteSmoke"
+                                        ThumbColor="Green" />
+                        </Grid>
+                        <Grid>
+                            <Label
+                                        HorizontalOptions="StartAndExpand"
+                                        Text="Auto Accept order"
+                                        VerticalOptions="CenterAndExpand" />
+                            <Switch
+                                        HorizontalOptions="EndAndExpand"
+                                        IsToggled="False"
+                                        OnColor="WhiteSmoke"
+                                        ThumbColor="Green" />
+                        </Grid>
+                    </StackLayout>
+                </StackLayout>
+            </yummy:PancakeView>
+
+            <ScrollView Grid.Row="1" VerticalScrollBarVisibility="Never">
+                <StackLayout Padding="15,15,15,0">
+                    <Grid>
+                        <Image Source="wallet_bg" />
+                        <Grid Padding="15">
+                            <StackLayout>
+                                <StackLayout VerticalOptions="StartAndExpand">
+                                    <Label
+                                                FontFamily="ProximaNovaSemibold"
+                                                FontSize="10"
+                                                Text="E-Wallet Balance" />
+                                    <Label
+                                                FontFamily="ProximaNovaSemibold"
+                                                FontSize="22"
+                                                Text="₱ 500.00" />
+                                </StackLayout>
+                                <StackLayout VerticalOptions="EndAndExpand">
+                                    <Label
+                                                FontFamily="ProximaNovaSemibold"
+                                                FontSize="10"
+                                                Text="Cash Wallet" />
+                                    <Label
+                                                FontFamily="ProximaNovaSemibold"
+                                                FontSize="22"
+                                                Text="₱ 2500.00" />
+                                </StackLayout>
+                            </StackLayout>
+                            <StackLayout Grid.Column="1" Padding="8,0">
+                                <Button
+                                            Margin="0,10,0,0"
+                                            Command="{Binding TopUpCommand}"
+                                            FontSize="15"
+                                            HeightRequest="42"
+                                            Text="Top Up" />
+                                <Button
+                                            Command="{Binding RequestCashoutCommand}"
+                                            FontSize="15"
+                                            HeightRequest="42"
+                                            Text="Request Cashout"
+                                            VerticalOptions="EndAndExpand" />
+                            </StackLayout>
+                        </Grid>
+                    </Grid>
+                    <StackLayout Padding="0,10" Orientation="Horizontal">
+                        <Label
+                                    FontFamily="ProximaNovaBold"
+                                    Text="Online Transactions"
+                                    TextColor="#C7C6D8" />
+
+                        <Frame
+                                    Padding="5,0"
+                                    BackgroundColor="#211E66"
+                                    BorderColor="#211E66"
+                                    CornerRadius="5"
+                                    HeightRequest="40"
+                                    HorizontalOptions="EndAndExpand"
+                                    VerticalOptions="CenterAndExpand"
+                                    WidthRequest="120">
+                            <Grid InputTransparent="False">
+                                <Picker
+                                            Title="All(26)"
+                                            HorizontalOptions="Start"
+                                            ItemDisplayBinding="{Binding .}"
+                                            ItemsSource="{Binding PaymentList}"
+                                            SelectedItem="{Binding PaymentSelected}"
+                                            TextColor="White"
+                                            TitleColor="White"
+                                            WidthRequest="100">
+                                    <Picker.Effects>
+                                        <xct:RemoveBorderEffect />
+                                    </Picker.Effects>
+                                </Picker>
+                                <Image
+                                            HeightRequest="18"
+                                            HorizontalOptions="EndAndExpand"
+                                            InputTransparent="True"
+                                            Source="filled_dropdownwhite"
+                                            VerticalOptions="Center"
+                                            WidthRequest="18" />
+
+                            </Grid>
+                        </Frame>
+                        <!--<material:MaterialMenuButton
+                                        ButtonType="Text"
+                                        Choices="{Binding Actions}"
+                                        Command="{Binding MaterialMenuButton_MenuSelected}"
+                                        CornerRadius="24"
+                                        TintColor="Red" />-->
+                    </StackLayout>
+
+                    <StackLayout>
+                        <CollectionView
+                                    Margin="0,5"
+                                    ItemsSource="{Binding EWalletOfList}"
+                                    VerticalOptions="FillAndExpand">
+                            <CollectionView.ItemsLayout>
+                                <GridItemsLayout Orientation="Vertical" VerticalItemSpacing="20" />
+                            </CollectionView.ItemsLayout>
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <Frame
+                                                BackgroundColor="#e6e6ff"
+                                                BorderColor="#e6e6ff"
+                                                CornerRadius="5">
+                                        <StackLayout Orientation="Horizontal">
+                                            <StackLayout.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding Path=BindingContext.EWalletCommand, Source={x:Reference thispage}}" CommandParameter="{Binding .}" />
+                                            </StackLayout.GestureRecognizers>
+                                            <StackLayout HorizontalOptions="StartAndExpand">
+                                                <Label
+                                                            FontFamily="ProximaNovaRegular"
+                                                            FontSize="12"
+                                                            Text="Order ID"
+                                                            TextColor="#000000"
+                                                            VerticalOptions="CenterAndExpand" />
+
+                                                <Label
+                                                            FontFamily="ProximaNovaBold"
+                                                            FontSize="14"
+                                                            Text="{Binding TitleName}"
+                                                            TextColor="#000000"
+                                                            VerticalOptions="CenterAndExpand" />
+                                            </StackLayout>
+                                            <StackLayout Grid.Column="1" HorizontalOptions="EndAndExpand">
+                                                <Label
+                                                            FontFamily="ProximaNovaRegular"
+                                                            FontSize="12"
+                                                            Text="05 Feb 2021"
+                                                            TextColor="#000000"
+                                                            VerticalOptions="CenterAndExpand" />
+
+                                                <Label
+                                                            FontFamily="ProximaNovaBold"
+                                                            FontSize="14"
+                                                            Text="₱ 30.00"
+                                                            TextColor="#000000"
+                                                            VerticalOptions="CenterAndExpand" />
+                                            </StackLayout>
+                                        </StackLayout>
+                                    </Frame>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </StackLayout>
+
+                </StackLayout>
+            </ScrollView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

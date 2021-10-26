@@ -58,7 +58,9 @@ namespace DuraRider.Areas.DuraDriver.Home.Popup.Views
         private async void YesCancel_Clicked(object sender, EventArgs e)
         {
             Dismiss(null);
-           // await RichNavigation.PushAsync(new HomePage(0), typeof(HomeXctTab));
+            // await RichNavigation.PushAsync(new HomePage(0), typeof(HomeXctTab));
+            //await _navigationService.NavigateToAsync<AppShellViewModel>();
+            //await App.Locator.HomePage.InitilizeData();
         }
 
         private async void YesReject_Clicked(object sender, EventArgs e)

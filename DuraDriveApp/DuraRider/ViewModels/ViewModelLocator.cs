@@ -2,11 +2,12 @@
 using DuraRider.Areas.Common.ViewModels;
 using DuraRider.Services;
 using DuraRider.Areas.Common.PopupView.ViewModel;
-using DuraRider.Areas.DuraDriver.Home.ViewModels; 
-using DuraRider.Areas.DuraDriver.Home.Popup.ViewModels;
+using DuraRider.Areas.DuraDriver.Home.ViewModels;  
 using DuraRider.Areas.DuraDriver.Wallet.Popup.ViewModels;
 using DuraRider.Areas.DuraDriver.Wallet.ViewModels;
 using DuraRider.Areas.DuraDriver.Profile.ViewModels;
+using DuraRider.Areas.DuraDriver.Orders.ViewModels;
+using DuraRider.Areas.DuraDriver.Home.Popup.ViewModels;
 
 namespace DuraRider.ViewModels
 {
@@ -30,10 +31,14 @@ namespace DuraRider.ViewModels
         public DocumentPageViewModel DocumentPage => FreshIOC.Container.Resolve<DocumentPageViewModel>();
         public CameraGalleryPopupPageViewModel CameraGalleryPopupPage => FreshIOC.Container.Resolve<CameraGalleryPopupPageViewModel>();
         public GCashAccountDetailsPageViewModel GCashAccountDetailsPage => FreshIOC.Container.Resolve<GCashAccountDetailsPageViewModel>();
-        public ProfilePageViewModel ProfilePage => FreshIOC.Container.Resolve<ProfilePageViewModel>();
+        public ProfilePicPageViewModel ProfilePicPage => FreshIOC.Container.Resolve<ProfilePicPageViewModel>();
         public DuraBageServicePageViewModel DuraBageServicePage => FreshIOC.Container.Resolve<DuraBageServicePageViewModel>();
         public HomePageViewModel HomePage => FreshIOC.Container.Resolve<HomePageViewModel>();
+        public OrderPageViewModel OrderPage => FreshIOC.Container.Resolve<OrderPageViewModel>();
+        public WalletPageViewModel WalletPage => FreshIOC.Container.Resolve<WalletPageViewModel>();
+        public ProfilePageViewModel ProfilePage => FreshIOC.Container.Resolve<ProfilePageViewModel>();
         public NotificationPageViewModel NotificationPage => FreshIOC.Container.Resolve<NotificationPageViewModel>();
+        public DuraExpressPopupViewModel DuraExpressPopup => FreshIOC.Container.Resolve<DuraExpressPopupViewModel>();
         public VerifyItemPageViewModel VerifyItemPage => FreshIOC.Container.Resolve<VerifyItemPageViewModel>();
         public ReachedLocationPageViewModel ReachedLocationPage => FreshIOC.Container.Resolve<ReachedLocationPageViewModel>();
         public ReachLocationPopUpViewModel ReachLocationPopUp => FreshIOC.Container.Resolve<ReachLocationPopUpViewModel>();

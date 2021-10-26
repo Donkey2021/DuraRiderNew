@@ -29,12 +29,10 @@ namespace DuraRider.Areas.Common.ViewModels
             }
         }
         private async Task NavigateToHomeCommandExecute()
-        { 
-            if (_navigationService.GetCurrentPageViewModel() != typeof(HomePageViewModel))
-            {
-                await _navigationService.NavigateToAsync<HomePageViewModel>();
-                await App.Locator.SignUpPage.InitilizeData();
-            }
+        {  
+                await _navigationService.NavigateToAsync<AppShellViewModel>(); 
+                await App.Locator.HomePage.InitilizeData();
+            
         }
 
         public async Task InitilizeData()

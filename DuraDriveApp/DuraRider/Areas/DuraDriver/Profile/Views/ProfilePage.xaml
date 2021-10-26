@@ -1,0 +1,150 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DuraRider.Areas.DuraDriver.Profile.Views.ProfilePage"   xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    x:Name="thispage"
+    BindingContext="{Binding ProfilePage, Source={StaticResource Locator}}">
+    <ContentPage.Content>
+        <Grid RowDefinitions="115,*">
+            <Grid>
+                <Grid>
+                    <yummy:PancakeView
+                                BackgroundColor="#211E66"
+                                CornerRadius="0,0,10,10"
+                                HeightRequest="50"
+                                VerticalOptions="StartAndExpand" />
+                </Grid>
+                <StackLayout
+                            Margin="12,0"
+                            HorizontalOptions="StartAndExpand"
+                            Orientation="Horizontal"
+                            VerticalOptions="CenterAndExpand">
+                    <xct:AvatarView
+                                Margin="0,20,0,0"
+                                FontSize="14"
+                                Size="70"
+                                Source="profile_active"
+                                Text="Profile Name"
+                                TextColor="White"
+                                Color="Gray" />
+                    <StackLayout Spacing="2">
+                        <Label
+                                    FontSize="16"
+                                    HorizontalOptions="Start"
+                                    Text="John Doe"
+                                    VerticalOptions="EndAndExpand" />
+                        <Label
+                                    HorizontalOptions="Start"
+                                    Text="DD94874"
+                                    VerticalOptions="StartAndExpand" />
+
+                    </StackLayout>
+                </StackLayout>
+
+                <StackLayout
+                            Margin="0,15,15,0"
+                            HorizontalOptions="EndAndExpand"
+                            Orientation="Horizontal"
+                            VerticalOptions="CenterAndExpand">
+                    <Label
+                                HorizontalOptions="EndAndExpand"
+                                Text="View Profile"
+                                TextColor="White"
+                                VerticalOptions="Center" />
+                    <Image
+                                HeightRequest="15"
+                                HorizontalOptions="Start"
+                                Source="backarrowwhite"
+                                VerticalOptions="Center"
+                                WidthRequest="15" />
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ViewProfileCommand}" />
+                    </StackLayout.GestureRecognizers>
+                </StackLayout>
+                <Button
+                            Margin="0,0,12,0"
+                            Padding="15,0"
+                            BackgroundColor=" #f0a8a8"
+                            BorderColor="#f0a8a8"
+                            CornerRadius="1"
+                            FontSize="10"
+                            HeightRequest="25"
+                            HorizontalOptions="Center"
+                            Text="Your account is being reviewed"
+                            TextColor="#D72625"
+                            VerticalOptions="EndAndExpand" />
+
+            </Grid>
+            <ScrollView Grid.Row="1" VerticalScrollBarVisibility="Never">
+                <StackLayout Padding="20,12">
+                    <CollectionView
+                                HeightRequest="240"
+                                ItemsSource="{Binding ProfileItems}"
+                                VerticalOptions="FillAndExpand">
+                        <CollectionView.ItemsLayout>
+                            <GridItemsLayout Orientation="Vertical" VerticalItemSpacing="12" />
+                        </CollectionView.ItemsLayout>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Frame
+                                            BackgroundColor="#EBE9FF"
+                                            BorderColor="#EBE9FF"
+                                            CornerRadius="5">
+                                    <Frame.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding Path=BindingContext.ProfileTabCommand, Source={x:Reference thispage}}" CommandParameter="{Binding .}" />
+                                    </Frame.GestureRecognizers>
+                                    <Grid>
+                                        <Image
+                                                    HeightRequest="20"
+                                                    HorizontalOptions="StartAndExpand"
+                                                    Source="{Binding Images}"
+                                                    VerticalOptions="CenterAndExpand"
+                                                    WidthRequest="20" />
+
+                                        <Label
+                                                    Margin="35,0,0,0"
+                                                    FontSize="14"
+                                                    HorizontalOptions="StartAndExpand"
+                                                    HorizontalTextAlignment="Start"
+                                                    Text="{Binding TitleName}"
+                                                    TextColor="#3B3B3B"
+                                                    VerticalOptions="CenterAndExpand" />
+                                        <Image
+                                                    HeightRequest="15"
+                                                    HorizontalOptions="EndAndExpand"
+                                                    Source="backarrowBlue"
+                                                    VerticalOptions="CenterAndExpand"
+                                                    WidthRequest="15" />
+
+                                    </Grid>
+                                </Frame>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+
+                    <StackLayout
+                                Padding="0,0,0,30"
+                                HorizontalOptions="CenterAndExpand"
+                                Orientation="Horizontal">
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding LogOutCommand}" />
+                        </StackLayout.GestureRecognizers>
+                        <Image
+                                    HeightRequest="20"
+                                    Source="logout"
+                                    VerticalOptions="CenterAndExpand"
+                                    WidthRequest="20" />
+
+                        <Label
+                                    FontSize="15"
+                                    Text="Sign Out"
+                                    TextColor="#3B3B3B"
+                                    VerticalOptions="CenterAndExpand" />
+
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

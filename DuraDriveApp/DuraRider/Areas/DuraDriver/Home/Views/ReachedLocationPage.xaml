@@ -6,7 +6,8 @@
     xmlns:Yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
     xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
     BackgroundImageSource="map_two"
-    BindingContext="{Binding ReachedLocationPage, Source={StaticResource Locator}}">
+    BindingContext="{Binding ReachedLocationPage, Source={StaticResource Locator}}"
+    Shell.TabBarIsVisible="False">
     <ContentPage.Content>
         <Grid RowDefinitions="60,*">
             <Yummy:PancakeView

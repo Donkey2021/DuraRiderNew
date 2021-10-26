@@ -15,7 +15,7 @@ using Xamarin.Forms;
 
 namespace DuraRider.Areas.Common.ViewModels
 {
-    public class ProfilePageViewModel : AppBaseViewModel
+    public class ProfilePicPageViewModel : AppBaseViewModel
     {
         byte[] imageByteArray;
         private INavigationService _navigationService;
@@ -42,7 +42,7 @@ namespace DuraRider.Areas.Common.ViewModels
                 OnPropertyChanged(nameof(Profile_Image));
             }
         }
-        public ProfilePageViewModel(INavigationService navigationService, IAuthenticationService authenticationService)
+        public ProfilePicPageViewModel(INavigationService navigationService, IAuthenticationService authenticationService)
         {
             _navigationService = navigationService;
             _authenticationService = authenticationService;

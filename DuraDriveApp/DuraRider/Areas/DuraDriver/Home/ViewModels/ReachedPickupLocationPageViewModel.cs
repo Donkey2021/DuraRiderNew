@@ -13,6 +13,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Xamarin.CommunityToolkit.Extensions;
 using Xamarin.Forms;
 
 namespace DuraRider.Areas.DuraDriver.Home.ViewModels
@@ -22,7 +23,9 @@ namespace DuraRider.Areas.DuraDriver.Home.ViewModels
         #region localVariable
         private INavigationService _navigationService;
         private IAuthenticationService _authenticationService;
+        public IAsyncCommand CancelVerifyItemsCommand { get; set; }
         public IAsyncCommand VerifyItemsCommand { get; set; }
+        public IAsyncCommand DeliveryNotDoneCommand { get; set; }
         public IAsyncCommand CollectPaymentCommand { get; set; }
         #endregion 
  
@@ -42,11 +45,13 @@ namespace DuraRider.Areas.DuraDriver.Home.ViewModels
         {
             _navigationService = navigationService;
             _authenticationService = authenticationService;
+            CancelVerifyItemsCommand = new AsyncCommand(CancelVerifyItemsExecute);
             VerifyItemsCommand = new AsyncCommand(VerifyItemsCommandExecute);
+            DeliveryNotDoneCommand = new AsyncCommand(DeliveryNotDoneCommandExecute);
             CollectPaymentCommand = new AsyncCommand(CollectPaymentCommandExecute);
         }
         #region Method 
-        private async Task VerifyItemsCommandExecute()
+        private async Task CancelVerifyItemsExecute()
         {
             if (!CheckConnection())
             {
@@ -57,9 +62,47 @@ namespace DuraRider.Areas.DuraDriver.Home.ViewModels
             {
                 if (_navigationService.GetCurrentPageViewModel() != typeof(VerifyItemPageViewModel))
                 {
-                    //await RichNavigation.PushAsync(new ReachedLocationPage("RechedDrop"), typeof(ReachedLocationPage));
+                     Navigation.ShowPopup(new DeclinePopUp("CancelPopup"));
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+        private async Task VerifyItemsCommandExecute()
+        {
+            if (!CheckConnection())
+            {
+                ShowToast(CommonMessages.NoInternet);
+                return;
+            }
+            try
+            {
+                if (_navigationService.GetCurrentPageViewModel() != typeof(VerifyItemPageViewModel))
+                { 
                     await _navigationService.NavigateToAsync<VerifyItemPageViewModel>();
-                    //await App.Locator.SignUpPage.InitilizeData("RechedDrop");
+                    //await App.Locator.VerifyItemPage.InitilizeData();
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+        private async Task DeliveryNotDoneCommandExecute()
+        {
+            if (!CheckConnection())
+            {
+                ShowToast(CommonMessages.NoInternet);
+                return;
+            }
+            try
+            {
+                if (_navigationService.GetCurrentPageViewModel() != typeof(VerifyItemPageViewModel))
+                {
+                    Navigation.ShowPopup(new DeclinePopUp("RejectPopup"));
+                    //await App.Locator.VerifyItemPage.InitilizeData();
                 }
             }
             catch (Exception ex)

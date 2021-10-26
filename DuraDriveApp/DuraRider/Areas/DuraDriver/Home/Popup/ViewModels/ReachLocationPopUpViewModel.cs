@@ -36,10 +36,11 @@ namespace DuraRider.Areas.DuraDriver.Home.Popup.ViewModels
             }
             try
             {
-                if (_navigationService.GetCurrentPageViewModel() != typeof(VerifyItemPageViewModel))
+                if (_navigationService.GetCurrentPageViewModel() != typeof(ReachedPickupLocationPageViewModel))
                 {
-                    await _navigationService.ClosePopupsAsync();
-                    await _navigationService.NavigateToAsync<VerifyItemPageViewModel>(); 
+                     await _navigationService.ClosePopupsAsync();
+                     await _navigationService.NavigateToAsync<ReachedPickupLocationPageViewModel>();
+                    await App.Locator.ReachedPickupLocationPage.InitilizeData("VerifyItems");
                 }
             }
             catch (Exception ex)

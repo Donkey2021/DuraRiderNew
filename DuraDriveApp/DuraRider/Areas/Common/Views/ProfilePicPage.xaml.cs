@@ -5,9 +5,9 @@ using Xamarin.Forms;
 
 namespace DuraRider.Areas.Common.Views
 {
-    public partial class ProfilePage : ContentPage
+    public partial class ProfilePicPage : ContentPage
     {
-        public ProfilePage()
+        public ProfilePicPage()
         {
             InitializeComponent();
         }

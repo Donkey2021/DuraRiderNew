@@ -5,7 +5,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:Yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
     xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
-    BackgroundImageSource="map_two"
+    BackgroundImageSource="map_two" Shell.TabBarIsVisible="False"
     BindingContext="{Binding ReachedPickupLocationPage, Source={StaticResource Locator}}">
     <ContentPage.Content>
         <Grid RowDefinitions="60,*">
@@ -228,7 +228,7 @@
                                 x:Name="Cancel"
                                 BackgroundColor="Transparent"
                                 BorderColor="#D72625"
-                                Clicked="Cancel_Clicked"
+                                Command="{Binding CancelVerifyItemsCommand}"
                                 FontSize="14"
                                 Text="Cancel"
                                 TextColor="#D72625" />
@@ -377,7 +377,7 @@
                                 x:Name="DeliveryNotDone"
                                 BackgroundColor="Transparent"
                                 BorderColor="#D72625"
-                                Clicked="DeliveryNotDone_Clicked"
+                                Command="{Binding DeliveryNotDoneCommand}"
                                 FontSize="14"
                                 Text="Delivery Not Done"
                                 TextColor="#D72625" />

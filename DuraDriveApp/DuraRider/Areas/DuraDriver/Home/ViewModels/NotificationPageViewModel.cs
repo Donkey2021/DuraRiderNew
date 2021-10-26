@@ -52,6 +52,11 @@ namespace DuraRider.Areas.DuraDriver.Home.ViewModels
             }
         }
         #endregion
+
+        public async Task InitilizeData()
+        {
+
+        }
         public class NotificationModel
         {
             public string Images { get; set; }

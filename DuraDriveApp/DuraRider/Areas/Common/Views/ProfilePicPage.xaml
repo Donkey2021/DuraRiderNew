@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
 <ContentPage
-    x:Class="DuraRider.Areas.Common.Views.ProfilePage"
+    x:Class="DuraRider.Areas.Common.Views.ProfilePicPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:Yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
     xmlns:control="clr-namespace:DuraRider.Controls"
     xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
     BackgroundColor="#211E66"
-    BindingContext="{Binding ProfilePage, Source={StaticResource Locator}}"
+    BindingContext="{Binding ProfilePicPage, Source={StaticResource Locator}}"
     NavigationPage.HasBackButton="True"
     NavigationPage.HasNavigationBar="True">
     <NavigationPage.TitleView>
