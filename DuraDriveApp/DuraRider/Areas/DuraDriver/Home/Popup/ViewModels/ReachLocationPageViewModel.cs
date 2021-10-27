@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace DuraRider.Areas.DuraDriver.Home.Popup.ViewModels
 {
-   public class ReachLocationPopUpViewModel : AppBaseViewModel
+   public class ReachLocationPageViewModel : AppBaseViewModel
     {
         #region localVariable
         private INavigationService _navigationService;
@@ -20,7 +20,7 @@ namespace DuraRider.Areas.DuraDriver.Home.Popup.ViewModels
         public IAsyncCommand ReachedPickupLocationCommand { get; set; }
         #endregion
 
-        public ReachLocationPopUpViewModel(INavigationService navigationService, IAuthenticationService authenticationService)
+        public ReachLocationPageViewModel(INavigationService navigationService, IAuthenticationService authenticationService)
         {
             _navigationService = navigationService;
             _authenticationService = authenticationService;
@@ -37,8 +37,7 @@ namespace DuraRider.Areas.DuraDriver.Home.Popup.ViewModels
             try
             {
                 if (_navigationService.GetCurrentPageViewModel() != typeof(ReachedPickupLocationPageViewModel))
-                {
-                     await _navigationService.ClosePopupsAsync();
+                { 
                      await _navigationService.NavigateToAsync<ReachedPickupLocationPageViewModel>();
                     await App.Locator.ReachedPickupLocationPage.InitilizeData("VerifyItems");
                 }

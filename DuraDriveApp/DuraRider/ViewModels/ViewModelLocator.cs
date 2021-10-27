@@ -41,14 +41,14 @@ namespace DuraRider.ViewModels
         public DuraExpressPopupViewModel DuraExpressPopup => FreshIOC.Container.Resolve<DuraExpressPopupViewModel>();
         public VerifyItemPageViewModel VerifyItemPage => FreshIOC.Container.Resolve<VerifyItemPageViewModel>();
         public ReachedLocationPageViewModel ReachedLocationPage => FreshIOC.Container.Resolve<ReachedLocationPageViewModel>();
-        public ReachLocationPopUpViewModel ReachLocationPopUp => FreshIOC.Container.Resolve<ReachLocationPopUpViewModel>();
+        public ReachLocationPageViewModel ReachLocationPage => FreshIOC.Container.Resolve<ReachLocationPageViewModel>();
         public ReachedPickupLocationPageViewModel ReachedPickupLocationPage => FreshIOC.Container.Resolve<ReachedPickupLocationPageViewModel>();
         public PaymentCollectedPopupViewModel PaymentCollectedPopup => FreshIOC.Container.Resolve<PaymentCollectedPopupViewModel>();
         public ReviewPageViewModel ReviewPage => FreshIOC.Container.Resolve<ReviewPageViewModel>();
         public AmountPopupViewModel AmountPopup => FreshIOC.Container.Resolve<AmountPopupViewModel>();
         public GCashPageViewModel GCashPage => FreshIOC.Container.Resolve<GCashPageViewModel>();
         public SuccessfulPageViewModel SuccessfulPage => FreshIOC.Container.Resolve<SuccessfulPageViewModel>();
-        public AboutusPageViewModel AboutPageus => FreshIOC.Container.Resolve<AboutusPageViewModel>();
+        public AboutusPageViewModel AboutusPage => FreshIOC.Container.Resolve<AboutusPageViewModel>();
         public HelpCenterPageViewModel HelpCenterPage => FreshIOC.Container.Resolve<HelpCenterPageViewModel>();
         public MyRatingPageViewModel MyRatingPage => FreshIOC.Container.Resolve<MyRatingPageViewModel>();
         public PrivacyPolicyPageViewModel PrivacyPolicyPage => FreshIOC.Container.Resolve<PrivacyPolicyPageViewModel>();

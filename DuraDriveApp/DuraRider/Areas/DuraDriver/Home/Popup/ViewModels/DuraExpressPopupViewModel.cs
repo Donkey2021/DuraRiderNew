@@ -40,10 +40,10 @@ namespace DuraRider.Areas.DuraDriver.Home.Popup.ViewModels
             }
             try
             {
-                if (_navigationService.GetCurrentPageViewModel() != typeof(ReachLocationPopUp))
+                if (_navigationService.GetCurrentPageViewModel() != typeof(ReachLocationPageViewModel))
                 {
                     await Navigation.PopPopupAsync();
-                    await Navigation.PushPopupAsync(new TransparentModel(new ReachLocationPopUp()));
+                    await _navigationService.NavigateToAsync<ReachLocationPageViewModel>();
                 }
             }
             catch (Exception ex)

@@ -20,7 +20,7 @@ namespace DuraRider.Areas.DuraDriver.Profile.ViewModels
         private INavigationService _navigationService;
         private IUserCoreService _userCoreService;
 
-        public IAsyncCommand DoneCommand { get; set; }
+        public IAsyncCommand ViewProfileCommand { get; set; }
         public IAsyncCommand<Object> ProfileTabCommand { get; set; }
         #endregion
 
@@ -28,11 +28,11 @@ namespace DuraRider.Areas.DuraDriver.Profile.ViewModels
         {
             _navigationService = navigationService;
             _userCoreService = userCoreService;
-            DoneCommand = new AsyncCommand(DoneCommandExecute);
+            ViewProfileCommand = new AsyncCommand(ViewProfileCommandExecute);
             ProfileTabCommand = new AsyncCommand<Object>(ProfileTabCommandExecute);
         }
         #region Method 
-        private async Task DoneCommandExecute()
+        private async Task ViewProfileCommandExecute()
         {
             if (!CheckConnection())
             {
@@ -41,11 +41,11 @@ namespace DuraRider.Areas.DuraDriver.Profile.ViewModels
             }
             try
             {
-                //if (_navigationService.GetCurrentPageViewModel() != typeof(PaymentSuccessPage))
-                //{
-                //    await _navigationService.NavigateToAsync<PaymentSuccessPage>();
-                //    await App.Locator.SignUpPage.InitilizeData();
-                //}
+                if (_navigationService.GetCurrentPageViewModel() != typeof(ProfileTabPageViewModel))
+                {
+                    await _navigationService.NavigateToAsync<ProfileTabPageViewModel>();
+                    //await App.Locator.SignUpPage.InitilizeData();
+                }
             }
             catch (Exception ex)
             {
@@ -65,12 +65,7 @@ namespace DuraRider.Areas.DuraDriver.Profile.ViewModels
             new ProfileModel {id=6,Images="Aboutus", TitleName = "About Us" },
             new ProfileModel {id=7,Images="privacy_policy", TitleName = "Privacy Policy" },
             new ProfileModel {id=8,Images="TermsCondition", TitleName = "Terms & Conditions" },
-        };
-
-        //public ICommand ViewProfileCommand => new Command(async (obj) =>
-        //{
-        //    await RichNavigation.PushAsync(new ProfileTabPage(), typeof(ProfileTabPage));
-        //});
+        }; 
 
         //public ICommand LogOutCommand => new Xamarin.Forms.Command(async (obj) =>
         //{

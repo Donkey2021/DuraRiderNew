@@ -61,7 +61,7 @@ namespace DuraRider.Bootstrap
             FreshIOC.Container.Register<NotificationPageViewModel, NotificationPageViewModel>().AsSingleton();
             FreshIOC.Container.Register<DuraExpressPopupViewModel, DuraExpressPopupViewModel>().AsSingleton();
             FreshIOC.Container.Register<VerifyItemPageViewModel, VerifyItemPageViewModel>().AsSingleton();
-            FreshIOC.Container.Register<ReachLocationPopUpViewModel, ReachLocationPopUpViewModel>().AsSingleton();
+            FreshIOC.Container.Register<ReachLocationPageViewModel, ReachLocationPageViewModel>().AsSingleton();
             FreshIOC.Container.Register<ReachedLocationPageViewModel, ReachedLocationPageViewModel>().AsSingleton();
             FreshIOC.Container.Register<ReachedPickupLocationPageViewModel, ReachedPickupLocationPageViewModel>().AsSingleton();
             FreshIOC.Container.Register<PaymentCollectedPopupViewModel, PaymentCollectedPopupViewModel>().AsSingleton();

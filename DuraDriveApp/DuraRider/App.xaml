@@ -10,8 +10,8 @@
         <!--  Colors  -->
         <Color x:Key="PrimaryColor">White</Color>
         <Color x:Key="Primary2Color">#FFFFFF</Color>
-        <Color x:Key="AppShellTabBarUnselectedColor">#4D4D4D</Color>
-        <Color x:Key="AppShellTabBarTitleColor">#A69371</Color>
+        <Color x:Key="AppShellTabBarUnselectedColor">#B0AFC9</Color>
+        <Color x:Key="AppShellTabBarTitleColor">#211E66</Color>
 
         <Color x:Key="TextColor">#FAC800</Color>
         <Color x:Key="Text2Color">#5C5C5C</Color>

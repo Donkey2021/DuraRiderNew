@@ -27,13 +27,16 @@ namespace DuraRider
 
             //routes.Add(AppConst.HomeNavPage, typeof(HomePage));
             //routes.Add(AppConst.BrowserPageNavUrl, typeof(BrowseAdventurePage));
-            //routes.Add(AppConst.SignUpPageNavUrl, typeof(SignUpPage));
-            //routes.Add(AppConst.SearchResultPageNavUrl, typeof(SearchResultPage));
-            //routes.Add(AppConst.ChangeEmailPageNavUrl, typeof(ChangeEmailPage));
+            //routes.Add(AppConst.SignUpPageNavUrl, typeof(SignUpPage)); 
             foreach (var item in routes)
             {
                 Routing.RegisterRoute(item.Key, item.Value);
             }
+        }
+
+        protected override void OnTabIndexPropertyChanged(int oldValue, int newValue)
+        {
+            base.OnTabIndexPropertyChanged(oldValue, newValue);
         }
     }
 }

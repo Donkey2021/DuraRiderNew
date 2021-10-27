@@ -31,6 +31,12 @@ namespace DuraRider.Areas.DuraDriver.Home.ViewModels
             get { return _arrowImageRotation; }
             set { _arrowImageRotation = value; OnPropertyChanged(); }
         }
+        private int _tripImageRotation;
+        public int TripImageRotation
+        {
+            get { return _tripImageRotation; }
+            set { _tripImageRotation = value; OnPropertyChanged(); }
+        }
         private bool _stkIsVisisble;
         public bool StkIsVisisble
         {
@@ -51,6 +57,7 @@ namespace DuraRider.Areas.DuraDriver.Home.ViewModels
             HomeIsVisible = false;
             StkIsVisisble = false;
             ArrowImageRotation = 90;
+            TripImageRotation = -90;
         }
 
         #region Method    
@@ -102,10 +109,12 @@ namespace DuraRider.Areas.DuraDriver.Home.ViewModels
             if (HomeIsVisible)
             {
                 HomeIsVisible = false;
+                TripImageRotation = -90;
             }
             else
             {
                 HomeIsVisible = true;
+                TripImageRotation = 90;
             }
         }); 
         public ObservableCollection<OrderModel> HomeOfList { get; set; } = new ObservableCollection<OrderModel>()

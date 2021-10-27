@@ -17,22 +17,22 @@
     mc:Ignorable="d">
 
     <TabBar x:Name="mainTabBar">
-        <Tab Title="Home" Icon="home.png">
+        <Tab Title="Home" Icon="home_active.png">
             <ShellContent>
                 <Page:HomePage />
             </ShellContent>
         </Tab>
-        <Tab Title="Order" Icon="order.png">
+        <Tab Title="Order" Icon="order_active.png">
             <ShellContent>
                 <Page1:OrderPage />
             </ShellContent>
         </Tab>
-        <Tab Title="E-Wallet" Icon="wallet.png">
+        <Tab Title="E-Wallet" Icon="wallet_active.png">
             <ShellContent>
                 <Page2:WalletPage />
             </ShellContent>
         </Tab>
-        <Tab Title="Profile" Icon="profile.png">
+        <Tab Title="Profile" Icon="profile_active.png">
             <ShellContent>
                 <Page3:ProfilePage />
             </ShellContent>

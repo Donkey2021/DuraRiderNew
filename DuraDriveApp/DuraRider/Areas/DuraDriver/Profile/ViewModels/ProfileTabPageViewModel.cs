@@ -230,27 +230,12 @@ namespace DuraRider.Areas.DuraDriver.Profile.ViewModels
         {
             get { return _mngDetailText; }
             set { _mngDetailText = value; OnPropertyChanged(nameof(MngDetailText)); }
-        }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        } 
 
         public ProfileTabPageViewModel()
         {
             PersonalDetailsIsVisible = true;
-            PersonalDetailsEditButtonIsVisible = true;
-            
+            PersonalDetailsEditButtonIsVisible = true;            
             OfficialDetailsIsVisible = false;
             PaymentDetailsIsVisible = false;
             PersonalDetailsTextColor = Color.White;

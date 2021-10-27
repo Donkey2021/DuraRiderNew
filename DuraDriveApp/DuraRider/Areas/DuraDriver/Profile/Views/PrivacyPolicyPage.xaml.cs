@@ -10,9 +10,9 @@ using Xamarin.Forms.Xaml;
 namespace DuraRider.Areas.DuraDriver.Profile.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class PrivacyPolicy : ContentPage
+    public partial class PrivacyPolicyPage : ContentPage
     {
-        public PrivacyPolicy()
+        public PrivacyPolicyPage()
         {
             InitializeComponent(); 
         }

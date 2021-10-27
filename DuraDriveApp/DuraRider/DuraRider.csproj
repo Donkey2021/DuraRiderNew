@@ -101,6 +101,12 @@
     <Compile Update="Areas\DuraDriver\Home\Popup\Views\DuraExpressPopup.xaml.cs">
       <DependentUpon>DuraExpressPopup.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Areas\DuraDriver\Home\Popup\Views\ReachLocationPage.xaml.cs">
+      <DependentUpon>ReachLocationPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Areas\DuraDriver\Profile\Views\PrivacyPolicyPage.xaml.cs">
+      <DependentUpon>PrivacyPolicyPage.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Update="Areas\Common\PopupView\View\SuccessfullyPopup.xaml">
@@ -115,7 +121,7 @@
     <EmbeddedResource Update="Areas\DuraDriver\Home\Popup\Views\PaymentCollectedPopup.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Areas\DuraDriver\Home\Popup\Views\ReachLocationPopUp.xaml">
+    <EmbeddedResource Update="Areas\DuraDriver\Home\Popup\Views\ReachLocationPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Areas\DuraDriver\Home\Views\NotificationPage.xaml">
