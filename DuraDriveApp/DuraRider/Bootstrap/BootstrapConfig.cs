@@ -15,6 +15,7 @@ using DuraRider.Areas.DuraDriver.Wallet.ViewModels;
 using DuraRider.Areas.DuraDriver.Profile.ViewModels;
 using DuraRider.ViewModels;
 using DuraRider.Areas.DuraDriver.Orders.ViewModels;
+using DuraRider.Areas.DuraDriver.Profile.MyProfile.ViewModels;
 
 namespace DuraRider.Bootstrap
 {
@@ -73,7 +74,7 @@ namespace DuraRider.Bootstrap
             FreshIOC.Container.Register<HelpCenterPageViewModel, HelpCenterPageViewModel>().AsSingleton(); 
             FreshIOC.Container.Register<MyRatingPageViewModel, MyRatingPageViewModel>().AsSingleton(); 
             FreshIOC.Container.Register<PrivacyPolicyPageViewModel, PrivacyPolicyPageViewModel>().AsSingleton(); 
-            FreshIOC.Container.Register<ProfileTabPageViewModel, ProfileTabPageViewModel>().AsSingleton(); 
+            FreshIOC.Container.Register<MyProfilePageViewModel, MyProfilePageViewModel>().AsSingleton(); 
             FreshIOC.Container.Register<QrCodePageViewModel, QrCodePageViewModel>().AsSingleton(); 
             FreshIOC.Container.Register<ReferRiderPageViewModel, ReferRiderPageViewModel>().AsSingleton(); 
             FreshIOC.Container.Register<SupportPageViewModel, SupportPageViewModel>().AsSingleton(); 

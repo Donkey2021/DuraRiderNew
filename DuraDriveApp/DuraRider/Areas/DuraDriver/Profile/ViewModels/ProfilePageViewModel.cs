@@ -1,4 +1,5 @@
 ﻿using DuraRider.Areas.DuraDriver.Home.HomeModels;
+using DuraRider.Areas.DuraDriver.Profile.MyProfile.ViewModels;
 using DuraRider.Core.Helpers;
 using DuraRider.Core.Services.Interfaces;
 using DuraRider.Services.Interfaces;
@@ -41,9 +42,9 @@ namespace DuraRider.Areas.DuraDriver.Profile.ViewModels
             }
             try
             {
-                if (_navigationService.GetCurrentPageViewModel() != typeof(ProfileTabPageViewModel))
+                if (_navigationService.GetCurrentPageViewModel() != typeof(MyProfilePageViewModel))
                 {
-                    await _navigationService.NavigateToAsync<ProfileTabPageViewModel>();
+                    await _navigationService.NavigateToAsync<MyProfilePageViewModel>();
                     //await App.Locator.SignUpPage.InitilizeData();
                 }
             }

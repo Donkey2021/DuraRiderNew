@@ -8,6 +8,7 @@ using DuraRider.Areas.DuraDriver.Wallet.ViewModels;
 using DuraRider.Areas.DuraDriver.Profile.ViewModels;
 using DuraRider.Areas.DuraDriver.Orders.ViewModels;
 using DuraRider.Areas.DuraDriver.Home.Popup.ViewModels;
+using DuraRider.Areas.DuraDriver.Profile.MyProfile.ViewModels;
 
 namespace DuraRider.ViewModels
 {
@@ -52,7 +53,7 @@ namespace DuraRider.ViewModels
         public HelpCenterPageViewModel HelpCenterPage => FreshIOC.Container.Resolve<HelpCenterPageViewModel>();
         public MyRatingPageViewModel MyRatingPage => FreshIOC.Container.Resolve<MyRatingPageViewModel>();
         public PrivacyPolicyPageViewModel PrivacyPolicyPage => FreshIOC.Container.Resolve<PrivacyPolicyPageViewModel>();
-        public ProfileTabPageViewModel ProfileTabPage => FreshIOC.Container.Resolve<ProfileTabPageViewModel>();
+        public MyProfilePageViewModel MyProfilePage => FreshIOC.Container.Resolve<MyProfilePageViewModel>();
         public QrCodePageViewModel QrCodePage => FreshIOC.Container.Resolve<QrCodePageViewModel>();
         public ReferRiderPageViewModel ReferRiderPage => FreshIOC.Container.Resolve<ReferRiderPageViewModel>();
         public SupportPageViewModel SupportPage => FreshIOC.Container.Resolve<SupportPageViewModel>();

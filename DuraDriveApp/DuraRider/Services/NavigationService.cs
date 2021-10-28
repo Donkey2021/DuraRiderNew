@@ -8,6 +8,8 @@ using DuraRider.Areas.DuraDriver.Home.ViewModels;
 using DuraRider.Areas.DuraDriver.Home.Views;
 using DuraRider.Areas.DuraDriver.Orders.ViewModels;
 using DuraRider.Areas.DuraDriver.Orders.Views;
+using DuraRider.Areas.DuraDriver.Profile.MyProfile.ViewModels;
+using DuraRider.Areas.DuraDriver.Profile.MyProfile.Views;
 using DuraRider.Areas.DuraDriver.Profile.ViewModels;
 using DuraRider.Areas.DuraDriver.Profile.Views;
 using DuraRider.Areas.DuraDriver.Wallet.Popup.ViewModels;
@@ -325,7 +327,7 @@ namespace DuraRider.Services
             _mappings.Add(new Tuple<Type, Type, bool>(typeof(HelpCenterPageViewModel), typeof(HelpCenterPage), false));
             _mappings.Add(new Tuple<Type, Type, bool>(typeof(MyRatingPageViewModel), typeof(MyRatingPage), false));
             _mappings.Add(new Tuple<Type, Type, bool>(typeof(PrivacyPolicyPageViewModel), typeof(PrivacyPolicyPage), false));
-            _mappings.Add(new Tuple<Type, Type, bool>(typeof(ProfileTabPageViewModel), typeof(ProfileTabPage), false));
+            _mappings.Add(new Tuple<Type, Type, bool>(typeof(MyProfilePageViewModel), typeof(MyProfilePage), false));
             _mappings.Add(new Tuple<Type, Type, bool>(typeof(QrCodePageViewModel), typeof(QrCodePage), false));
             _mappings.Add(new Tuple<Type, Type, bool>(typeof(ReferRiderPageViewModel), typeof(ReferRiderPage), false));
             _mappings.Add(new Tuple<Type, Type, bool>(typeof(SupportPageViewModel), typeof(SupportPage), false));

@@ -3,19 +3,18 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 
-namespace DuraRider.Areas.DuraDriver.Profile.ViewModels
+namespace DuraRider.Areas.DuraDriver.Profile.MyProfile.ViewModels
 {
-    public class ProfileTabPageViewModel : AppBaseViewModel
+   public class MyProfilePageViewModel : AppBaseViewModel
     {
         private bool _saveDetailsIsVisible;
         public bool SaveDetailsIsVisible
         {
             get { return _saveDetailsIsVisible; }
-            set { _saveDetailsIsVisible = value;OnPropertyChanged(); }
+            set { _saveDetailsIsVisible = value; OnPropertyChanged(); }
         }
 
         private VihicleModel _vehicleSelected;
@@ -230,12 +229,12 @@ namespace DuraRider.Areas.DuraDriver.Profile.ViewModels
         {
             get { return _mngDetailText; }
             set { _mngDetailText = value; OnPropertyChanged(nameof(MngDetailText)); }
-        } 
+        }
 
-        public ProfileTabPageViewModel()
+        public MyProfilePageViewModel()
         {
             PersonalDetailsIsVisible = true;
-            PersonalDetailsEditButtonIsVisible = true;            
+            PersonalDetailsEditButtonIsVisible = true;
             OfficialDetailsIsVisible = false;
             PaymentDetailsIsVisible = false;
             PersonalDetailsTextColor = Color.White;
@@ -273,7 +272,7 @@ namespace DuraRider.Areas.DuraDriver.Profile.ViewModels
         }
         public ICommand PasswordChangeCommand => new Command(async (obj) =>
         {
-           // await RichNavigation.PushAsync(new ChangePasswordPage(), typeof(ChangePasswordPage));
+            // await RichNavigation.PushAsync(new ChangePasswordPage(), typeof(ChangePasswordPage));
         });
         public ICommand EditCommand => new Command(async (obj) =>
         {
@@ -293,7 +292,7 @@ namespace DuraRider.Areas.DuraDriver.Profile.ViewModels
         });
         public ICommand SaveCommand => new Command(async (obj) =>
         {
-           // PersonalDetailsIsVisible = true;
+            // PersonalDetailsIsVisible = true;
             PersonalDetailsEditButtonIsVisible = true;
             IsReadEmailText = false;
             IsReadFaceBookText = true;
@@ -305,11 +304,11 @@ namespace DuraRider.Areas.DuraDriver.Profile.ViewModels
             IsReadMngDetailText = true;
             IsReadMobileText = true;
             IsEnabledDOBText = false;
-            SaveDetailsIsVisible = false;           
+            SaveDetailsIsVisible = false;
         });
         public ICommand EditDocumentCommand => new Command(async (obj) =>
-        { 
-             EditBtn = "Edit";
+        {
+            EditBtn = "Edit";
             ImageIsVisible = true;
         });
         public ICommand AddAnotherBankCommand => new Command(async (obj) =>
@@ -335,7 +334,7 @@ namespace DuraRider.Areas.DuraDriver.Profile.ViewModels
         public ICommand Tab2Command => new Command(async (obj) =>
         {
             PersonalDetailsIsVisible = false;
-           // PersonalDetailsEditButtonIsVisible = false;
+            // PersonalDetailsEditButtonIsVisible = false;
             SaveDetailsIsVisible = false;
             OfficialDetailsIsVisible = true;
             PaymentDetailsIsVisible = false;
@@ -350,9 +349,9 @@ namespace DuraRider.Areas.DuraDriver.Profile.ViewModels
         public ICommand Tab3Command => new Command(async (obj) =>
         {
             PersonalDetailsIsVisible = false;
-           // PersonalDetailsEditButtonIsVisible
+            // PersonalDetailsEditButtonIsVisible
             SaveDetailsIsVisible = false;
-            OfficialDetailsIsVisible = false;           
+            OfficialDetailsIsVisible = false;
             PaymentDetailsIsVisible = true;
             PersonalDetailsBoxviewColor = Color.Transparent;
             PersonalDetailsTextColor = Color.FromHex("#75747F");
