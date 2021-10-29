@@ -1,5 +1,6 @@
 ﻿using DuraRider.Core.Helpers;
 using DuraRider.Core.Helpers.Enums;
+using DuraRider.Core.Models.RequestModels;
 using DuraRider.Core.Models.ResponseModels;
 using DuraRider.Core.Models.Result;
 using DuraRider.Core.Services.Interfaces;
@@ -20,6 +21,20 @@ namespace DuraRider.Core.Services
             _httpService = httpService;
         }
 
+        public async Task<Result<DriverLoginResponseModel>> DriverLogin(DriverLoginRequestModel request)
+        {
+            var jsonRequest = JsonConvert.SerializeObject(request);
+            var response = await _httpService.PostJsonAsync<DriverLoginResponseModel>(Urls.BASE_URL + Urls.LoginApiUrl, jsonRequest);
+            if (response?.ResultType == ResultType.Ok)
+            {
+                if (response?.Data != null)
+                {
+                    //App.Locator.CurrentUser.AppointmentData = response?.Data;
+                }
+            }
+            return response;
+        }
+
         public async Task<Result<DriverLoginResponseModel>> DriverRegistrationService(MultipartFormDataContent request)
         {
             var response = await _httpService.PostJsonAsync<DriverLoginResponseModel>(Urls.BASE_URL + Urls.Signup, request);
@@ -33,9 +48,35 @@ namespace DuraRider.Core.Services
             return response;
         }
 
+        public async Task<Result<ForgetPasswordResponseModel>> ForgetPassword(MultipartFormDataContent request)
+        {
+            var response = await _httpService.PostJsonAsync<ForgetPasswordResponseModel>(Urls.BASE_URL + Urls.ChangepasswordUrl, request);
+            if (response?.ResultType == ResultType.Ok)
+            {
+                if (response?.Data != null)
+                {
+                    //App.Locator.CurrentUser.AppointmentData = response?.Data;
+                }
+            }
+            return response;
+        }
+
         public async Task<Result<GetAllLocationResponseModel>> GetAllLocationsNew()
         {
             var response = await _httpService.GetJsonAsync<GetAllLocationResponseModel>(Urls.BASE_URL + Urls.GET_ALL_LOCATION);
+            if (response?.ResultType == ResultType.Ok)
+            {
+                if (response?.Data != null)
+                {
+                    //App.Locator.CurrentUser.AppointmentData = response?.Data;
+                }
+            }
+            return response;
+        }
+
+        public async Task<Result<ServiceAreaResponseModel>> GetServiceArea(MultipartFormDataContent request)
+        {
+            var response = await _httpService.PostJsonAsync<ServiceAreaResponseModel>(Urls.BASE_URL + Urls.ServiceAreaAPIURL, request);
             if (response?.ResultType == ResultType.Ok)
             {
                 if (response?.Data != null)

@@ -55,7 +55,7 @@
                         <Grid>
                             <xct:AvatarView
                                 x:Name="photo_placeholder"
-                                Aspect="AspectFill"
+                                Aspect="Fill"
                                 BorderColor="#EBE9FF"
                                 HorizontalOptions="Center"
                                 Size="150"

@@ -48,6 +48,9 @@ namespace DuraRider.Bootstrap
             FreshIOC.Container.Register<GCashAccountDetailsPageViewModel, GCashAccountDetailsPageViewModel>().AsSingleton();
             FreshIOC.Container.Register<ProfilePageViewModel, ProfilePageViewModel>().AsSingleton();
             FreshIOC.Container.Register<DuraBageServicePageViewModel, DuraBageServicePageViewModel>().AsSingleton();
+            FreshIOC.Container.Register<ApprovalPageViewModel, ApprovalPageViewModel>().AsSingleton();
+            FreshIOC.Container.Register<ForgotPasswordPageViewModel, ForgotPasswordPageViewModel>().AsSingleton();
+            FreshIOC.Container.Register<ResetPasswordPageViewModel, ResetPasswordPageViewModel>().AsSingleton();
         }
     }
 }

@@ -19,5 +19,7 @@ namespace DuraRider.Core.Models.Auth
         public string middlename { get; set; }
         public string lastname { get; set; }
         public string refreal_no { get; set; }
+        public bool isfromforgotpassword { get; set; }
+        public string newpassword { get; set; }
     }
 }

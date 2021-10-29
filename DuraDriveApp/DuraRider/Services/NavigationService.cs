@@ -298,6 +298,10 @@ namespace DuraRider.Services
             _mappings.Add(new Tuple<Type, Type, bool>(typeof(GCashAccountDetailsPageViewModel), typeof(GCashAccountDetailsPage), false));
             _mappings.Add(new Tuple<Type, Type, bool>(typeof(ProfilePageViewModel), typeof(ProfilePage), false));
             _mappings.Add(new Tuple<Type, Type, bool>(typeof(DuraBageServicePageViewModel), typeof(DuraBageServicePage), false));
+            _mappings.Add(new Tuple<Type, Type, bool>(typeof(ApprovalPageViewModel), typeof(ApprovalPage), false));
+            _mappings.Add(new Tuple<Type, Type, bool>(typeof(ForgotPasswordPageViewModel), typeof(ForgotPasswordPage), false));
+            _mappings.Add(new Tuple<Type, Type, bool>(typeof(ResetPasswordPageViewModel), typeof(ResetPasswordPage), false));
+
             //PopupViews
             _mappings.Add(new Tuple<Type, Type, bool>(typeof(ReferralPopUpPageViewModel), typeof(ReferralPopUpPage), true));
             _mappings.Add(new Tuple<Type, Type, bool>(typeof(CameraGalleryPopupPageViewModel), typeof(CameraGalleryPopupPage), true));
