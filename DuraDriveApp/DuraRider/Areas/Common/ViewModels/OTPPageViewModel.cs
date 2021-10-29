@@ -254,6 +254,7 @@ namespace DuraRider.Areas.Common.ViewModels
         {
 
         }
+
         #region Properties
         private RegistrationData _registrationData;
         public RegistrationData RegistrationData

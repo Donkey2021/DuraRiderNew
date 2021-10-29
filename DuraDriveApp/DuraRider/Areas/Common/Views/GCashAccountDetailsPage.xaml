@@ -22,7 +22,6 @@
         <StackLayout>
             <StackLayout Margin="15,10" Spacing="25">
                 <Label Text="Complete your registration with following steps" />
-                <!--  "personal_info" "bank_info" "document"  -->
                 <Image Source="{xct:ImageResource Id=DuraRider.Images.bank_info.png}" />
             </StackLayout>
             <Yummy:PancakeView CornerRadius="20,20,0,0" VerticalOptions="EndAndExpand">
@@ -33,9 +32,7 @@
                         FontSize="16"
                         Text="Provide G-cash account details"
                         TextColor="Black" />
-
                     <StackLayout>
-
                         <StackLayout
                             Padding="0"
                             HeightRequest="55"
@@ -50,7 +47,6 @@
                                 HeightRequest="1"
                                 HorizontalOptions="FillAndExpand"
                                 VerticalOptions="StartAndExpand" />
-
                         </StackLayout>
                         <StackLayout
                             Padding="0"
@@ -73,7 +69,6 @@
                                 Text="{Binding GCNumberTextError}"
                                 TextColor="Red" />
                         </StackLayout>
-
                         <StackLayout
                             Padding="0"
                             HeightRequest="55"
@@ -95,7 +90,6 @@
                                 Text="{Binding CnfGcashEror}"
                                 TextColor="Red" />
                         </StackLayout>
-
                         <Button
                             Margin="0,10,0,0"
                             Command="{Binding SubmitCommand}"
